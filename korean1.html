@@ -1,209 +1,307 @@
-import streamlit as st
-import pandas as pd
-import os
-
-# --- 1. 데이터 로드 ---
-CSV_PATH = "서울고모 기초단어 300 - 시트1.csv"
-
-@st.cache_data
-def load_vocabulary():
-    if not os.path.exists(CSV_PATH):
-        return None
-    try:
-        df = pd.read_csv(CSV_PATH, header=0)
-        # 필요한 컬럼들이 있는지 확인하고 클리닝
-        required_cols = ["English", "Korean", "Pronunciation", "Example (Korean)", "Example (English)"]
-        for col in required_cols:
-            if col not in df.columns:
-                df[col] = "" # 없는 컬럼은 빈 값으로 채움
-        
-        df = df.dropna(subset=["English", "Korean"])
-        df = df.reset_index(drop=True)
-        return df
-    except Exception as e:
-        st.error(f"Error loading CSV: {e}")
-        return None
-
-df = load_vocabulary()
-
-if df is None:
-    st.error("CSV 파일을 찾을 수 없습니다. '서울고모 기초단어 300 - 시트1.csv' 파일을 확인해주세요.")
-    st.stop()
-
-# --- 2. TTS (음성 출력) ---
-def speak(text, lang="ko"):
-    """HTML5 SpeechSynthesis으로 한국어/영어 발음 재생 (컴포넌트 방식)"""
-    if not text or pd.isna(text):
-        return
-    
-    # 고유한 키를 생성하여 스크립트 재실행 유도
-    import time
-    unique_key = int(time.time() * 1000)
-    
-    st.components.v1.html(
-        f"""
-        <script>
-        (function() {{
-            if ('speechSynthesis' in window) {{
-                // 이전 음성 중단
-                window.speechSynthesis.cancel();
-                
-                var u = new SpeechSynthesisUtterance();
-                u.text = {repr(text)};
-                u.lang = '{lang}';
-                u.rate = 0.9;
-                window.speechSynthesis.speak(u);
-            }}
-        }})();
-        </script>
-        <div style="display:none;">{unique_key}</div>
-        """,
-        height=0,
-        width=0,
-    )
-
-# --- 3. UI 설정 ---
-st.set_page_config(
-    page_title="Korean Vocab Master",
-    page_icon="🇰🇷",
-    layout="centered",
-)
-
-# Custom CSS for better look
-st.markdown("""
-    <style>
-    .main {
-        background-color: #f8f9fa;
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korean Vocab Master</title>
+  <!-- CSV 파싱을 위한 PapaParse 라이브러리 -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    .stButton>button {
-        width: 100%;
-        border-radius: 20px;
-        height: 3em;
-        background-color: #ffffff;
-        color: #4a4a4a;
-        border: 1px solid #e0e0e0;
-        transition: all 0.3s;
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
     }
-    .stButton>button:hover {
-        background-color: #ff4b4b;
-        color: white;
-        border: 1px solid #ff4b4b;
+    .container {
+      width: 100%;
+      max-width: 650px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.2rem;
+      text-align: center;
+    }
+    h5 {
+      color: #6c757d;
+      font-style: italic;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 1.5rem 0;
+    }
+    .select-box {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background-color: #fff;
+      margin-bottom: 1.5rem;
+      outline: none;
     }
     .word-card {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        margin-bottom: 1rem;
-        text-align: center;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+      margin-bottom: 1rem;
+      text-align: center;
     }
     .korean-text {
-        font-size: 3rem;
-        font-weight: 700;
-        color: #1E3A8A;
-        margin-bottom: 0.5rem;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #1E3A8A;
+      margin-bottom: 0.5rem;
     }
     .english-text {
-        font-size: 1.5rem;
-        color: #6B7280;
-        margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      color: #4B5563;
+      margin-bottom: 0.5rem;
     }
     .pronunciation-text {
-        font-size: 1.2rem;
-        color: #9CA3AF;
-        font-style: italic;
+      font-size: 1.1rem;
+      color: #9CA3AF;
+      font-style: italic;
+    }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    button {
+      flex: 1;
+      border-radius: 20px;
+      height: 3em;
+      background-color: #ffffff;
+      color: #4a4a4a;
+      border: 1px solid #e0e0e0;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background-color: #ff4b4b;
+      color: white;
+      border-color: #ff4b4b;
     }
     .example-box {
-        background-color: #EEF2FF;
-        padding: 1.5rem;
-        border-left: 5px solid #6366F1;
-        border-radius: 5px;
-        margin-top: 1rem;
+      background-color: #EEF2FF;
+      padding: 1.2rem;
+      border-left: 5px solid #6366F1;
+      border-radius: 5px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
-    </style>
-    """, unsafe_allow_html=True)
+    .example-box p {
+      margin: 0.4rem 0;
+      font-size: 1rem;
+    }
+    details {
+      background-color: white;
+      border-radius: 10px;
+      padding: 12px 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+    .filter-input {
+      width: 100%;
+      padding: 8px 12px;
+      margin: 12px 0;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+    }
+    .list-container {
+      max-height: 250px;
+      overflow-y: auto;
+      border-top: 1px solid #f3f4f6;
+      padding-top: 10px;
+    }
+    .list-item {
+      padding: 6px 0;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.95rem;
+    }
+    .ad-box {
+      text-align: center;
+      margin: 25px 0;
+      padding: 20px;
+      background-color: #f1f5f9;
+      border-radius: 10px;
+    }
+    .ad-inner {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px dashed #cbd5e1;
+      color: #94a3b8;
+    }
+    .caption {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    #error-msg {
+      display: none;
+      background-color: #fee2e2;
+      color: #b91c1c;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
 
-# --- Header ---
-st.title("🇰🇷 Korean Vocab Master")
-st.markdown("##### *Learn 300 Essential Korean Words with 'Seoul Gomo'*")
+<div class="container">
+  <h1>🇰🇷 Korean Vocab Master</h1>
+  <h5>Learn 300 Essential Korean Words with 'Seoul Gomo'</h5>
 
-# --- 4. Search & Select ---
-st.divider()
+  <div id="error-msg">CSV 파일을 찾을 수 없습니다. 저장소에 '서울고모 기초단어 300 - 시트1.csv' 파일이 업로드되어 있는지 확인해주세요.</div>
 
-# Create search options: "Korean - English" format
-search_options = [f"{row['Korean']} ({row['English']})" for _, row in df.iterrows()]
+  <select id="vocab-select" class="select-box" onchange="renderWord(this.value)">
+    <option>단어 목록 불러오는 중...</option>
+  </select>
 
-col_search, col_random = st.columns([4, 1])
+  <!-- Word Display -->
+  <div class="word-card">
+    <div class="korean-text" id="display-korean">-</div>
+    <div class="english-text" id="display-english">-</div>
+    <div class="pronunciation-text" id="display-pronunciation">-</div>
+  </div>
 
-with col_search:
-    selected_option = st.selectbox(
-        "🔍 Search Word (한국어/English)",
-        options=search_options,
-        index=0,
-        help="Type to search for a word in Korean or English"
-    )
+  <div class="btn-group">
+    <button onclick="speakCurrent('korean', 'ko-KR')">🔊 Listen (KR)</button>
+    <button onclick="speakCurrent('english', 'en-US')">🔊 Listen (EN)</button>
+  </div>
 
-# Find the index of selected word
-selected_idx = search_options.index(selected_option)
-row = df.iloc[selected_idx]
+  <hr>
 
-# --- 5. Word Display ---
-st.markdown(f"""
-    <div class="word-card">
-        <div class="korean-text">{row['Korean']}</div>
-        <div class="english-text">{row['English']}</div>
-        <div class="pronunciation-text">[{row['Pronunciation']}]</div>
-    </div>
-    """, unsafe_allow_html=True)
+  <!-- Examples -->
+  <h3 style="margin-bottom:0.5rem;">💬 Example Sentences</h3>
+  <div class="example-box">
+    <p><b>🇰🇷 KR:</b> <span id="display-ex-kr">-</span></p>
+    <p style="color: #4B5563;"><b>🇺🇸 EN:</b> <span id="display-ex-en">-</span></p>
+  </div>
+  <button style="width: 100%;" onclick="speakCurrent('exKr', 'ko-KR')">🔊 Listen to Example (KR)</button>
 
-# Audio Buttons
-col1, col2 = st.columns(2)
-with col1:
-    if st.button("🔊 Listen (KR)"):
-        speak(row["Korean"], "ko-KR")
-with col2:
-    if st.button("🔊 Listen (EN)"):
-        speak(row["English"], "en-US")
+  <hr>
 
-# --- 6. Examples ---
-st.markdown("---")
-st.subheader("💬 Example Sentences")
-st.markdown(f"""
-    <div class="example-box">
-        <p style="font-size: 1.1rem; margin-bottom: 0.5rem;"><b>🇰🇷 KR:</b> {row['Example (Korean)']}</p>
-        <p style="font-size: 1.1rem; color: #4B5563;"><b>🇺🇸 EN:</b> {row['Example (English)']}</p>
-    </div>
-    """, unsafe_allow_html=True)
+  <!-- All List -->
+  <details>
+    <summary>📋 View All 300 Words</summary>
+    <input type="text" id="list-search" class="filter-input" placeholder="Filter list..." oninput="filterList(this.value)">
+    <div class="list-container" id="all-words-list"></div>
+  </details>
 
-if st.button("🔊 Listen to Example (KR)"):
-    speak(row["Example (Korean)"], "ko-KR")
+  <!-- Ad Box & Footer -->
+  <div class="ad-box">
+    <p style="color:#64748b; font-size:14px; margin-top:0;">ADVERTISEMENT</p>
+    <div class="ad-inner">Google AdSense Space</div>
+  </div>
 
-# --- 7. All List ---
-st.markdown("---")
-with st.expander("📋 View All 300 Words"):
-    # Search within the expander
-    list_search = st.text_input("Filter list...", placeholder="Search in list...")
-    
-    filtered_df = df[
-        df['Korean'].str.contains(list_search, case=False, na=False) | 
-        df['English'].str.contains(list_search, case=False, na=False)
-    ]
-    
-    for i, r in filtered_df.iterrows():
-        st.write(f"**{r['Korean']}** | {r['English']} | *{r['Pronunciation']}*")
+  <div class="caption">© Seoul Gomo Korean Learning. Voice provided by Browser TTS.</div>
+</div>
 
-# --- Footer & Ads ---
-st.divider()
-st.markdown(
-    '''
-    <div style="text-align:center; margin: 20px 0; padding: 20px; background-color: #f1f5f9; border-radius: 10px;">
-        <p style="color:#64748b; font-size:14px;">ADVERTISEMENT</p>
-        <div style="height: 100px; display: flex; align-items: center; justify-content: center; border: 1px dashed #cbd5e1;">
-            <p style="color:#94a3b8;">Google AdSense Space</p>
-        </div>
-    </div>
-    ''',
-    unsafe_allow_html=True,
-)
+<script>
+  const CSV_FILE = "서울고모 기초단어 300 - 시트1.csv";
+  let vocabData = [];
+  let currentIndex = 0;
 
-st.caption("© Seoul Gomo Korean Learning. Voice provided by Browser TTS.")
+  // TTS 음성 출력
+  function speak(text, lang) {
+    if (!text || !('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = lang;
+    u.rate = 0.9;
+    window.speechSynthesis.speak(u);
+  }
+
+  function speakCurrent(type, lang) {
+    if (!vocabData[currentIndex]) return;
+    const row = vocabData[currentIndex];
+    if (type === 'korean') speak(row.Korean, lang);
+    if (type === 'english') speak(row.English, lang);
+    if (type === 'exKr') speak(row['Example (Korean)'], lang);
+  }
+
+  // 선택 단어 렌더링
+  function renderWord(index) {
+    currentIndex = parseInt(index);
+    const row = vocabData[currentIndex];
+    if (!row) return;
+
+    document.getElementById('display-korean').innerText = row.Korean || '';
+    document.getElementById('display-english').innerText = row.English || '';
+    document.getElementById('display-pronunciation').innerText = row.Pronunciation ? `[${row.Pronunciation}]` : '';
+    document.getElementById('display-ex-kr').innerText = row['Example (Korean)'] || '';
+    document.getElementById('display-ex-en').innerText = row['Example (English)'] || '';
+  }
+
+  // 하단 전체 리스트 렌더링
+  function renderAllList(data) {
+    const listEl = document.getElementById('all-words-list');
+    listEl.innerHTML = data.map(r => `
+      <div class="list-item">
+        <b>${r.Korean || ''}</b> | ${r.English || ''} | <i>${r.Pronunciation || ''}</i>
+      </div>
+    `).join('');
+  }
+
+  // 하단 리스트 검색 필터
+  function filterList(keyword) {
+    const query = keyword.toLowerCase();
+    const filtered = vocabData.filter(r => 
+      (r.Korean && r.Korean.toLowerCase().includes(query)) ||
+      (r.English && r.English.toLowerCase().includes(query))
+    );
+    renderAllList(filtered);
+  }
+
+  // CSV 데이터 로드
+  Papa.parse(CSV_FILE, {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: function(results) {
+      vocabData = results.data.filter(row => row.Korean && row.English);
+      
+      if (vocabData.length === 0) {
+        document.getElementById('error-msg').style.display = 'block';
+        return;
+      }
+
+      // 셀렉트 박스 옵션 생성
+      const select = document.getElementById('vocab-select');
+      select.innerHTML = vocabData.map((row, idx) => 
+        `<option value="${idx}">${row.Korean} (${row.English})</option>`
+      ).join('');
+
+      renderWord(0);
+      renderAllList(vocabData);
+    },
+    error: function() {
+      document.getElementById('error-msg').style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
