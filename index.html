@@ -7,27 +7,42 @@
     <title>SeoulKomo - Authentic Korean Learning by a Native Tutor</title>
     <style>
         * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: #f8f9fa; color: #2d3748; margin: 0; padding: 20px 15px; display: flex; justify-content: center; }
-        .container { width: 100%; max-width: 760px; background: #ffffff; padding: 35px 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid #edf2f7; padding-bottom: 25px; }
-        h1 { font-size: 2.2rem; color: #1a365d; margin: 0 0 10px 0; }
-        .subtitle { font-size: 1.1rem; color: #4a5568; margin: 0; line-height: 1.5; }
-        .badge { display: inline-block; background-color: #ebf8ff; color: #2b6cb0; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+        body { background-color: #f8f9fa; color: #2d3748; margin: 0; padding: 25px 15px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 780px; background: #ffffff; padding: 40px 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         
-        .tool-banner { background: linear-gradient(135deg, #3182ce, #2b6cb0); color: white; padding: 25px; border-radius: 12px; margin: 25px 0 35px 0; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
-        .tool-banner h2 { margin: 0; font-size: 1.4rem; color: white; }
-        .tool-banner p { margin: 0; color: #e2e8f0; line-height: 1.5; }
-        .btn-start { display: inline-block; background-color: #ffffff; color: #2b6cb0; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: transform 0.1s ease; margin-top: 5px; }
-        .btn-start:hover { transform: translateY(-2px); background-color: #f7fafc; }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid #edf2f7; padding-bottom: 25px; }
+        .badge { display: inline-block; background-color: #ebf8ff; color: #2b6cb0; padding: 5px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+        h1 { font-size: 2.2rem; color: #1a365d; margin: 0 0 10px 0; }
+        .subtitle { font-size: 1.05rem; color: #4a5568; margin: 0; line-height: 1.6; }
 
-        .article-section { margin-top: 25px; line-height: 1.7; font-size: 1.02rem; }
-        .article-section h2 { font-size: 1.5rem; color: #2d3748; border-left: 4px solid #3182ce; padding-left: 10px; margin-top: 35px; margin-bottom: 15px; }
-        .article-section h3 { font-size: 1.2rem; color: #2b6cb0; margin-top: 20px; margin-bottom: 8px; }
-        .article-section p { margin-bottom: 16px; }
-        .guide-box { background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; margin: 20px 0; }
+        /* Featured App Banner */
+        .tool-banner { background: linear-gradient(135deg, #3182ce, #2b6cb0); color: white; padding: 25px; border-radius: 12px; margin: 25px 0 20px 0; }
+        .tool-banner h2 { margin: 0 0 8px 0; font-size: 1.4rem; color: white; }
+        .tool-banner p { margin: 0 0 15px 0; color: #e2e8f0; line-height: 1.5; font-size: 0.95rem; }
+        .btn-start { display: inline-block; background-color: #ffffff; color: #2b6cb0; padding: 10px 20px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; }
+        .btn-start:hover { background-color: #f7fafc; }
+
+        /* Article Navigation Grid */
+        .nav-grid { display: flex; gap: 12px; margin: 15px 0 35px 0; flex-wrap: wrap; }
+        .nav-card { flex: 1; min-width: 240px; padding: 18px 20px; border-radius: 10px; text-decoration: none; border: 1px solid transparent; transition: transform 0.15s ease; }
+        .nav-card:hover { transform: translateY(-2px); }
+        .card-slang { background-color: #ebf8ff; border-color: #bee3f8; }
+        .card-honorifics { background-color: #f0fff4; border-color: #c6f6d5; }
+        .card-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+        .card-slang .card-tag { color: #2b6cb0; }
+        .card-honorifics .card-tag { color: #276749; }
+        .card-title { font-size: 1.05rem; font-weight: 700; margin: 0 0 4px 0; color: #2d3748; }
+        .card-desc { font-size: 0.85rem; color: #4a5568; margin: 0; }
+
+        /* Educational Article Content */
+        .article-section { margin-top: 25px; line-height: 1.75; font-size: 1rem; }
+        .article-section h2 { font-size: 1.45rem; color: #2d3748; border-left: 4px solid #3182ce; padding-left: 12px; margin-top: 35px; margin-bottom: 15px; }
+        .article-section h3 { font-size: 1.15rem; color: #2b6cb0; margin-top: 20px; margin-bottom: 8px; }
+        .guide-box { background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin: 20px 0; }
         .guide-box ul { margin: 8px 0; padding-left: 20px; }
         .guide-box li { margin-bottom: 6px; }
 
+        /* Footer */
         footer { margin-top: 50px; padding-top: 25px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 0.9rem; color: #718096; }
         footer a { color: #3182ce; text-decoration: none; margin: 0 10px; }
         footer a:hover { text-decoration: underline; }
@@ -37,44 +52,58 @@
 
 <div class="container">
     <header>
-        <div class="badge">Authentic Korean Education</div>
+        <div class="badge">Native Korean Learning Platform</div>
         <h1>SeoulKomo Korean Master</h1>
-        <p class="subtitle">Practical, everyday Korean vocabulary and natural native expressions curated by a professional Seoul tutor.</p>
+        <p class="subtitle">Practical, conversational Korean lessons, foundational vocabulary, and authentic grammar nuances curated by a native Seoul tutor.</p>
     </header>
 
     <!-- App / Tool Direct Access Link -->
     <div class="tool-banner">
         <h2>Interactive Practice: 300 Essential Words</h2>
-        <p>Listen to authentic voice pronunciations, review practical sample sentences, and master foundational conversational vocabulary directly in your browser.</p>
+        <p>Practice correct audio pronunciation, review real-world sample sentences, and master high-frequency conversational vocabulary directly in your browser.</p>
         <a href="./korean1.html" class="btn-start">Launch Practice App →</a>
+    </div>
+
+    <!-- Quick Article Links -->
+    <div class="nav-grid">
+        <a href="./slang2026.html" class="nav-card card-slang">
+            <div class="card-tag">Culture & Vocabulary</div>
+            <div class="card-title">Top 10 Korean Slang (2026) →</div>
+            <div class="card-desc">Understand modern digital buzzwords and expressions used by locals.</div>
+        </a>
+        <a href="./honorifics.html" class="nav-card card-honorifics">
+            <div class="card-tag">Grammar & Etiquette</div>
+            <div class="card-title">Korean Honorifics Explained →</div>
+            <div class="card-desc">A complete guide to speech levels, respect words, and polite communication.</div>
+        </a>
     </div>
 
     <!-- Static Educational Content for AdSense Crawlers & Learners -->
     <div class="article-section">
         <h2>Why Context-Based Learning Matters in Korean</h2>
-        <p>Learning Korean involves more than simply memorizing direct dictionary translations. In modern spoken Korean, the choice of vocabulary, verbal honorifics, and everyday intonation depends heavily on interpersonal context, the relationship between speakers, and situational etiquette.</p>
-        <p>At <strong>SeoulKomo</strong>, our learning framework focuses on practical utility: providing foundational vocabulary words that native speakers actively use in real-life Seoul dialogue, accompanied by realistic conversational sample contexts.</p>
+        <p>Learning Korean involves more than simply memorizing isolated dictionary definitions. In modern spoken Korean, the choice of vocabulary, verb conjugations, and everyday intonation depends heavily on interpersonal context, the relationship between speakers, and situational etiquette.</p>
+        <p>At <strong>SeoulKomo</strong>, our learning curriculum is structured around realistic daily usage: providing high-frequency words that native speakers actively use in real-life dialogue, accompanied by natural conversational contexts.</p>
 
         <h2>Essential Korean Study Guide for Beginners</h2>
-        <p>To establish a solid foundation in Korean, learners should structure their study habits around three core pillars:</p>
+        <p>To establish a solid foundation in Korean, learners should structure their study routine around three core pillars:</p>
 
         <div class="guide-box">
-            <h3>1. Master Hangul and Sound Variations</h3>
-            <p>While romanized pronunciations serve as temporary learning aids, relying on them too long will distort your pronunciation. Master the Korean alphabet (Hangul) early, paying close attention to batchim (final consonants) and natural liaison rules.</p>
+            <h3>1. Prioritize Hangul Over Romanization</h3>
+            <p>While romanized spellings serve as temporary guides, relying on them too long will distort your pronunciation. Master the Korean alphabet (Hangul) early, paying close attention to batchim (final consonants) and liaison sound changes.</p>
             
-            <h3>2. Prioritize High-Frequency Core Vocabulary</h3>
-            <p>Native speakers rely heavily on a core set of approximately 300 to 500 essential words to conduct daily routines, make purchases, and engage in casual conversation. Focusing on high-yield words accelerates comprehension much faster than studying specialized academic jargon.</p>
+            <h3>2. Focus on High-Yield Core Words First</h3>
+            <p>Native speakers rely heavily on a core set of 300 to 500 essential words to conduct daily routines, make purchases, and engage in casual conversation. Focusing on high-yield words accelerates real-world comprehension rapidly.</p>
 
-            <h3>3. Always Learn Words Inside Complete Sentences</h3>
-            <p>Korean verbs and adjectives conjugate according to tense, speech level, and polite nuances. Learning standalone terms without surrounding sentences often leads to unnatural phrasing. Always pair a new verb with realistic sentence structures.</p>
+            <h3>3. Learn Verbs Inside Complete Sentences</h3>
+            <p>Korean verbs and adjectives conjugate according to tense and politeness level. Learning standalone terms without surrounding sentences often leads to unnatural phrasing. Always pair a new verb with realistic sentence patterns.</p>
         </div>
 
-        <h2>How to Make the Most of SeoulKomo Resources</h2>
-        <p>Our curriculum is designed to help independent students achieve conversational fluency systematically:</p>
+        <h2>Curriculum & Navigation</h2>
+        <p>Explore our complete learning resources to build fluency step-by-step:</p>
         <ul>
-            <li><strong>Audio-Visual Association:</strong> Use the interactive pronunciation tool in our study app to train both your listening comprehension and articulation.</li>
-            <li><strong>Repetition via Filtering:</strong> Utilize the search and category filters to group related words together, reinforcing thematic vocabulary retention.</li>
-            <li><strong>Continuous Context Updates:</strong> Review our lesson materials regularly to encounter authentic Korean idioms and expressions updated directly from contemporary Seoul usage.</li>
+            <li><strong><a href="./korean1.html" style="color: #3182ce;">Vocabulary App</a>:</strong> Train listening and articulation with authentic audio and sample sentences.</li>
+            <li><strong><a href="./slang2026.html" style="color: #3182ce;">Modern Slang</a>:</strong> Learn natural idioms and viral expressions actively spoken in Seoul.</li>
+            <li><strong><a href="./honorifics.html" style="color: #3182ce;">Honorifics Guide</a>:</strong> Master polite forms (-아요/어요) and respectful speech levels.</li>
         </ul>
     </div>
 
