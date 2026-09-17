@@ -1,120 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-adsense-account" content="ca-pub-4043350704003158">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4043350704003158" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learn Korean Through K-Pop: Curated Songs & Lyric Study</title>
+  <meta name="description" content="Master natural Korean grammar, conversational idioms, and cultural nuance through curated K-Pop song breakdowns.">
+  <title>Learn Korean Through K-Pop: Lyric Breakdowns & Grammar</title>
+  <meta name="google-adsense-account" content="ca-pub-4043350704003158">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4043350704003158" crossorigin="anonymous"></script>
   <style>
     :root {
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --text: #1e293b;
-      --subtext: #64748b;
-      --border: #e2e8f0;
-      --tag-bg: #eff6ff;
+      --bg: #f8fafc; --card-bg: #ffffff; --primary: #2563eb; --primary-hover: #1d4ed8;
+      --text: #0f172a; --subtext: #475569; --border: #e2e8f0; --tag: #eff6ff;
     }
-    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      margin: 0;
-      padding: 2rem 1rem;
-    }
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      padding: 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    }
-    header { text-align: center; margin-bottom: 2rem; }
-    h1 { font-size: 1.85rem; color: #0f172a; margin-bottom: 0.5rem; }
-    .subtitle { color: var(--subtext); font-size: 0.95rem; max-width: 680px; margin: 0 auto; }
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem 1rem; }
+    .container { max-width: 1040px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 3rem; }
+    h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .subtitle { color: var(--subtext); max-width: 680px; margin: 0 auto; font-size: 1.05rem; }
     
-    .selector-box {
-      margin: 1.8rem 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    label { font-weight: 700; font-size: 0.95rem; color: #334155; }
-    select {
-      padding: 0.85rem 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      font-size: 1rem;
-      background: #ffffff;
-      outline: none;
-      cursor: pointer;
-      font-weight: 600;
-      color: #1e293b;
-    }
-    select:focus { border-color: var(--primary); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+    .badge { align-self: flex-start; background: var(--tag); color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 9999px; margin-bottom: 0.75rem; }
+    .card h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.92rem; color: var(--subtext); margin-bottom: 1.25rem; flex-grow: 1; }
+    .card-link { display: inline-block; background: var(--primary); color: #fff; text-decoration: none; padding: 0.6rem 1rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-align: center; }
+    .card-link:hover { background: var(--primary-hover); }
 
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 ratio */
-      height: 0;
-      overflow: hidden;
-      border-radius: 10px;
-      background: #000;
-      margin-bottom: 2rem;
-    }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .song-details {
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.75rem;
-      margin-bottom: 2rem;
-    }
-    .song-title { font-size: 1.35rem; font-weight: 700; color: #0f172a; margin-bottom: 0.5rem; }
-    .song-desc { font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem; }
-    .quote-box {
-      background: var(--tag-bg);
-      border-left: 4px solid var(--primary);
-      padding: 1.1rem;
-      border-radius: 6px;
-      margin-bottom: 1.25rem;
-    }
-    .quote-kr { font-size: 1.15rem; font-weight: 700; color: #1e3a8a; display: block; }
-    .quote-rom { font-size: 0.85rem; color: var(--primary); margin: 0.25rem 0; }
-    .quote-en { font-size: 0.92rem; color: #334155; }
-    .analysis-list { padding-left: 20px; font-size: 0.95rem; color: #334155; }
-    .analysis-list li { margin-bottom: 0.5rem; }
-    
-    .external-lyrics {
-      margin-top: 1.25rem;
-      padding-top: 1rem;
-      border-top: 1px dashed var(--border);
-      font-size: 0.9rem;
-      color: var(--subtext);
-    }
-    .external-lyrics a { color: var(--primary); text-decoration: none; font-weight: 600; }
-    .external-lyrics a:hover { text-decoration: underline; }
-
-    footer {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--subtext);
-    }
-    footer a { color: var(--primary); text-decoration: none; margin: 0 0.5rem; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.88rem; color: var(--subtext); }
+    footer a { color: var(--primary); text-decoration: none; margin: 0 0.5rem; font-weight: 500; }
     footer a:hover { text-decoration: underline; }
   </style>
 </head>
@@ -122,240 +37,49 @@
 
 <div class="container">
   <header>
-    <h1>Learn Korean with K-Pop Anthems</h1>
-    <p class="subtitle">
-      Explore poetic metaphors, natural sentence structures, and colloquial expressions through 12 chart-topping hits by BTS, BLACKPINK, NewJeans, Stray Kids, and more.
-    </p>
+    <h1>K-Pop Korean Study Lounge</h1>
+    <p class="subtitle">Systematic linguistic breakdowns of iconic Korean lyrics. Learn real-world conversational syntax, honorifics, and cultural idioms.</p>
   </header>
 
-  <div class="selector-box">
-    <label for="songSelect">Select an Idol / Artist & Song:</label>
-    <select id="songSelect" onchange="loadSong()">
-      <option value="apt">ROSÉ & Bruno Mars — APT.</option>
-      <option value="springday">BTS (방탄소년단) — Spring Day (봄날)</option>
-      <option value="mantra">JENNIE (제니) — Mantra</option>
-      <option value="flower">JISOO (지수) — FLOWER (꽃)</option>
-      <option value="ditto">NewJeans (뉴진스) — Ditto</option>
-      <option value="godsmenu">Stray Kids (스트레이 키즈) — God's Menu (神메뉴)</option>
-      <option value="iam">IVE (아이브) — I AM</option>
-      <option value="lovewins">IU (아이유) — Love wins all</option>
-      <option value="supernova">aespa (에스파) — Supernova</option>
-      <option value="lovesick">BLACKPINK (블랙핑크) — Lovesick Girls</option>
-      <option value="super">SEVENTEEN (세븐틴) — 손오공 (Super)</option>
-      <option value="antifragile">LE SSERAFIM (르세라핌) — ANTIFRAGILE</option>
-    </select>
-  </div>
+  <main class="grid">
+    <article class="card">
+      <div>
+        <span class="badge">BTS</span>
+        <h2>Spring Day (봄날)</h2>
+        <p>A deep linguistic study on longing, conditional conjunctions (-(으)니까), and emotional seasons in modern Korean.</p>
+      </div>
+      <a href="bts-spring-day.html" class="card-link">Read Full Lesson &rarr;</a>
+    </article>
 
-  <!-- YouTube Official Embed -->
-  <div class="video-wrapper">
-    <iframe id="ytPlayer" src="https://www.youtube-nocookie.com/embed/ekr2nIex040" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+    <article class="card">
+      <div>
+        <span class="badge">ROSÉ & Bruno Mars</span>
+        <h2>APT. (아파트)</h2>
+        <p>Korean loanword syllabification, drinking game cultural history, and informal colloquial rhythm.</p>
+      </div>
+      <a href="rose-bruno-mars-apt.html" class="card-link">Read Full Lesson &rarr;</a>
+    </article>
 
-  <!-- Song Analysis & Lesson Content -->
-  <div class="song-details" id="studyContent">
-    <!-- Rendered via JavaScript -->
-  </div>
+    <article class="card">
+      <div>
+        <span class="badge">NewJeans</span>
+        <h2>Ditto</h2>
+        <p>Indirect speech structures (-다고 하다), nostalgic winter tone, and simultaneous actions (-면서).</p>
+      </div>
+      <a href="newjeans-ditto.html" class="card-link">Read Full Lesson &rarr;</a>
+    </article>
+  </main>
 
   <footer>
-    <p>&copy; 2026 SeoulKomo. Educational Korean Language Practice.</p>
-    <p>
+    <p>&copy; 2026 SeoulKomo. Dedicated to Korean Language Pedagogy.</p>
+    <p style="margin-top: 0.5rem;">
       <a href="index.html">Home</a> | 
-      <a href="essential.html">Survival Phrases</a> | 
+      <a href="about.html">About Us</a> | 
+      <a href="contact.html">Contact Us</a> | 
       <a href="privacy.html">Privacy Policy</a>
     </p>
   </footer>
 </div>
-
-<script>
-  const songData = {
-    apt: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/ekr2nIex040",
-      title: "ROSÉ & Bruno Mars — 'APT.'",
-      theme: "Inspired by the classic Korean drinking game 'Apartment' (아파트 게임), this viral smash merges retro-pop rhythm with Seoul's spirited social party culture.",
-      quoteKr: "아파트 아파트 / 아파트 아파트",
-      quoteRom: "A-pa-teu, a-pa-teu / A-pa-teu, a-pa-teu",
-      quoteEn: "Apartment, apartment / Apartment, apartment",
-      points: [
-        "<strong>Loanword Truncation:</strong> In Korea, the English word 'Apartment' is naturally syllabified as <em>아-파-트 (a-pa-teu)</em>.",
-        "<strong>Cultural Context:</strong> The phrase originates as a rhythmic chant in casual friend gatherings where players stack hands to an escalating count."
-      ],
-      searchQuery: "Rose+Bruno+Mars+APT+lyrics"
-    },
-    springday: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/xEeFrLSkMm8",
-      title: "BTS (방탄소년단) — 'Spring Day (봄날)'",
-      theme: "A world-renowned ballad exploring enduring grief, emotional winter, and the hopeful promise of reuniting with cherished companions.",
-      quoteKr: "보고 싶다 / 이렇게 말하니까 더 보고 싶다",
-      quoteRom: "Bo-go sip-da / I-reoh-ge mal-ha-ni-kka deo bo-go sip-da",
-      quoteEn: "I miss you / Saying it out loud makes me miss you even more",
-      points: [
-        "<strong>Grammar (-고 싶다):</strong> Attached directly to verb stem 보다 (to see), expressing the quintessential Korean formula for longing and missing someone.",
-        "<strong>Conjunction (-(으)니까):</strong> Expresses cause or immediate realization ('now that I say it out loud')."
-      ],
-      searchQuery: "BTS+Spring+Day+lyrics"
-    },
-    mantra: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/bZdmsnflBBE",
-      title: "JENNIE (제니) — 'Mantra'",
-      theme: "A confident dance-pop track celebrating independent self-love, bold personal style, and unapologetic self-expression.",
-      quoteKr: "당당하게 빛나는 나만의 매력",
-      quoteRom: "Dang-dang-ha-ge bit-na-neun na-man-ui mae-ryeok",
-      quoteEn: "My own unique charm that shines with confidence",
-      points: [
-        "<strong>Vocabulary (당당하게):</strong> Derived from the adjective 당당하다, meaning proudly, boldly, or with dignified poise.",
-        "<strong>Particle (-만의):</strong> Attaches to pronoun 나 (me) to denote exclusive, individualized identity ('uniquely mine')."
-      ],
-      searchQuery: "Jennie+Mantra+lyrics"
-    },
-    flower: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/YudHcBIxlYw",
-      title: "JISOO (지수) — 'FLOWER (꽃)'",
-      theme: "A poetic exploration of parting ways with an ex-lover, leaving behind only the lingering scent of floral grace rather than bitterness.",
-      quoteKr: "꽃향기만 남기고 갔단다",
-      quoteRom: "Kkot-hyang-gi-man nam-gi-go gat-dan-da",
-      quoteEn: "Leaving behind nothing but the floral fragrance",
-      points: [
-        "<strong>Compound Noun (꽃 + 향기):</strong> Flower (꽃) + scent (향기) combines to form floral scent.",
-        "<strong>Ending (-단다):</strong> An evocative, storytelling verb termination often used to softly recount past episodes."
-      ],
-      searchQuery: "Jisoo+Flower+lyrics"
-    },
-    ditto: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/pSUydWEqKwE",
-      title: "NewJeans (뉴진스) — 'Ditto'",
-      theme: "A melancholic Baltimore club-inspired melody evoking winter nostalgia, youth memories, and the quiet desire for mutual affection.",
-      quoteKr: "내 말이 맞다고 해줘 / 거울 속에 내 모습 보며",
-      quoteRom: "Nae mal-i mat-da-go hae-jwo / Geo-ul sok-e nae mo-seup bo-myeo",
-      quoteEn: "Tell me I'm right / As I look at my reflection in the mirror",
-      points: [
-        "<strong>Indirect Quotation (-다고 하다):</strong> Used when asking someone to confirm an assertion ('tell me that [X]').",
-        "<strong>Simultaneous Action (-며 / -면서):</strong> Describes performing an action while in the process of another ('while looking in the mirror')."
-      ],
-      searchQuery: "NewJeans+Ditto+lyrics"
-    },
-    godsmenu: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/TQTlCHxyuu8",
-      title: "Stray Kids (스트레이 키즈) — 'God\'s Menu (神메뉴)'",
-      theme: "A hyper-energetic anthem drawing parallels between inventive culinary artistry and original music production without compromise.",
-      quoteKr: "어서 오십시오 / 이 가게는 참 메뉴가 고르기도 쉽죠",
-      quoteRom: "Eo-seo o-sip-si-o / I ga-ge-neun cham me-nyu-ga go-reu-gi-do swip-jyo",
-      quoteEn: "Welcome! / At this shop, choosing from the menu is delightfully simple",
-      points: [
-        "<strong>Formal Imperative (-(으)십시오):</strong> The highest politeness standard in Korean, frequently used in hospitality and business greetings.",
-        "<strong>Nominalization (-기):</strong> Converts the verb 고르다 (to choose) into a noun form (고르기) to indicate ease of selection."
-      ],
-      searchQuery: "Stray+Kids+Gods+Menu+lyrics"
-    },
-    iam: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/6ZUIwj3FgUY",
-      title: "IVE (아이브) — 'I AM'",
-      theme: "An uplifting power-pop anthem urging listeners to embrace self-determination and construct their own narrative with pride.",
-      quoteKr: "어제와 또 다른 나를 발견해",
-      quoteRom: "Eo-je-wa tto da-reun na-reul bal-gyeon-hae",
-      quoteEn: "Discovering a new version of myself, different from yesterday",
-      points: [
-        "<strong>Comparative Particle (-와/과 다른):</strong> Meaning 'different from [X]', contrasting past state and current evolution.",
-        "<strong>Verb (발견하다):</strong> Sino-Korean term for discovering or uncovering a new personal quality."
-      ],
-      searchQuery: "IVE+I+AM+lyrics"
-    },
-    lovewins: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/JleoAppaxi0",
-      title: "IU (아이유) — 'Love wins all'",
-      theme: "A deeply cinematic ballad asserting that genuine connection and love transcend hardship, isolation, and destruction.",
-      quoteKr: "그곳으로 우리 함께 가자",
-      quoteRom: "Geu-got-eu-ro u-ri ham-kke ga-ja",
-      quoteEn: "Let's head toward that place together",
-      points: [
-        "<strong>Directional Particle (-으로/로):</strong> Indicates the direction toward a destination (그곳으로 = toward that place).",
-        "<strong>Casual Suggestion (-자):</strong> Informal, intimate proposal form meaning 'let's [do something]' among close confidants."
-      ],
-      searchQuery: "IU+Love+wins+all+lyrics"
-    },
-    supernova: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/phuiiNCxRMg",
-      title: "aespa (에스파) — 'Supernova'",
-      theme: "A futuristic hyperpop universe where explosive personal empowerment is likened to a cosmic stellar detonation.",
-      quoteKr: "사건은 다가와 거스릴 수 없어",
-      quoteRom: "Sa-geon-eun da-ga-wa geo-seu-ril su eop-seo",
-      quoteEn: "The event approaches, impossible to resist",
-      points: [
-        "<strong>Inability Pattern (-(으)ㄹ 수 없다):</strong> Signifies complete lack of capacity or inevitability ('cannot defy / cannot stop').",
-        "<strong>Verb (다가오다):</strong> A compound motion verb combining 다가 (near) + 오다 (come), meaning to draw close."
-      ],
-      searchQuery: "aespa+Supernova+lyrics"
-    },
-    lovesick: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/dyRsYk0LyA8",
-      title: "BLACKPINK (블랙핑크) — 'Lovesick Girls'",
-      theme: "A dance-pop track dealing with the paradox of heartbreak and the persistent urge to pursue love despite inevitable pain.",
-      quoteKr: "우린 매번 다치면서도 / 왜 사랑을 찾을까",
-      quoteRom: "U-rin mae-beon da-chi-myeon-seo-do / Wae sa-rang-eul cha-jeul-kka",
-      quoteEn: "Even though we get hurt every time / Why do we keep looking for love?",
-      points: [
-        "<strong>Concession (-면서도):</strong> 'Even while doing [X]'—contrasting the pain of getting hurt with the stubborn search for affection.",
-        "<strong>Wondering Ending (-(으)ㄹ까):</strong> Rhetorical or contemplative question ending reflecting internal dilemma."
-      ],
-      searchQuery: "BLACKPINK+Lovesick+Girls+lyrics"
-    },
-    super: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/-GQg25oP0S4",
-      title: "SEVENTEEN (세븐틴) — '손오공 (Super)'",
-      theme: "Inspired by Sun Wukong (Monkey King), celebrating perseverance, collective brotherhood, and overcoming adversity through relentless grind.",
-      quoteKr: "힘을 내 끝까지 달려 / 포기는 없어",
-      quoteRom: "Him-eul nae kkeut-kka-ji dal-lyeo / Po-gi-neun eop-seo",
-      quoteEn: "Muster your strength and run until the very end / Giving up is not an option",
-      points: [
-        "<strong>Idiom (힘을 내다):</strong> Literally 'release strength', the standard Korean phrase for cheering someone on or gathering determination.",
-        "<strong>Limiting Particle (-까지):</strong> Meaning 'until' or 'up to' (끝까지 = until the finish)."
-      ],
-      searchQuery: "SEVENTEEN+Super+Sonogong+lyrics"
-    },
-    antifragile: {
-      videoUrl: "https://www.youtube-nocookie.com/embed/pyf8cbqyfPs",
-      title: "LE SSERAFIM (르세라핌) — 'ANTIFRAGILE'",
-      theme: "An Afrobeat-infused pop track that reframes hardship as fuel for growth, stating that obstacles only make one tougher.",
-      quoteKr: "더 부어라 가시밭길 위에 / 다시 일어설 테니까",
-      quoteRom: "Deo bu-eo-ra ga-si-bat-gil wi-e / Da-si il-eo-seol te-ni-kka",
-      quoteEn: "Pour it on over this thorny path / Because I will rise back up anyway",
-      points: [
-        "<strong>Metaphor (가시밭길):</strong> 'Path of thorns'—a frequent Korean idiom for life trials and severe difficulties.",
-        "<strong>Intent Resolution (-(으)ㄹ 테니까):</strong> Expresses unyielding resolve ('because I am definitely going to stand back up')."
-      ],
-      searchQuery: "LE+SSERAFIM+ANTIFRAGILE+lyrics"
-    }
-  };
-
-  function loadSong() {
-    const key = document.getElementById('songSelect').value;
-    const song = songData[key];
-    
-    document.getElementById('ytPlayer').src = song.videoUrl;
-
-    let pointsHtml = song.points.map(p => `<li>${p}</li>`).join('');
-
-    document.getElementById('studyContent').innerHTML = `
-      <div class="song-title">${song.title}</div>
-      <p class="song-desc">${song.theme}</p>
-      
-      <div class="quote-box">
-        <span class="quote-kr">${song.quoteKr}</span>
-        <div class="quote-rom">(${song.quoteRom})</div>
-        <div class="quote-en">${song.quoteEn}</div>
-      </div>
-
-      <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #0f172a;">Key Vocabulary & Grammar Breakdown:</h3>
-      <ul class="analysis-list">${pointsHtml}</ul>
-
-      <div class="external-lyrics">
-        🔍 <em>Looking for full official lyrics? You can find the complete licensed lyrics by <a href="https://www.google.com/search?q=${song.searchQuery}" target="_blank" rel="noopener noreferrer">searching for the song on Google</a>.</em>
-      </div>
-    `;
-  }
-
-  // Load first song on startup
-  loadSong();
-</script>
 
 </body>
 </html>
