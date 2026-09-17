@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-adsense-account" content="ca-pub-4043350704003158">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4043350704003158"
-     crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Master natural Korean speech patterns with NewJeans' 'Ditto'. Learn indirect quotations (-다고 하다), simultaneous actions (-며), and reflective mood.">
@@ -35,9 +32,32 @@
     h3 { font-size: 1.15rem; color: #334155; margin: 1.25rem 0 0.5rem; }
     p { margin-bottom: 1.2rem; color: #334155; }
     
-    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
-    th, td { border: 1px solid var(--border); padding: 0.75rem 1rem; text-align: left; }
-    th { background: #f1f5f9; font-weight: 700; }
+    /* 모바일 반응형 가로 스크롤 컨테이너 */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      min-width: 520px;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 0.9rem;
+      text-align: left;
+      word-break: keep-all;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      white-space: nowrap;
+    }
 
     .example-box { background: #f8fafc; border: 1px solid var(--border); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.2rem; }
     .example-item { margin-bottom: 0.75rem; }
@@ -99,32 +119,34 @@
   </p>
 
   <h2>4. Nuance Breakdown: -(으)며 vs. -(으)면서</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Connective Suffix</th>
-        <th>Register & Usage</th>
-        <th>Example Sentence</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>-(으)며</strong></td>
-        <td>Literary, lyricism, formal speeches, written essays.</td>
-        <td>음악을 들으며 편지를 썼다. (I wrote a letter while listening to music.)</td>
-      </tr>
-      <tr>
-        <td><strong>-(으)면서</strong></td>
-        <td>Daily spoken conversation; can also indicate contrast/irony.</td>
-        <td>밥 먹으면서 TV 보지 마. (Don't watch TV while eating.)</td>
-      </tr>
-      <tr>
-        <td><strong>-고 (Sequential)</strong></td>
-        <td>Simple time order without strict simultaneous execution.</td>
-        <td>샤워하고 잤다. (I showered and then went to sleep.)</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Connective Suffix</th>
+          <th>Register & Usage</th>
+          <th>Example Sentence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>-(으)며</strong></td>
+          <td>Literary, lyricism, formal speeches, written essays.</td>
+          <td>음악을 들으며 편지를 썼다. (I wrote a letter while listening to music.)</td>
+        </tr>
+        <tr>
+          <td><strong>-(으)면서</strong></td>
+          <td>Daily spoken conversation; can also indicate contrast/irony.</td>
+          <td>밥 먹으면서 TV 보지 마. (Don't watch TV while eating.)</td>
+        </tr>
+        <tr>
+          <td><strong>-고 (Sequential)</strong></td>
+          <td>Simple time order without strict simultaneous execution.</td>
+          <td>샤워하고 잤다. (I showered and then went to sleep.)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <h2>5. Practical Conversational Dialogues</h2>
   <div class="example-box">
