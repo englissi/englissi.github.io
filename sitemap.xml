@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 메인 홈페이지 -->
+  <url>
+    <loc>https://englissi.github.io/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 300단어 인터랙티브 학습 앱 -->
+  <url>
+    <loc>https://englissi.github.io/korean1.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 300단어 인쇄용 트레이싱 워크시트 (A4 60페이지) -->
+  <url>
+    <loc>https://englissi.github.io/korean_300_worksheet.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 2026 최신 신조어 칼럼 -->
+  <url>
+    <loc>https://englissi.github.io/slang2026.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 한국어 존댓말/경어법 가이드 -->
+  <url>
+    <loc>https://englissi.github.io/honorifics.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 외국인 필수 생활 포털 안내 -->
+  <url>
+    <loc>https://englissi.github.io/essential.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 사이트 소개 (About) -->
+  <url>
+    <loc>https://englissi.github.io/about.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- 개인정보처리방침 (Privacy Policy - AdSense 필수) -->
+  <url>
+    <loc>https://englissi.github.io/privacy.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
