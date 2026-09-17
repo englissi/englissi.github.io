@@ -6,11 +6,11 @@
      crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeoulKomo - Authentic Korean Learning by a Native Tutor</title>
+    <title>SeoulKomo - Authentic Korean Learning & Interactive Typing Practice</title>
     <style>
         * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: #f8f9fa; color: #2d3748; margin: 0; padding: 25px 15px; display: flex; justify-content: center; }
-        .container { width: 100%; max-width: 780px; background: #ffffff; padding: 40px 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .container { width: 100%; max-width: 820px; background: #ffffff; padding: 40px 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         
         header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid #edf2f7; padding-bottom: 25px; }
         .badge { display: inline-block; background-color: #ebf8ff; color: #2b6cb0; padding: 5px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
@@ -18,38 +18,46 @@
         .subtitle { font-size: 1.05rem; color: #4a5568; margin: 0; line-height: 1.6; }
 
         /* Featured App Banner */
-        .tool-banner { background: linear-gradient(135deg, #3182ce, #2b6cb0); color: white; padding: 25px; border-radius: 12px; margin: 25px 0 20px 0; }
-        .tool-banner h2 { margin: 0 0 8px 0; font-size: 1.4rem; color: white; }
-        .tool-banner p { margin: 0 0 18px 0; color: #e2e8f0; line-height: 1.5; font-size: 0.95rem; }
+        .tool-banner { background: linear-gradient(135deg, #2b6cb0, #1a365d); color: white; padding: 28px; border-radius: 14px; margin: 25px 0 20px 0; }
+        .tool-banner h2 { margin: 0 0 8px 0; font-size: 1.45rem; color: white; }
+        .tool-banner p { margin: 0 0 18px 0; color: #e2e8f0; line-height: 1.6; font-size: 0.95rem; }
         .banner-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
-        .btn-start { display: inline-block; background-color: #ffffff; color: #2b6cb0; padding: 10px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.92rem; }
-        .btn-start:hover { background-color: #f7fafc; }
-        .btn-worksheet { display: inline-block; background-color: rgba(255, 255, 255, 0.15); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); padding: 10px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.92rem; }
-        .btn-worksheet:hover { background-color: rgba(255, 255, 255, 0.25); }
+        .btn-action-banner { display: inline-block; background-color: #ffffff; color: #2b6cb0; padding: 10px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.92rem; transition: background-color 0.2s ease; }
+        .btn-action-banner:hover { background-color: #edf2f7; }
+        .btn-sub-banner { display: inline-block; background-color: rgba(255, 255, 255, 0.15); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); padding: 10px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.92rem; transition: background-color 0.2s ease; }
+        .btn-sub-banner:hover { background-color: rgba(255, 255, 255, 0.25); }
 
-        /* Article Navigation Grid */
-        .nav-grid { display: flex; gap: 12px; margin: 15px 0 35px 0; flex-wrap: wrap; }
-        .nav-card { flex: 1; min-width: 210px; padding: 18px 20px; border-radius: 10px; text-decoration: none; border: 1px solid transparent; transition: transform 0.15s ease; }
-        .nav-card:hover { transform: translateY(-2px); }
-        .card-worksheet { background-color: #f7fafc; border-color: #e2e8f0; }
+        /* Navigation Grid */
+        .nav-grid { display: flex; gap: 12px; margin: 20px 0 35px 0; flex-wrap: wrap; }
+        .nav-card { flex: 1; min-width: 230px; padding: 18px 20px; border-radius: 10px; text-decoration: none; border: 1px solid transparent; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+        .nav-card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .card-game { background-color: #f7fafc; border-color: #cbd5e0; }
+        .card-worksheet { background-color: #f0fdf4; border-color: #bbf7d0; }
         .card-slang { background-color: #ebf8ff; border-color: #bee3f8; }
-        .card-honorifics { background-color: #f0fff4; border-color: #c6f6d5; }
-        .card-essential { background-color: #fffaf0; border-color: #feebc8; }
+        .card-honorifics { background-color: #fffaf0; border-color: #feebc8; }
+        
         .card-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
-        .card-worksheet .card-tag { color: #4a5568; }
+        .card-game .card-tag { color: #2b6cb0; }
+        .card-worksheet .card-tag { color: #15803d; }
         .card-slang .card-tag { color: #2b6cb0; }
-        .card-honorifics .card-tag { color: #276749; }
-        .card-essential .card-tag { color: #c05621; }
+        .card-honorifics .card-tag { color: #c05621; }
         .card-title { font-size: 1.05rem; font-weight: 700; margin: 0 0 4px 0; color: #2d3748; }
-        .card-desc { font-size: 0.85rem; color: #4a5568; margin: 0; }
+        .card-desc { font-size: 0.85rem; color: #4a5568; margin: 0; line-height: 1.4; }
 
-        /* Educational Article Content */
-        .article-section { margin-top: 25px; line-height: 1.75; font-size: 1rem; }
-        .article-section h2 { font-size: 1.45rem; color: #2d3748; border-left: 4px solid #3182ce; padding-left: 12px; margin-top: 35px; margin-bottom: 15px; }
-        .article-section h3 { font-size: 1.15rem; color: #2b6cb0; margin-top: 20px; margin-bottom: 8px; }
-        .guide-box { background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin: 20px 0; }
+        /* Educational Article Content (AdSense/SEO Rich Text) */
+        .article-section { margin-top: 30px; line-height: 1.8; font-size: 1rem; color: #334155; }
+        .article-section h2 { font-size: 1.5rem; color: #1e293b; border-left: 4px solid #3182ce; padding-left: 12px; margin-top: 40px; margin-bottom: 15px; }
+        .article-section h3 { font-size: 1.2rem; color: #2b6cb0; margin-top: 24px; margin-bottom: 8px; }
+        .article-section p { margin-bottom: 16px; }
+
+        .feature-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+        .feature-table th, .feature-table td { border: 1px solid #e2e8f0; padding: 12px 14px; text-align: left; }
+        .feature-table th { background-color: #f8fafc; color: #1e293b; font-weight: 700; }
+        .feature-table td { background-color: #ffffff; }
+
+        .guide-box { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px 24px; margin: 25px 0; }
         .guide-box ul { margin: 8px 0; padding-left: 20px; }
-        .guide-box li { margin-bottom: 6px; }
+        .guide-box li { margin-bottom: 8px; }
 
         /* Footer */
         footer { margin-top: 50px; padding-top: 25px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 0.9rem; color: #718096; }
@@ -61,75 +69,117 @@
 
 <div class="container">
     <header>
-        <div class="badge">Native Korean Learning Platform</div>
+        <div class="badge">Academic & Interactive Korean Platform</div>
         <h1>SeoulKomo Korean Master</h1>
-        <p class="subtitle">Practical, conversational Korean lessons, foundational vocabulary, and authentic grammar nuances curated by a native Seoul tutor.</p>
+        <p class="subtitle">Practical, conversational Korean curricula, foundational vocabulary datasets, and interactive cognitive typing exercises designed by a native tutor.</p>
     </header>
 
     <!-- App / Tool Direct Access Link -->
     <div class="tool-banner">
-        <h2>Interactive Practice & Tracing: 300 Essential Words</h2>
-        <p>Practice correct pronunciation, review real-world example sentences, or print our structured 60-page stroke tracing workbook.</p>
+        <h2>Interactive Practice Suite: 300 Essential Words</h2>
+        <p>Master the top 300 high-frequency Korean words through multi-sensory tools: real-time keyboard training with authentic audio feedback, browser vocabulary flashcards, or our 60-page printable handwriting workbook.</p>
         <div class="banner-buttons">
-            <a href="./korean1.html" class="btn-start">Launch Practice App →</a>
-            <a href="./korean_300_worksheet.html" class="btn-worksheet" target="_blank">Print Tracing Worksheet (PDF) 🖨️</a>
+            <a href="./typing.html" class="btn-action-banner">🎮 Launch Typing Practice →</a>
+            <a href="./korean1.html" class="btn-sub-banner">Flashcard App</a>
+            <a href="./korean_300_worksheet.html" target="_blank" class="btn-sub-banner">Print Worksheet (PDF) 🖨️</a>
         </div>
     </div>
 
     <!-- Quick Article Links -->
     <div class="nav-grid">
+        <a href="./typing.html" class="nav-card card-game">
+            <div class="card-tag">Interactive Practice</div>
+            <div class="card-title">Hanme Typing Game →</div>
+            <div class="card-desc">Raindrop-style Korean keyboard practice with real-time audio (TTS) and miss-tracking logs.</div>
+        </a>
         <a href="./korean_300_worksheet.html" target="_blank" class="nav-card card-worksheet">
             <div class="card-tag">Printable Material</div>
             <div class="card-title">300 Words Tracing Book →</div>
-            <div class="card-desc">60-page A4 workbook with syllable breakdown, stroke guides, and writing grids.</div>
+            <div class="card-desc">60-page A4 workbook with syllable decomposition, stroke order guides, and cross-grids.</div>
         </a>
         <a href="./slang2026.html" class="nav-card card-slang">
             <div class="card-tag">Culture & Vocabulary</div>
-            <div class="card-title">Top 5 Korean Slang (2026) →</div>
-            <div class="card-desc">Understand modern digital buzzwords and expressions used by locals.</div>
+            <div class="card-title">Top Korean Slang (2026) →</div>
+            <div class="card-desc">Understand contemporary digital buzzwords and natural expressions used by Seoul locals.</div>
         </a>
         <a href="./honorifics.html" class="nav-card card-honorifics">
-            <div class="card-tag">Grammar & Etiquette</div>
+            <div class="card-tag">Grammar & Pragmatics</div>
             <div class="card-title">Korean Honorifics Explained →</div>
-            <div class="card-desc">A complete guide to speech levels, respect words, and polite communication.</div>
-        </a>
-        <a href="./essential.html" class="nav-card card-essential">
-            <div class="card-tag">Expat Guide</div>
-            <div class="card-title">Essential Korea Websites →</div>
-            <div class="card-desc">Key portals for immigration, healthcare, transit, and emergency helplines.</div>
+            <div class="card-desc">A comprehensive guide to speech levels, respect particles, and polite interpersonal etiquette.</div>
         </a>
     </div>
 
-    <!-- Static Educational Content for AdSense Crawlers & Learners -->
-    <div class="article-section">
-        <h2>Why Context-Based Learning Matters in Korean</h2>
-        <p>Learning Korean involves more than simply memorizing isolated dictionary definitions. In modern spoken Korean, the choice of vocabulary, verb conjugations, and everyday intonation depends heavily on interpersonal context, the relationship between speakers, and situational etiquette.</p>
-        <p>At <strong>SeoulKomo</strong>, our learning curriculum is structured around realistic daily usage: providing high-frequency words that native speakers actively use in real-life dialogue, accompanied by natural conversational contexts.</p>
+    <!-- AdSense & Educational Content: Deep-Dive Article on Typing & Cognition -->
+    <article class="article-section">
+        <h2>Cognitive Benefits of Real-Time Korean Typing Practice</h2>
+        <p>For foreign learners of the Korean language, transitioning from passive visual recognition to active output is one of the most demanding developmental milestones. Unlike alphabetical languages where letters are placed sequentially in a single line, Korean is structured into distinct syllabic blocks composed of an initial consonant (초성), a medial vowel (중성), and an optional final consonant (종성, batchim).</p>
+        <p>Our browser-based <strong>Interactive Typing Game (한메타자 스타일)</strong> is scientifically calibrated to bridge the gap between phonological awareness and motor muscle memory. By requiring learners to assemble Hangul character blocks under mild temporal pressure, learners reinforce their internal representation of syllable geometry.</p>
 
-        <h2>Essential Korean Study Guide for Beginners</h2>
-        <p>To establish a solid foundation in Korean, learners should structure their study routine around three core pillars:</p>
+        <table class="feature-table">
+            <thead>
+                <tr>
+                    <th>Pedagogical Dimension</th>
+                    <th>Mechanism in Typing Game</th>
+                    <th>Learning Outcome</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Kinesthetic Encoding</strong></td>
+                    <td>Finger positioning on the 2-Set (두벌식) keyboard layout</td>
+                    <td>Automatic keyboard mastery without relying on romanized keyboards.</td>
+                </tr>
+                <tr>
+                    <td><strong>Auditory Verification</strong></td>
+                    <td>Real-time Text-to-Speech (TTS) vocalization upon successful hits</td>
+                    <td>Immediate reinforcement of standard pronunciation and pitch accent.</td>
+                </tr>
+                <tr>
+                    <td><strong>Error Remediation</strong></td>
+                    <td>Automated tracking of missed terms in the "오답 노트" (Mistake Log)</td>
+                    <td>Targeted review of weak orthographic patterns and difficult batchims.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>How to Play and Maximize Your Learning</h2>
+        <p>To gain the maximum educational yield from each typing session, follow this step-by-step methodology:</p>
 
         <div class="guide-box">
-            <h3>1. Prioritize Hangul Over Romanization</h3>
-            <p>While romanized spellings serve as temporary guides, relying on them too long will distort your pronunciation. Master the Korean alphabet (Hangul) early, paying close attention to batchim (final consonants) and liaison sound changes.</p>
-            
-            <h3>2. Focus on High-Yield Core Words First</h3>
-            <p>Native speakers rely heavily on a core set of 300 to 500 essential words to conduct daily routines, make purchases, and engage in casual conversation. Focusing on high-yield words accelerates real-world comprehension rapidly.</p>
-
-            <h3>3. Learn Verbs Inside Complete Sentences</h3>
-            <p>Korean verbs and adjectives conjugate according to tense and politeness level. Learning standalone terms without surrounding sentences often leads to unnatural phrasing. Always pair a new verb with realistic sentence patterns.</p>
+            <h3>🎮 Operational Instructions</h3>
+            <ul>
+                <li><strong>Observation & Meaning Check:</strong> As words descend from the top of the canvas, review both the Hangul target and its English conceptual gloss displayed right below it.</li>
+                <li><strong>Keystroke Input (Desktop & Mobile):</strong> On desktop keyboards, enter the Korean word and press <code>Enter</code>. On mobile touchscreens, words auto-detonate the moment the syllabic block is accurately completed, eliminating tedious keypad submissions.</li>
+                <li><strong>Multi-Sensory Audio Feedback:</strong> Listen attentively as the synthesized native speaker voice vocalizes the word immediately after an arpeggio chime confirms your accuracy.</li>
+                <li><strong>Mistake Log Analysis:</strong> When a word reaches the bottom baseline, a buzzer alerts you and adds the word directly into your persistent session log for later repetition.</li>
+            </ul>
         </div>
 
-        <h2>Curriculum & Navigation</h2>
-        <p>Explore our complete learning resources to build fluency step-by-step:</p>
+        <h2>Curriculum Architecture & Core Foundations</h2>
+        <p>A systematic Korean learning regimen requires balancing dynamic gamified sessions with formal grammatical and lexical study. We recommend structuring your daily study around three core pillars:</p>
+
+        <div class="guide-box">
+            <h3>1. Eliminate Romanization Early</h3>
+            <p>Relying on Latin letter approximations distorts Korean phonetics, particularly the crucial distinctions between plain (ㄱ, ㄷ, ㅂ), aspirated (ㅋ, ㅌ, ㅍ), and tensed (ㄲ, ㄸ, ㅃ) consonants. Regular keyboard practice forces the brain to think directly in Hangul graphemes.</p>
+
+            <h3>2. Prioritize High-Frequency Core Lexicon</h3>
+            <p>The 300 foundational vocabulary items integrated into this platform cover over 65% of daily communicative interactions in Seoul—ranging from public transit, banking, and dining to social courtesy formulas.</p>
+
+            <h3>3. Pair Words with Syntactic Templates</h3>
+            <p>Memorizing isolated words rarely translates into fluent conversation. Explore our dedicated grammar guides and printable worksheets to observe how nominal roots attach to subject markers (-이/가, -은/는) and verbal predicates (-아요/어요).</p>
+        </div>
+
+        <h2>Curated Platform Navigation</h2>
+        <p>Explore all sections of our platform to build a well-rounded foundation in modern Korean:</p>
         <ul>
-            <li><strong><a href="./korean1.html" style="color: #3182ce;">Vocabulary App</a>:</strong> Train listening and articulation with authentic audio and sample sentences.</li>
-            <li><strong><a href="./korean_300_worksheet.html" target="_blank" style="color: #3182ce;">Printable Tracing Workbook</a>:</strong> Download and print the 60-page A4 handwriting worksheet designed for the 300 essential words.</li>
-            <li><strong><a href="./slang2026.html" style="color: #3182ce;">Modern Slang</a>:</strong> Learn natural idioms and viral expressions actively spoken in Seoul.</li>
-            <li><strong><a href="./honorifics.html" style="color: #3182ce;">Honorifics Guide</a>:</strong> Master polite forms (-아요/어요) and respectful speech levels.</li>
-            <li><strong><a href="./essential.html" style="color: #3182ce;">Essential Portals</a>:</strong> Curated official services for living, healthcare, transit, and emergency support.</li>
+            <li><strong><a href="./typing.html" style="color: #3182ce;">Interactive Typing Practice</a>:</strong> Reinforce keyboard fluency, spelling accuracy, and auditory comprehension with our 300-word dataset.</li>
+            <li><strong><a href="./korean1.html" style="color: #3182ce;">Core Vocabulary App</a>:</strong> Review complete sample sentences, grammatical functions, and contextual audio guides.</li>
+            <li><strong><a href="./korean_300_worksheet.html" target="_blank" style="color: #3182ce;">Printable 60-Page Worksheet</a>:</strong> Practice balanced handwriting with 원고지 cross-grids and stroke orders.</li>
+            <li><strong><a href="./slang2026.html" style="color: #3182ce;">Modern Slang & Buzzwords</a>:</strong> Stay up-to-date with viral cultural expressions and digital colloquialisms.</li>
+            <li><strong><a href="./honorifics.html" style="color: #3182ce;">Honorifics & Politeness Guide</a>:</strong> Understand interpersonal speech levels and respectful social communication.</li>
+            <li><strong><a href="./essential.html" style="color: #3182ce;">Essential Expat Portals</a>:</strong> Access official services for healthcare, public transport, and emergency hotlines.</li>
         </ul>
-    </div>
+    </article>
 
     <footer>
         <p>&copy; 2026 SeoulKomo. All rights reserved.</p>
