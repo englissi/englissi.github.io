@@ -20,18 +20,23 @@
         /* Featured App Banner */
         .tool-banner { background: linear-gradient(135deg, #3182ce, #2b6cb0); color: white; padding: 25px; border-radius: 12px; margin: 25px 0 20px 0; }
         .tool-banner h2 { margin: 0 0 8px 0; font-size: 1.4rem; color: white; }
-        .tool-banner p { margin: 0 0 15px 0; color: #e2e8f0; line-height: 1.5; font-size: 0.95rem; }
-        .btn-start { display: inline-block; background-color: #ffffff; color: #2b6cb0; padding: 10px 20px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; }
+        .tool-banner p { margin: 0 0 18px 0; color: #e2e8f0; line-height: 1.5; font-size: 0.95rem; }
+        .banner-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn-start { display: inline-block; background-color: #ffffff; color: #2b6cb0; padding: 10px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.92rem; }
         .btn-start:hover { background-color: #f7fafc; }
+        .btn-worksheet { display: inline-block; background-color: rgba(255, 255, 255, 0.15); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); padding: 10px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.92rem; }
+        .btn-worksheet:hover { background-color: rgba(255, 255, 255, 0.25); }
 
         /* Article Navigation Grid */
         .nav-grid { display: flex; gap: 12px; margin: 15px 0 35px 0; flex-wrap: wrap; }
         .nav-card { flex: 1; min-width: 210px; padding: 18px 20px; border-radius: 10px; text-decoration: none; border: 1px solid transparent; transition: transform 0.15s ease; }
         .nav-card:hover { transform: translateY(-2px); }
+        .card-worksheet { background-color: #f7fafc; border-color: #e2e8f0; }
         .card-slang { background-color: #ebf8ff; border-color: #bee3f8; }
         .card-honorifics { background-color: #f0fff4; border-color: #c6f6d5; }
         .card-essential { background-color: #fffaf0; border-color: #feebc8; }
         .card-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+        .card-worksheet .card-tag { color: #4a5568; }
         .card-slang .card-tag { color: #2b6cb0; }
         .card-honorifics .card-tag { color: #276749; }
         .card-essential .card-tag { color: #c05621; }
@@ -63,13 +68,21 @@
 
     <!-- App / Tool Direct Access Link -->
     <div class="tool-banner">
-        <h2>Interactive Practice: 300 Essential Words</h2>
-        <p>Practice correct audio pronunciation, review real-world sample sentences, and master high-frequency conversational vocabulary directly in your browser.</p>
-        <a href="./korean1.html" class="btn-start">Launch Practice App →</a>
+        <h2>Interactive Practice & Tracing: 300 Essential Words</h2>
+        <p>Practice correct pronunciation, review real-world example sentences, or print our structured 60-page stroke tracing workbook.</p>
+        <div class="banner-buttons">
+            <a href="./korean1.html" class="btn-start">Launch Practice App →</a>
+            <a href="./korean_300_worksheet.html" class="btn-worksheet" target="_blank">Print Tracing Worksheet (PDF) 🖨️</a>
+        </div>
     </div>
 
     <!-- Quick Article Links -->
     <div class="nav-grid">
+        <a href="./korean_300_worksheet.html" target="_blank" class="nav-card card-worksheet">
+            <div class="card-tag">Printable Material</div>
+            <div class="card-title">300 Words Tracing Book →</div>
+            <div class="card-desc">60-page A4 workbook with syllable breakdown, stroke guides, and writing grids.</div>
+        </a>
         <a href="./slang2026.html" class="nav-card card-slang">
             <div class="card-tag">Culture & Vocabulary</div>
             <div class="card-title">Top 5 Korean Slang (2026) →</div>
@@ -111,6 +124,7 @@
         <p>Explore our complete learning resources to build fluency step-by-step:</p>
         <ul>
             <li><strong><a href="./korean1.html" style="color: #3182ce;">Vocabulary App</a>:</strong> Train listening and articulation with authentic audio and sample sentences.</li>
+            <li><strong><a href="./korean_300_worksheet.html" target="_blank" style="color: #3182ce;">Printable Tracing Workbook</a>:</strong> Download and print the 60-page A4 handwriting worksheet designed for the 300 essential words.</li>
             <li><strong><a href="./slang2026.html" style="color: #3182ce;">Modern Slang</a>:</strong> Learn natural idioms and viral expressions actively spoken in Seoul.</li>
             <li><strong><a href="./honorifics.html" style="color: #3182ce;">Honorifics Guide</a>:</strong> Master polite forms (-아요/어요) and respectful speech levels.</li>
             <li><strong><a href="./essential.html" style="color: #3182ce;">Essential Portals</a>:</strong> Curated official services for living, healthcare, transit, and emergency support.</li>
