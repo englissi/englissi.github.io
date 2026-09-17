@@ -9,7 +9,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- 한글 타자 연습 게임 (신규 추가) -->
+  <!-- 한글 타자 연습 게임 -->
   <url>
     <loc>https://englissi.github.io/typing.html</loc>
     <lastmod>2026-09-17</lastmod>
@@ -33,6 +33,62 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- K-Pop 학습 메인 라운지 (신규) -->
+  <url>
+    <loc>https://englissi.github.io/kpop.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- K-Pop 개별 레슨: BTS - Spring Day -->
+  <url>
+    <loc>https://englissi.github.io/bts-spring-day.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- K-Pop 개별 레슨: ROSÉ & Bruno Mars - APT. -->
+  <url>
+    <loc>https://englissi.github.io/rose-bruno-mars-apt.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- K-Pop 개별 레슨: NewJeans - Ditto -->
+  <url>
+    <loc>https://englissi.github.io/newjeans-ditto.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- K-Pop 개별 레슨: JENNIE - Mantra -->
+  <url>
+    <loc>https://englissi.github.io/jennie-mantra.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- K-Pop 개별 레슨: Stray Kids - God's Menu -->
+  <url>
+    <loc>https://englissi.github.io/straykids-gods-menu.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- K-Pop 개별 레슨: JISOO - FLOWER -->
+  <url>
+    <loc>https://englissi.github.io/jisoo-flower.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- 2026 최신 신조어 칼럼 -->
   <url>
     <loc>https://englissi.github.io/slang2026.html</loc>
@@ -49,7 +105,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- 외국인 필수 생활 포털 안내 -->
+  <!-- 외국인 필수 생활 포털 & 50+ 실전 생존회화 안내 -->
   <url>
     <loc>https://englissi.github.io/essential.html</loc>
     <lastmod>2026-09-17</lastmod>
