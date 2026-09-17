@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master 50 essential TOPIK I & II grammar patterns. In-depth comparative tables, exam traps, sample sentences, and interactive pronunciation audio.">
+  <title>50 Essential TOPIK I & II Grammar Patterns: Comprehensive Master Guide | SeoulKomo</title>
+  
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-4043350704003158">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4043350704003158" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --text: #0f172a;
+      --subtext: #475569;
+      --border: #e2e8f0;
+      --tag-bg: #eff6ff;
+      --trap-bg: #fef2f2;
+      --trap-border: #ef4444;
+      --trap-text: #991b1b;
+      --tip-bg: #f0fdf4;
+      --tip-border: #22c55e;
+      --tip-text: #166534;
+    }
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.8; padding: 2.5rem 1rem; }
+    .container { max-width: 920px; margin: 0 auto; background: var(--card-bg); padding: 3rem; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.04); }
+    
+    .breadcrumb { font-size: 0.88rem; color: var(--subtext); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    
+    header { margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+    .badge { display: inline-block; background: #e0e7ff; color: #3730a3; font-size: 0.82rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: 9999px; margin-bottom: 1rem; }
+    h1 { font-size: 2.25rem; color: #0f172a; margin-bottom: 0.8rem; line-height: 1.3; }
+    .lead-text { color: var(--subtext); font-size: 1.05rem; }
+
+    .toc-box { background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 3rem; }
+    .toc-box h3 { font-size: 1.1rem; color: #0f172a; margin-bottom: 0.8rem; }
+    .toc-box ul { list-style: none; padding-left: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.5rem; }
+    .toc-box a { color: var(--primary); text-decoration: none; font-size: 0.92rem; font-weight: 500; }
+    .toc-box a:hover { text-decoration: underline; }
+
+    h2 { font-size: 1.5rem; color: #1e293b; margin: 3rem 0 1.2rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+    h3 { font-size: 1.2rem; color: #334155; margin: 1.8rem 0 0.6rem; }
+    p { margin-bottom: 1.25rem; color: #334155; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1.3rem; color: #334155; }
+    li { margin-bottom: 0.5rem; }
+
+    /* Responsive Tables */
+    .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0 2rem; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { border: 1px solid var(--border); padding: 0.8rem 1rem; text-align: left; word-break: keep-all; }
+    th { background: #f1f5f9; font-weight: 700; color: #1e293b; white-space: nowrap; }
+
+    /* Grammar Detail Cards */
+    .grammar-item { background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .grammar-title { font-size: 1.3rem; font-weight: 700; color: #1e3a8a; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+    .grammar-tag { font-size: 0.78rem; background: var(--tag-bg); color: var(--primary); padding: 0.2rem 0.6rem; border-radius: 4px; }
+    
+    .example-block { background: #f8fafc; border-left: 4px solid var(--primary); padding: 1rem 1.2rem; border-radius: 4px; margin: 1rem 0; }
+    .ex-kr { font-weight: 700; color: #0f172a; font-size: 1.05rem; }
+    .ex-en { font-size: 0.9rem; color: var(--subtext); margin-top: 0.2rem; }
+    
+    .trap-box { background: var(--trap-bg); border-left: 4px solid var(--trap-border); padding: 1.1rem; border-radius: 6px; margin: 1rem 0; font-size: 0.92rem; color: var(--trap-text); }
+    .trap-box strong { display: block; margin-bottom: 0.3rem; font-size: 0.95rem; }
+
+    .tts-inline { background: #e0e7ff; color: #3730a3; border: none; border-radius: 4px; padding: 0.2rem 0.5rem; font-size: 0.78rem; font-weight: 600; cursor: pointer; margin-left: 0.5rem; }
+    .tts-inline:hover { background: #c7d2fe; }
+
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.88rem; color: var(--subtext); }
+    footer a { color: var(--primary); text-decoration: none; margin: 0 0.5rem; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a> &gt; <a href="topik-guide.html">TOPIK Master Curriculum</a> &gt; <span>50 Essential Grammar Patterns</span>
+  </nav>
+
+  <header>
+    <span class="badge">TOPIK I & II Linguistic Blueprint</span>
+    <h1>50 Essential TOPIK Grammar Patterns: Comprehensive Syntactic Guide</h1>
+    <p class="lead-text">
+      An exhaustive linguistic breakdown designed to help candidates conquer sentence-insertion, synonym substitution (Reading Questions 1–4), and formal argumentation in Writing Items 53 and 54.
+    </p>
+  </header>
+
+  <div class="toc-box">
+    <h3>Table of Contents</h3>
+    <ul>
+      <li><a href="#cat-cause">1. Cause & Reason (원인과 이유)</a></li>
+      <li><a href="#cat-contrast">2. Contrast & Concession (대조와 양보)</a></li>
+      <li><a href="#cat-condition">3. Condition & Assumption (조건과 가정)</a></li>
+      <li><a href="#cat-purpose">4. Purpose & Intent (목적과 의도)</a></li>
+      <li><a href="#cat-degree">5. Degree & Addition (정도와 추가)</a></li>
+      <li><a href="#cat-indirect">6. Indirect Speech Patterns (간접화법)</a></li>
+      <li><a href="#cat-probability">7. Probability & Discovery (추측과 발견)</a></li>
+      <li><a href="#cat-writing">8. Essay Suffixes for Item 54 (논설문 종결)</a></li>
+    </ul>
+  </div>
+
+  <!-- CATEGORY 1 -->
+  <h2 id="cat-cause">1. Cause & Reason Patterns (원인과 이유)</h2>
+  <p>
+    Questions 1–4 of the TOPIK Reading test constantly evaluate whether candidates can distinguish between subjective causal justifications, objective facts, and negative blame constructions.
+  </p>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Pattern</th>
+          <th>Semantic Register</th>
+          <th>Syntax Constraints</th>
+          <th>TOPIK Typical Domain</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>-아/어서</strong></td>
+          <td>Objective, neutral cause</td>
+          <td>Cannot combine with Imperative (-십시오) or Propositive (-ㅂ시다)</td>
+          <td>TOPIK I Reading / Daily Dialogues</td>
+        </tr>
+        <tr>
+          <td><strong>-(으)니까</strong></td>
+          <td>Speaker's discovery or subjective judgment</td>
+          <td>Ideal with Imperative (-세요) and Suggestions (-자)</td>
+          <td>Listening Dialogue Turnarounds</td>
+        </tr>
+        <tr>
+          <td><strong>-(으)로 인해(서)</strong></td>
+          <td>Formal, socio-scientific cause</td>
+          <td>Attaches directly to Nouns; used in formal print</td>
+          <td>TOPIK II Writing Item #53 (Charts)</td>
+        </tr>
+        <tr>
+          <td><strong>-느라고</strong></td>
+          <td>Negative personal consequence</td>
+          <td>Subject must remain identical across both clauses; volitional verbs only</td>
+          <td>Reading Cloze Distractor</td>
+        </tr>
+        <tr>
+          <td><strong>-는 바람에</strong></td>
+          <td>Sudden, unexpected negative outcome</td>
+          <td>Second clause must denote an undesirable result</td>
+          <td>Listening Section Short Dialogues</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>1. -느라고 (Because of doing [X], [Y] suffered)</span>
+      <span class="grammar-tag">TOPIK Intermediate</span>
+    </div>
+    <p>
+      Expresses that spending time or physical energy on the first clause caused an unfortunate or unfulfilled outcome in the second clause.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">어젯밤에 시험공부를 하느라고 잠을 전혀 못 잤어요. <button class="tts-inline" onclick="speakText('어젯밤에 시험공부를 하느라고 잠을 전혀 못 잤어요.')">Listen 🔊</button></div>
+      <div class="ex-en">"Because I was studying for the exam last night, I could not sleep at all."</div>
+    </div>
+    <div class="trap-box">
+      <strong>Exam Trap Alert:</strong>
+      Never use <em>-느라고</em> with non-volitional verbs (e.g., 감기에 걸리느라고 ❌ &rarr; 감기에 걸리는 바람에 ⭕). Furthermore, the sentence cannot end with imperative or propositive constructions.
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>2. -(으)로 인해(서) (Due to / As a consequence of)</span>
+      <span class="grammar-tag">TOPIK Advanced / Writing #53</span>
+    </div>
+    <p>
+      A formal written marker indicating the root source of an objective event, economic fluctuation, or sociological phenomenon.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">환경오염으로 인해 이상 기후 현상이 심각해지고 있다. <button class="tts-inline" onclick="speakText('환경오염으로 인해 이상 기후 현상이 심각해지고 있다.')">Listen 🔊</button></div>
+      <div class="ex-en">"Due to environmental pollution, abnormal climate phenomena are becoming severe."</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 2 -->
+  <h2 id="cat-contrast">2. Contrast & Concession (대조와 양보)</h2>
+  <p>
+    Contrasting patterns represent the single most common grammatical category tested in TOPIK II Reading Questions 1–4, where students must select the syntactically interchangeable partner.
+  </p>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>3. -(으)ㄴ/는 반면에 vs. -는 데 반해 (On the other hand)</span>
+      <span class="grammar-tag">Interchangeable Pair</span>
+    </div>
+    <p>
+      Explicitly weighs the positive and negative facets of a phenomenon or contrasts two subjects possessing contrary qualities.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">이 제품은 성능이 우수한 반면에 가격이 다소 비싸다. <button class="tts-inline" onclick="speakText('이 제품은 성능이 우수한 반면에 가격이 다소 비싸다.')">Listen 🔊</button></div>
+      <div class="ex-en">"While this product has superior performance, the price is somewhat expensive."</div>
+    </div>
+    <p>
+      <strong>Exact TOPIK Synonym Match:</strong> <em>-(으)ㄴ/는 반면에</em> &harr; <em>-는 데 반해</em>. On the test, if one appears in the prompt, the other is almost invariably the correct answer choice.
+    </p>
+  </div>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>4. -(으)ㅁ에도 불구하고 (Despite / In spite of)</span>
+      <span class="grammar-tag">TOPIK II Writing Item #54</span>
+    </div>
+    <p>
+      Conveys that the outcome in clause two occurred despite the adverse condition or contrary reality established in clause one.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">수많은 실패에도 불구하고 그는 끊임없이 도전을 이어갔다. <button class="tts-inline" onclick="speakText('수많은 실패에도 불구하고 그는 끊임없이 도전을 이어갔다.')">Listen 🔊</button></div>
+      <div class="ex-en">"Despite numerous failures, he continued to challenge himself relentlessly."</div>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>5. -(으)ㄹ지라도 / -(으)ㄹ망정 (Even though / Even if)</span>
+      <span class="grammar-tag">Literary & High-Register Concession</span>
+    </div>
+    <p>
+      Recognizes the validity of an extreme hypothetical circumstance while adamantly declaring the speaker's unyielding stance in the second clause.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">비록 경제적 어려움이 닥칠지라도 꿈을 포기할 수는 없다. <button class="tts-inline" onclick="speakText('비록 경제적 어려움이 닥칠지라도 꿈을 포기할 수는 없다.')">Listen 🔊</button></div>
+      <div class="ex-en">"Even if economic hardships befall me, I cannot abandon my dream."</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 3 -->
+  <h2 id="cat-condition">3. Condition & Assumption (조건과 가정)</h2>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>6. -기만 하면 (As long as / Whenever)</span>
+      <span class="grammar-tag">TOPIK I & II Core</span>
+    </div>
+    <p>
+      Specifies that fulfilling one singular criterion is sufficient for the ensuing state to materialize.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">매일 30분씩 꾸준히 연습하기만 하면 누구나 합격할 수 있다. <button class="tts-inline" onclick="speakText('매일 30분씩 꾸준히 연습하기만 하면 누구나 합격할 수 있다.')">Listen 🔊</button></div>
+      <div class="ex-en">"As long as one practices steadily for 30 minutes every day, anyone can pass."</div>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>7. -(으)려면 (If you intend to do [X])</span>
+      <span class="grammar-tag">Goal & Obligation Connector</span>
+    </div>
+    <p>
+      Contraction of <em>-(으)려고 하면</em>. Sets an intended target in clause one and outlines the prerequisite obligation in clause two (frequently pairing with <em>-아/어야 하다</em>).
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">한국어능력시험 6급을 취득하려면 고급 어휘를 집중적으로 학습해야 한다. <button class="tts-inline" onclick="speakText('한국어능력시험 6급을 취득하려면 고급 어휘를 집중적으로 학습해야 한다.')">Listen 🔊</button></div>
+      <div class="ex-en">"If you intend to acquire Level 6 on the TOPIK, you must intensively study advanced vocabulary."</div>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>8. -(으)ㄴ/는 한 (As long as / To the extent that)</span>
+      <span class="grammar-tag">Socio-Legal & Policy Arguments</span>
+    </div>
+    <p>
+      Sets a continuous conditional boundary. Essential for Writing Question 54 when defining systemic parameters.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">정부의 실질적인 지원이 지속되는 한 이 정책은 효과를 발휘할 것이다. <button class="tts-inline" onclick="speakText('정부의 실질적인 지원이 지속되는 한 이 정책은 효과를 발휘할 것이다.')">Listen 🔊</button></div>
+      <div class="ex-en">"As long as substantial governmental support continues, this policy will prove effective."</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 4 -->
+  <h2 id="cat-purpose">4. Purpose & Intent Patterns (목적과 의도)</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Grammatical Pattern</th>
+          <th>Formality Level</th>
+          <th>Structural Nuance</th>
+          <th>Test Placement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>-(으)려고</strong></td>
+          <td>Informal to Neutral</td>
+          <td>Subjective intent; cannot use future tense in first clause</td>
+          <td>TOPIK I Reading / Listening</td>
+        </tr>
+        <tr>
+          <td><strong>-도록 (하다)</strong></td>
+          <td>Formal & Regulatory</td>
+          <td>Indicates purpose, instruction, or psychological threshold</td>
+          <td>Public notices & official instructions</td>
+        </tr>
+        <tr>
+          <td><strong>-고자</strong></td>
+          <td>Highly Formal Written</td>
+          <td>Single subject constraint; formal speeches & papers</td>
+          <td>TOPIK II Listening interviews & Q54</td>
+        </tr>
+        <tr>
+          <td><strong>-기 위해(서)</strong></td>
+          <td>Standard Written & Spoken</td>
+          <td>Universal purpose marker; pairs with verbs & nouns</td>
+          <td>Academic expository texts</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CATEGORY 5 -->
+  <h2 id="cat-degree">5. Degree, Similarity & Addition (정도와 추가)</h2>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>9. -(으)ㄹ 뿐만 아니라 (Not only A, but also B)</span>
+      <span class="grammar-tag">Universal Synonym Target</span>
+    </div>
+    <p>
+      Adds supportive factual weight to an initial premise. If the first clause describes a positive attribute, the subsequent clause must also reinforce a positive attribute (and vice-versa).
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">대중교통을 이용하면 요금이 절약될 뿐만 아니라 탄소 배출도 줄일 수 있다. <button class="tts-inline" onclick="speakText('대중교통을 이용하면 요금이 절약될 뿐만 아니라 탄소 배출도 줄일 수 있다.')">Listen 🔊</button></div>
+      <div class="ex-en">"Using public transit not only saves travel costs, but also reduces carbon emissions."</div>
+    </div>
+    <p>
+      <strong>Interchangeable Equivalent:</strong> <em>-는 데다가</em> (On top of [X] happening).
+    </p>
+  </div>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>10. -(으)ㄹ 정도로 / -(으)ㄹ 지경이다 (To the extent that / On the verge of)</span>
+      <span class="grammar-tag">Expressive Degree Marker</span>
+    </div>
+    <p>
+      Draws an vivid, hyperbolic comparison to describe the magnitude of an emotional or physical circumstance.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">눈을 제대로 뜰 수 없을 정도로 세찬 눈보라가 몰아쳤다. <button class="tts-inline" onclick="speakText('눈을 제대로 뜰 수 없을 정도로 세찬 눈보라가 몰아쳤다.')">Listen 🔊</button></div>
+      <div class="ex-en">"A fierce blizzard raged to the extent that one could not properly open one's eyes."</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 6 -->
+  <h2 id="cat-indirect">6. Indirect Speech Transformations (간접화법 완벽 정리)</h2>
+  <p>
+    A mandatory syntactic pillar for TOPIK Intermediate and Advanced levels. Indirect quotations must be correctly conjugated according to whether the cited statement is declarative, interrogative, imperative, or propositive.
+  </p>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Sentence Type</th>
+          <th>Present Tense Conjugation</th>
+          <th>Past Tense Conjugation</th>
+          <th>Colloquial Contraction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Statement (평서문)</strong></td>
+          <td>Verb: -(ㄴ/는)다고 하다<br>Adj: -다고 하다</td>
+          <td>-았/었다고 하다</td>
+          <td>-대(요)</td>
+        </tr>
+        <tr>
+          <td><strong>Question (의문문)</strong></td>
+          <td>-(느)냐고 하다 / -(으)냐고 하다</td>
+          <td>-았/었냐고 하다</td>
+          <td>-래(요) / -냬(요)</td>
+        </tr>
+        <tr>
+          <td><strong>Suggestion (청유문)</strong></td>
+          <td>-자고 하다</td>
+          <td>-자고 했다</td>
+          <td>-재(요)</td>
+        </tr>
+        <tr>
+          <td><strong>Command (명령문)</strong></td>
+          <td>-(으)라고 하다</td>
+          <td>-(으)라고 했다</td>
+          <td>-래(요)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CATEGORY 7 -->
+  <h2 id="cat-probability">7. Probability, Discovery & Regret (추측과 회고)</h2>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>11. -(으)ㄹ 텐데 (Anticipating that [X], so [Y])</span>
+      <span class="grammar-tag">Presupposition & Context Setup</span>
+    </div>
+    <p>
+      Combines the conjectural future marker <em>-(으)ㄹ 터</em> with the backgrounding connector <em>-(으)ㄴ/는데</em>. Sets an anticipated state while making a recommendation, inquiry, or contrastive observation.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">퇴근 시간이라 지하철이 혼잡할 텐데 조금 일찍 출발합시다. <button class="tts-inline" onclick="speakText('퇴근 시간이라 지하철이 혼잡할 텐데 조금 일찍 출발합시다.')">Listen 🔊</button></div>
+      <div class="ex-en">"Since it is rush hour, the subway will likely be congested, so let us depart a bit early."</div>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <div class="grammar-title">
+      <span>12. -(으)ㄹ걸 그랬다 (I should have done [X])</span>
+      <span class="grammar-tag">Listening Comprehension Regret Item</span>
+    </div>
+    <p>
+      A first-person retrospective expression signifying regret over an action not taken. Its counterpart <em>-지 말걸 그랬다</em> expresses regret over an action that was committed.
+    </p>
+    <div class="example-block">
+      <div class="ex-kr">출발하기 전에 버스 시간표를 미리 확인해 둘걸 그랬어요. <button class="tts-inline" onclick="speakText('출발하기 전에 버스 시간표를 미리 확인해 둘걸 그랬어요.')">Listen 🔊</button></div>
+      <div class="ex-en">"I should have checked the bus timetable in advance before setting out."</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 8 -->
+  <h2 id="cat-writing">8. Mandatory Expository Suffixes for TOPIK II Essay (Item 54)</h2>
+  <div class="trap-box">
+    <strong>Crucial Examination Scoring Directive:</strong>
+    In TOPIK II Writing Item #54, using polite endings like <em>-아/어요</em> or formal conversational endings like <em>-습니다</em> incurs a significant structural penalty. Academic discursive writing mandates the objective non-honorific plain form (<strong>해라체</strong>).
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Syntactic Target</th>
+          <th>Grammatical Rule (해라체)</th>
+          <th>Correct Essay Application</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Action Verbs (Present)</strong></td>
+          <td>Final vowel: <strong>-ㄴ다</strong> / Final consonant: <strong>-는다</strong></td>
+          <td>현대인은 극심한 스트레스를 <strong>받는다</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Adjectives (Present)</strong></td>
+          <td>Word stem remains uninflected: <strong>-다</strong></td>
+          <td>사회적 연대감 형성이 대단히 <strong>중요하다</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Copula (이다 / 아니다)</strong></td>
+          <td>Final vowel: <strong>-다</strong> / Consonant: <strong>-이다</strong></td>
+          <td>이는 명백한 사회적 <strong>문제이다</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Universal Law / Axiom</strong></td>
+          <td><strong>-기 마련이다</strong> (Bound to occur)</td>
+          <td>노력이 결여되면 실패하<strong>기 마련이다</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Necessary Resolution</strong></td>
+          <td><strong>-(으)ㄹ 필요가 있다</strong> (Need to)</td>
+          <td>법률적 제도를 조속히 보완<strong>할 필요가 있다</strong>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 SeoulKomo. Educational Korean Language Practice.</p>
+    <p style="margin-top: 0.5rem;">
+      <a href="index.html">Home</a> | 
+      <a href="topik-guide.html">TOPIK Guide</a> | 
+      <a href="kpop.html">K-Pop Lounge</a> | 
+      <a href="about.html">About Us</a> | 
+      <a href="contact.html">Contact Us</a> | 
+      <a href="privacy.html">Privacy Policy</a>
+    </p>
+  </footer>
+</div>
+
+<script>
+  // Browser Native Speech Synthesis for Pronunciation
+  function speakText(text) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ko-KR';
+      utterance.rate = 0.88;
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert('Speech synthesis is not supported in this browser.');
+    }
+  }
+</script>
+
+</body>
+</html>
