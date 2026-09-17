@@ -14,7 +14,7 @@
     <meta name="description" content="Learn Korean naturally with K-Pop lyrics breakdowns, interactive Hangul typing practice, and essential vocabulary guides for beginners.">
 
     <!-- 3. 키워드 태그 -->
-    <meta name="keywords" content="learn Korean, Korean language study, K-Pop Korean, Korean typing practice, Hangul lessons, SeoulKomo">
+    <meta name="keywords" content="learn Korean, Korean language study, K-Pop Korean, Korean typing practice, Hangul lessons, TOPIK preparation, SeoulKomo">
 
     <!-- 4. 소셜 공유(Open Graph) 태그 -->
     <meta property="og:title" content="SeoulKomo - Learn Korean with K-Pop & Typing Games">
@@ -52,6 +52,8 @@
         .card-slang { background-color: #ebf8ff; border-color: #bee3f8; }
         .card-honorifics { background-color: #fffaf0; border-color: #feebc8; }
         .card-essential { background-color: #f0fdfa; border-color: #99f6e4; }
+        .card-topik { background-color: #eff6ff; border-color: #bfdbfe; }
+        .card-grammar { background-color: #f0f4ff; border-color: #c7d2fe; }
         
         /* Highlighted K-Pop Card */
         .card-kpop { 
@@ -66,6 +68,8 @@
         .card-slang .card-tag { color: #2b6cb0; }
         .card-honorifics .card-tag { color: #c05621; }
         .card-essential .card-tag { color: #0d9488; }
+        .card-topik .card-tag { color: #1d4ed8; }
+        .card-grammar .card-tag { color: #4338ca; }
         .card-kpop .card-tag { color: #db2777; font-weight: 800; }
         
         .card-title { font-size: 1.05rem; font-weight: 700; margin: 0 0 4px 0; color: #2d3748; }
@@ -115,6 +119,35 @@
         }
         .kpop-spotlight h3 { margin-top: 0; color: #9f1239; font-size: 1.25rem; }
         .kpop-spotlight p { color: #4c0519; margin-bottom: 12px; font-size: 0.95rem; }
+
+        /* TOPIK Exclusive Spotlight Box (Distinct High-Visibility Block) */
+        .topik-spotlight {
+            background: linear-gradient(135deg, #eef2ff, #f0fdf4);
+            border: 2px solid #3b82f6;
+            border-radius: 14px;
+            padding: 26px 28px;
+            margin: 35px 0;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+        }
+        .topik-spotlight h3 { margin-top: 0; color: #1e3a8a; font-size: 1.35rem; display: flex; align-items: center; gap: 8px; }
+        .topik-spotlight p { color: #1e293b; margin-bottom: 16px; font-size: 0.98rem; line-height: 1.6; }
+        .topik-links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 18px; }
+        .topik-link-card {
+            background: #ffffff;
+            border: 1.5px solid #bfdbfe;
+            border-radius: 10px;
+            padding: 18px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+        }
+        .topik-link-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.15);
+            transform: translateY(-2px);
+        }
+        .topik-link-card strong { display: block; color: #1d4ed8; font-size: 1.08rem; margin-bottom: 6px; }
+        .topik-link-card span { display: block; color: #4b5563; font-size: 0.88rem; line-height: 1.45; }
 
         /* 모바일 전용 반응형 쿼리 */
         @media (max-width: 640px) {
@@ -186,6 +219,7 @@
             <a href="./korean_300_worksheet.html" target="_blank" class="btn-sub-banner">Print Worksheet (PDF) 🖨️</a>
             <a href="./essential.html" class="btn-sub-banner">Survival Audio 🔊</a>
             <a href="./topik-guide.html" class="btn-sub-banner">TOPIK Guide 🎯</a>
+            <a href="./topik-essential-grammar.html" class="btn-sub-banner">TOPIK Grammar 📘</a>
         </div>
     </div>
 
@@ -203,6 +237,19 @@
             <div class="card-title">Hanme Typing Game →</div>
             <div class="card-desc">Raindrop-style Korean keyboard practice with real-time audio (TTS) and miss-tracking logs.</div>
         </a>
+        
+        <a href="./topik-guide.html" class="nav-card card-topik">
+            <div class="card-tag">Exam Strategy</div>
+            <div class="card-title">2026 TOPIK Preparation & Pacing Guide →</div>
+            <div class="card-desc">Time management tips, score breakdowns, and question-by-question pacing strategies for TOPIK I & II.</div>
+        </a>
+
+        <a href="./topik-essential-grammar.html" class="nav-card card-grammar">
+            <div class="card-tag">Exam Mastery</div>
+            <div class="card-title">50 Essential TOPIK Grammar Patterns →</div>
+            <div class="card-desc">10,000-character master reference: cloze exam traps, synonyms, essay rules, and audio TTS.</div>
+        </a>
+
         <a href="./korean_300_worksheet.html" target="_blank" class="nav-card card-worksheet">
             <div class="card-tag">Printable Material</div>
             <div class="card-title">300 Words Tracing Book →</div>
@@ -221,13 +268,7 @@
         <a href="./essential.html" class="nav-card card-essential">
             <div class="card-tag">Travel & Daily Life</div>
             <div class="card-title">Essential Survival & Audio →</div>
-            <div class="card-desc">50+ real-life phrases with native audio TTS, official transit apps, and emergency portals.
-            </div>
-        </a>
-        <a href="./topik-guide.html" class="nav-card card-topik">
-            <div class="card-tag">Exam & Strategy</div>
-            <div class="card-title">2026 TOPIK Preparation & Pacing Guide →</div>
-            <div class="card-desc">Time management tips, score breakdowns, and question-by-question pacing strategies for TOPIK I & II.</div>
+            <div class="card-desc">50+ real-life phrases with native audio TTS, official transit apps, and emergency portals.</div>
         </a>
     </div>
 
@@ -305,17 +346,36 @@
             <p>Memorizing isolated words rarely translates into fluent conversation. Explore our dedicated grammar guides and printable worksheets to observe how nominal roots attach to subject markers (-이/가, -은/는) and verbal predicates (-아요/어요).</p>
         </div>
 
+        <!-- TOPIK Dedicated Master Section (Eye-Catching Standalone Block) -->
+        <div class="topik-spotlight">
+            <h3>🎯 TOPIK (Test of Proficiency in Korean) Master Hub</h3>
+            <p>
+                Whether you are aiming for basic proficiency in TOPIK I (Levels 1–2) or advanced academic/visa certification in TOPIK II (Levels 3–6), strategic preparation is critical. Explore our dedicated, high-yield examination resources:
+            </p>
+            <div class="topik-links-grid">
+                <a href="./topik-guide.html" class="topik-link-card">
+                    <strong>2026 TOPIK Preparation & Pacing Guide →</strong>
+                    <span>Master PBT & IBT formats, psychological distractors, minute-by-minute time management, and vocabulary TTS audio.</span>
+                </a>
+                <a href="./topik-essential-grammar.html" class="topik-link-card">
+                    <strong>50 Essential TOPIK Grammar Patterns →</strong>
+                    <span>A comprehensive 10,000-character syllabus: cloze traps, synonym pairings, essay rules for Item #54, and native audio.</span>
+                </a>
+            </div>
+        </div>
+
         <h2>Curated Platform Navigation</h2>
         <p>Explore all sections of our platform to build a well-rounded foundation in modern Korean:</p>
         <ul>
-          <li><a href="kpop.html"><strong>K-Pop Lyrics & Music Studio</strong></a>: Deconstruct viral hooks and poetic verses with synchronized YouTube playback and grammar notes.</li>
-          <li><a href="typing.html"><strong>Interactive Typing Practice</strong></a>: Reinforce keyboard fluency, spelling accuracy, and auditory comprehension with our 300-word dataset.</li>
-          <li><a href="topik-guide.html"><strong>2026 TOPIK Preparation & Pacing Guide</strong></a>: Time management tips, high-frequency question traps, and section-by-section pacing strategies for TOPIK I & II.</li>
-          <li><a href="vocabulary.html"><strong>Core Vocabulary App</strong></a>: Review complete sample sentences, grammatical functions, and contextual audio guides.</li>
-          <li><a href="worksheet.html"><strong>Printable 60-Page Worksheet</strong></a>: Practice balanced handwriting with 원고지 cross-grids and stroke orders.</li>
-          <li><a href="slang.html"><strong>Modern Slang & Buzzwords</strong></a>: Stay up-to-date with viral cultural expressions and digital colloquialisms.</li>
-          <li><a href="honorifics.html"><strong>Honorifics & Politeness Guide</strong></a>: Understand interpersonal speech levels and respectful social communication.</li>
-          <li><a href="essential.html"><strong>Essential Expat Portals & Survival Audio</strong></a>: Access official services for healthcare, public transport, and 50+ spoken survival phrases.</li>
+          <li><a href="./topik-guide.html"><strong>2026 TOPIK Preparation & Pacing Guide</strong></a>: Time management tips, high-frequency question traps, and section-by-section pacing strategies for TOPIK I & II.</li>
+          <li><a href="./topik-essential-grammar.html"><strong>50 Essential TOPIK Grammar Patterns</strong></a>: In-depth master reference covering 50 core patterns, syntactic pairs, and formal essay rules for Item #54.</li>
+          <li><a href="./kpop.html"><strong>K-Pop Lyrics & Music Studio</strong></a>: Deconstruct viral hooks and poetic verses with synchronized YouTube playback and grammar notes.</li>
+          <li><a href="./typing.html"><strong>Interactive Typing Practice</strong></a>: Reinforce keyboard fluency, spelling accuracy, and auditory comprehension with our 300-word dataset.</li>
+          <li><a href="./korean1.html"><strong>Core Vocabulary Flashcard App</strong></a>: Review complete sample sentences, grammatical functions, and contextual audio guides.</li>
+          <li><a href="./korean_300_worksheet.html" target="_blank"><strong>Printable 60-Page Worksheet</strong></a>: Practice balanced handwriting with 원고지 cross-grids and stroke orders.</li>
+          <li><a href="./slang2026.html"><strong>Modern Slang & Buzzwords (2026)</strong></a>: Stay up-to-date with viral cultural expressions and digital colloquialisms.</li>
+          <li><a href="./honorifics.html"><strong>Honorifics & Politeness Guide</strong></a>: Understand interpersonal speech levels and respectful social communication.</li>
+          <li><a href="./essential.html"><strong>Essential Expat Portals & Survival Audio</strong></a>: Access official services for healthcare, public transport, and 50+ spoken survival phrases.</li>
         </ul>
     </article>
 
