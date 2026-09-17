@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>한국어 기초 단어 300 트레이싱 워크시트</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+  body {
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CKR', sans-serif;
+    color: #222;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page-container {
+    width: 100%;
+    page-break-after: always;
+  }
+  .header {
+    border-bottom: 2px solid #333;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header-title {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+  }
+  .header-meta {
+    font-size: 12px;
+    color: #666;
+  }
+  .unit-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    background: #fafafa;
+  }
+  .word-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .chapter-badge {
+    background: #2b4c7e;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .target-word {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111;
+  }
+  .word-eng {
+    font-size: 15px;
+    color: #555;
+    font-weight: 500;
+  }
+  .pronunciation {
+    font-size: 13px;
+    color: #777;
+    font-style: italic;
+  }
+  
+  /* 트레이싱 격자 그리드 */
+  .grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    background: #fff;
+  }
+  .grid-table th {
+    font-size: 11px;
+    background: #f0f3f8;
+    color: #444;
+    border: 1px solid #d0d7de;
+    padding: 4px 6px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .grid-table td {
+    border: 1px solid #d0d7de;
+    height: 52px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 28px;
+    font-weight: 400;
+    position: relative;
+  }
+  
+  /* 십자 보조 가이드라인 (원고지 격자 형태) */
+  .cross-guide {
+    background-image: 
+      linear-gradient(to right, transparent 49.5%, #e8e8e8 50%, #e8e8e8 50.5%, transparent 51%),
+      linear-gradient(to bottom, transparent 49.5%, #e8e8e8 50%, #e8e8e8 50.5%, transparent 51%);
+  }
+
+  /* 단계별 글자 서식 */
+  .trace-dot {
+    color: #999;
+    letter-spacing: 2px;
+    -webkit-text-stroke: 1px #888;
+    opacity: 0.8;
+  }
+  .trace-ghost {
+    color: #d1d5db; /* 옅은 회색 트레이싱 */
+  }
+  .trace-empty {
+    color: transparent;
+  }
+
+  /* 예문 트레이싱 */
+  .sentence-box {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #e0e0e0;
+  }
+  .sentence-eng {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+  .sentence-kor-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .sentence-trace-ghost {
+    font-size: 15px;
+    color: #b0b5bd;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    flex: 1;
+    letter-spacing: 0.5px;
+  }
+  .sentence-trace-blank {
+    height: 30px;
+    border: 1px dashed #cbd5e1;
+    background: #fff;
+    border-radius: 4px;
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-container">
+  <!-- 상단 헤더 -->
+  <div class="header">
+    <div class="header-title">외국인을 위한 한국어 기초 어휘 300 트레이싱 워크시트</div>
+    <div class="header-meta">단계: 기초 (초급) | 획순·음소 결합·문장 쓰기</div>
+  </div>
+
+  <!-- Chapter 01: 안녕하세요 -->
+  <div class="unit-card">
+    <div class="word-meta">
+      <span class="chapter-badge">Chapter 01</span>
+      <span class="target-word">안녕하세요</span>
+      <span class="word-eng">Hello / Goodbye</span>
+      <span class="pronunciation">[An-nyeong-ha-se-yo]</span>
+    </div>
+    
+    <table class="grid-table">
+      <tr>
+        <th style="width: 14%;">구분</th>
+        <th style="width: 17.2%;">안</th>
+        <th style="width: 17.2%;">녕</th>
+        <th style="width: 17.2%;">하</th>
+        <th style="width: 17.2%;">세</th>
+        <th style="width: 17.2%;">요</th>
+      </tr>
+      <tr>
+        <th>자모 분해</th>
+        <td style="font-size:13px; color:#555;">ㅇ+ㅏ+ㄴ</td>
+        <td style="font-size:13px; color:#555;">ㄴ+ㅕ+ㅇ</td>
+        <td style="font-size:13px; color:#555;">ㅎ+ㅏ</td>
+        <td style="font-size:13px; color:#555;">ㅅ+ㅔ</td>
+        <td style="font-size:13px; color:#555;">ㅇ+ㅛ</td>
+      </tr>
+      <tr>
+        <th>따라 쓰기 (Ghost)</th>
+        <td class="cross-guide trace-ghost">안</td>
+        <td class="cross-guide trace-ghost">녕</td>
+        <td class="cross-guide trace-ghost">하</td>
+        <td class="cross-guide trace-ghost">세</td>
+        <td class="cross-guide trace-ghost">요</td>
+      </tr>
+      <tr>
+        <th>보조선 자율 쓰기</th>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+      </tr>
+    </table>
+
+    <div class="sentence-box">
+      <div class="sentence-eng"><b>예문 쓰기:</b> Hello! Nice to meet you.</div>
+      <div class="sentence-kor-row">
+        <div class="sentence-trace-ghost">안녕하세요! 만나서 반가워요.</div>
+      </div>
+      <div class="sentence-kor-row">
+        <div class="sentence-trace-blank"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chapter 02: 감사합니다 -->
+  <div class="unit-card">
+    <div class="word-meta">
+      <span class="chapter-badge">Chapter 02</span>
+      <span class="target-word">감사합니다</span>
+      <span class="word-eng">Thank you</span>
+      <span class="pronunciation">[Gam-sa-ham-ni-da]</span>
+    </div>
+    
+    <table class="grid-table">
+      <tr>
+        <th style="width: 14%;">구분</th>
+        <th style="width: 17.2%;">감</th>
+        <th style="width: 17.2%;">사</th>
+        <th style="width: 17.2%;">합</th>
+        <th style="width: 17.2%;">니</th>
+        <th style="width: 17.2%;">다</th>
+      </tr>
+      <tr>
+        <th>자모 분해</th>
+        <td style="font-size:13px; color:#555;">ㄱ+ㅏ+ㅁ</td>
+        <td style="font-size:13px; color:#555;">ㅅ+ㅏ</td>
+        <td style="font-size:13px; color:#555;">ㅎ+ㅏ+ㅂ</td>
+        <td style="font-size:13px; color:#555;">ㄴ+ㅣ</td>
+        <td style="font-size:13px; color:#555;">ㄷ+ㅏ</td>
+      </tr>
+      <tr>
+        <th>따라 쓰기 (Ghost)</th>
+        <td class="cross-guide trace-ghost">감</td>
+        <td class="cross-guide trace-ghost">사</td>
+        <td class="cross-guide trace-ghost">합</td>
+        <td class="cross-guide trace-ghost">니</td>
+        <td class="cross-guide trace-ghost">다</td>
+      </tr>
+      <tr>
+        <th>보조선 자율 쓰기</th>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+      </tr>
+    </table>
+
+    <div class="sentence-box">
+      <div class="sentence-eng"><b>예문 쓰기:</b> Thank you for the gift.</div>
+      <div class="sentence-kor-row">
+        <div class="sentence-trace-ghost">선물 감사합니다.</div>
+      </div>
+      <div class="sentence-kor-row">
+        <div class="sentence-trace-blank"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chapter 03: 친구 -->
+  <div class="unit-card">
+    <div class="word-meta">
+      <span class="chapter-badge">Chapter 03</span>
+      <span class="target-word">친구</span>
+      <span class="word-eng">Friend</span>
+      <span class="pronunciation">[Chin-gu]</span>
+    </div>
+    
+    <table class="grid-table">
+      <tr>
+        <th style="width: 14%;">구분</th>
+        <th style="width: 21.5%;">친</th>
+        <th style="width: 21.5%;">구</th>
+        <th style="width: 21.5%;">연습 1</th>
+        <th style="width: 21.5%;">연습 2</th>
+      </tr>
+      <tr>
+        <th>자모 분해</th>
+        <td style="font-size:13px; color:#555;">ㅊ+ㅣ+ㄴ</td>
+        <td style="font-size:13px; color:#555;">ㄱ+ㅜ</td>
+        <td style="font-size:12px; color:#aaa;">-</td>
+        <td style="font-size:12px; color:#aaa;">-</td>
+      </tr>
+      <tr>
+        <th>따라 쓰기 (Ghost)</th>
+        <td class="cross-guide trace-ghost">친</td>
+        <td class="cross-guide trace-ghost">구</td>
+        <td class="cross-guide trace-ghost">친</td>
+        <td class="cross-guide trace-ghost">구</td>
+      </tr>
+      <tr>
+        <th>보조선 자율 쓰기</th>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+        <td class="cross-guide trace-empty"></td>
+      </tr>
+    </table>
+
+    <div class="sentence-box">
+      <div class="sentence-eng"><b>예문 쓰기:</b> This person is my friend.</div>
+      <div class="sentence-kor-row">
+        <div class="sentence-trace-ghost">이 사람은 내 친구예요.</div>
+      </div>
+      <div class="sentence-kor-row">
+        <div class="sentence-trace-blank"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
