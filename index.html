@@ -10,7 +10,7 @@
     <style>
         * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: #f8f9fa; color: #2d3748; margin: 0; padding: 25px 15px; display: flex; justify-content: center; }
-        .container { width: 100%; max-width: 820px; background: #ffffff; padding: 40px 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .container { width: 100%; max-width: 840px; background: #ffffff; padding: 40px 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         
         header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid #edf2f7; padding-bottom: 25px; }
         .badge { display: inline-block; background-color: #ebf8ff; color: #2b6cb0; padding: 5px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
@@ -26,10 +26,12 @@
         .btn-action-banner:hover { background-color: #edf2f7; }
         .btn-sub-banner { display: inline-block; background-color: rgba(255, 255, 255, 0.15); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); padding: 10px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.92rem; transition: background-color 0.2s ease; }
         .btn-sub-banner:hover { background-color: rgba(255, 255, 255, 0.25); }
+        .banner-btn-kpop { background: linear-gradient(135deg, #ec4899, #8b5cf6); border: none; color: #ffffff; box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3); }
+        .banner-btn-kpop:hover { background: linear-gradient(135deg, #db2777, #7c3aed); }
 
         /* Navigation Grid */
         .nav-grid { display: flex; gap: 12px; margin: 20px 0 35px 0; flex-wrap: wrap; }
-        .nav-card { flex: 1; min-width: 230px; padding: 18px 20px; border-radius: 10px; text-decoration: none; border: 1px solid transparent; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+        .nav-card { flex: 1; min-width: 240px; padding: 18px 20px; border-radius: 10px; text-decoration: none; border: 1px solid transparent; transition: transform 0.15s ease, box-shadow 0.15s ease; }
         .nav-card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .card-game { background-color: #f7fafc; border-color: #cbd5e0; }
         .card-worksheet { background-color: #f0fdf4; border-color: #bbf7d0; }
@@ -37,13 +39,23 @@
         .card-honorifics { background-color: #fffaf0; border-color: #feebc8; }
         .card-essential { background-color: #f0fdfa; border-color: #99f6e4; }
         
+        /* Highlighted K-Pop Card */
+        .card-kpop { 
+            background: linear-gradient(to bottom right, #fdf2f8, #f5f3ff); 
+            border: 1.5px solid #f472b6; 
+            box-shadow: 0 4px 12px rgba(244, 114, 182, 0.15); 
+        }
+        
         .card-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
         .card-game .card-tag { color: #2b6cb0; }
         .card-worksheet .card-tag { color: #15803d; }
         .card-slang .card-tag { color: #2b6cb0; }
         .card-honorifics .card-tag { color: #c05621; }
         .card-essential .card-tag { color: #0d9488; }
+        .card-kpop .card-tag { color: #db2777; font-weight: 800; }
+        
         .card-title { font-size: 1.05rem; font-weight: 700; margin: 0 0 4px 0; color: #2d3748; }
+        .card-kpop .card-title { color: #831843; }
         .card-desc { font-size: 0.85rem; color: #4a5568; margin: 0; line-height: 1.4; }
 
         /* Educational Article Content */
@@ -79,6 +91,17 @@
         .guide-box ul { margin: 8px 0; padding-left: 20px; }
         .guide-box li { margin-bottom: 8px; }
 
+        /* K-Pop Feature Spotlight Box */
+        .kpop-spotlight {
+            background: linear-gradient(135deg, #fff1f2, #faf5ff);
+            border: 2px dashed #f43f5e;
+            border-radius: 12px;
+            padding: 22px 24px;
+            margin: 30px 0;
+        }
+        .kpop-spotlight h3 { margin-top: 0; color: #9f1239; font-size: 1.25rem; }
+        .kpop-spotlight p { color: #4c0519; margin-bottom: 12px; font-size: 0.95rem; }
+
         /* 모바일 전용 반응형 쿼리 */
         @media (max-width: 640px) {
             body { padding: 12px 8px; }
@@ -87,7 +110,6 @@
             .tool-banner { padding: 20px 16px; }
             .tool-banner h2 { font-size: 1.25rem; }
             
-            /* 모바일에서 테이블을 읽기 쉬운 카드형 블록으로 자동 변환 */
             .table-responsive { border: none; overflow-x: visible; }
             .feature-table, .feature-table tbody, .feature-table tr, .feature-table td {
                 display: block;
@@ -142,17 +164,25 @@
     <!-- App / Tool Direct Access Link -->
     <div class="tool-banner">
         <h2>Interactive Practice Suite: 300 Essential Words</h2>
-        <p>Master the top 300 high-frequency Korean words through multi-sensory tools: real-time keyboard training with authentic audio feedback, browser vocabulary flashcards, or our 60-page printable handwriting workbook.</p>
+        <p>Master the top 300 high-frequency Korean words through multi-sensory tools: real-time keyboard training with authentic audio feedback, browser vocabulary flashcards, printable workbooks, and hit K-Pop lyric lessons.</p>
         <div class="banner-buttons">
             <a href="./typing.html" class="btn-action-banner">🎮 Launch Typing Practice →</a>
+            <a href="./kpop.html" class="btn-sub-banner banner-btn-kpop">🎵 K-Pop Anthems & Lyrics Studio ✨</a>
             <a href="./korean1.html" class="btn-sub-banner">Flashcard App</a>
             <a href="./korean_300_worksheet.html" target="_blank" class="btn-sub-banner">Print Worksheet (PDF) 🖨️</a>
-            <a href="./essential.html" class="btn-sub-banner">Survival Audio & Guides 🔊</a>
+            <a href="./essential.html" class="btn-sub-banner">Survival Audio 🔊</a>
         </div>
     </div>
 
-    <!-- Quick Article Links -->
+    <!-- Quick Navigation Grid -->
     <div class="nav-grid">
+        <!-- Prominent K-Pop Card First -->
+        <a href="./kpop.html" class="nav-card card-kpop">
+            <div class="card-tag">🔥 Trending & Media</div>
+            <div class="card-title">K-Pop Lyrics & Video Studio →</div>
+            <div class="card-desc">Learn Korean with 12 global hits from ROSÉ, BTS, Jennie, NewJeans, and Stray Kids with YouTube playback & line breakdowns.</div>
+        </a>
+
         <a href="./typing.html" class="nav-card card-game">
             <div class="card-tag">Interactive Practice</div>
             <div class="card-title">Hanme Typing Game →</div>
@@ -216,6 +246,17 @@
             </table>
         </div>
 
+        <!-- Featured K-Pop Spotlight Callout -->
+        <div class="kpop-spotlight">
+            <h3>🎧 New: Learn Authentic Korean Through K-Pop Anthems</h3>
+            <p>
+                Textbooks teach grammar formulas, but popular music reveals how native speakers express affection, emotional vulnerability, and bold confidence. Our curated <a href="./kpop.html" style="color: #be123c; font-weight: bold; text-decoration: underline;">K-Pop Lyric Study Room</a> pairs embedded official music videos with line-by-line morphological analysis, romanized phonetics, and grammatical explanations.
+            </p>
+            <p style="margin-bottom: 0;">
+                Featured tracks include ROSÉ & Bruno Mars' viral <em>APT.</em>, BTS' timeless <em>Spring Day</em>, JENNIE's <em>Mantra</em>, NewJeans' <em>Ditto</em>, Stray Kids' <em>God's Menu</em>, and more.
+            </p>
+        </div>
+
         <h2>How to Play and Maximize Your Learning</h2>
         <p>To gain the maximum educational yield from each typing session, follow this step-by-step methodology:</p>
 
@@ -246,6 +287,7 @@
         <h2>Curated Platform Navigation</h2>
         <p>Explore all sections of our platform to build a well-rounded foundation in modern Korean:</p>
         <ul>
+            <li><strong><a href="./kpop.html" style="color: #db2777; font-weight: bold;">K-Pop Lyrics & Music Studio</a>:</strong> Deconstruct viral hooks and poetic verses with synchronized YouTube playback and grammar notes.</li>
             <li><strong><a href="./typing.html" style="color: #3182ce;">Interactive Typing Practice</a>:</strong> Reinforce keyboard fluency, spelling accuracy, and auditory comprehension with our 300-word dataset.</li>
             <li><strong><a href="./korean1.html" style="color: #3182ce;">Core Vocabulary App</a>:</strong> Review complete sample sentences, grammatical functions, and contextual audio guides.</li>
             <li><strong><a href="./korean_300_worksheet.html" target="_blank" style="color: #3182ce;">Printable 60-Page Worksheet</a>:</strong> Practice balanced handwriting with 원고지 cross-grids and stroke orders.</li>
