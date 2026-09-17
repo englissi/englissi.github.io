@@ -6,7 +6,7 @@
 <style>
   @page {
     size: A4 portrait;
-    margin: 12mm 15mm 12mm 15mm;
+    margin: 8mm 12mm 8mm 12mm;
   }
   * {
     box-sizing: border-box;
@@ -22,73 +22,75 @@
   }
   .page {
     width: 100%;
-    /* A4 세로 인쇄 규격 보정 */
-    min-height: 268mm;
-    max-height: 268mm;
+    height: 275mm;
     page-break-after: always;
     break-after: page;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
+    box-sizing: border-box;
+    padding: 2mm 0;
   }
   .header {
     border-bottom: 2px solid #0f172a;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    padding-bottom: 3px;
+    margin-bottom: 6px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
   }
   .header-title {
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 800;
     color: #0f172a;
     letter-spacing: -0.3px;
   }
   .header-info {
-    font-size: 11px;
+    font-size: 10.5px;
     color: #64748b;
     font-weight: 600;
   }
   .unit-container {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    justify-content: space-between;
+    flex: 1;
+    gap: 6px;
   }
   .word-unit {
     border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 8px 12px;
+    border-radius: 5px;
+    padding: 5px 10px;
     background: #f8fafc;
-    break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-page;
   }
   .meta-row {
     display: flex;
     align-items: baseline;
-    gap: 10px;
-    margin-bottom: 6px;
+    gap: 8px;
+    margin-bottom: 4px;
   }
   .chap-badge {
     background: #1e3a8a;
     color: #fff;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 700;
-    padding: 2px 7px;
+    padding: 1px 6px;
     border-radius: 3px;
   }
   .word-target {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 800;
     color: #0f172a;
   }
   .word-eng {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #334155;
   }
   .word-pron {
-    font-size: 11.5px;
+    font-size: 11px;
     color: #64748b;
     font-style: italic;
   }
@@ -96,24 +98,24 @@
     width: 100%;
     border-collapse: collapse;
     background: #fff;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .tracing-table th {
-    font-size: 10px;
+    font-size: 9.5px;
     background: #f1f5f9;
     color: #475569;
     border: 1px solid #cbd5e1;
-    padding: 4px 6px;
+    padding: 2px 4px;
     text-align: center;
     font-weight: 600;
-    width: 65px;
+    width: 62px;
   }
   .tracing-table td {
     border: 1px solid #cbd5e1;
-    height: 38px; /* 5개 기준 시원한 쓰기 높이 확보 */
+    height: 30px;
     text-align: center;
     vertical-align: middle;
-    font-size: 21px;
+    font-size: 19px;
     position: relative;
     padding: 0;
   }
@@ -132,8 +134,8 @@
   .sentence-row {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 10.5px;
+    gap: 6px;
+    font-size: 10px;
   }
   .sent-label {
     font-weight: bold;
@@ -145,32 +147,33 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 250px;
+    max-width: 230px;
   }
   .sent-ghost {
     flex: 1;
     border: 1px solid #e2e8f0;
     background: #fff;
-    padding: 3px 8px;
-    border-radius: 4px;
+    padding: 2px 6px;
+    border-radius: 3px;
     color: #94a3b8;
-    font-size: 12px;
+    font-size: 11.5px;
     white-space: nowrap;
   }
   .sent-blank {
     flex: 1;
-    height: 24px;
+    height: 20px;
     border: 1px dashed #cbd5e1;
     background: #fff;
-    border-radius: 4px;
+    border-radius: 3px;
   }
   .footer {
     display: flex;
     justify-content: space-between;
-    font-size: 9.5px;
+    font-size: 9px;
     color: #94a3b8;
     border-top: 1px solid #cbd5e1;
-    padding-top: 4px;
+    padding-top: 3px;
+    margin-top: 4px;
   }
 </style>
 </head>
@@ -179,7 +182,6 @@
 <div id="workbook-container"></div>
 
 <script>
-// 300단어 전체 데이터
 const rawData = [
   [1, "Hello / Goodbye", "안녕하세요", "An-nyeong-ha-se-yo", "Hello! Nice to meet you.", "안녕하세요! 만나서 반가워요."],
   [2, "Thank you", "감사합니다", "Gam-sa-ham-ni-da", "Thank you for the gift.", "선물 감사합니다."],
@@ -483,7 +485,6 @@ const rawData = [
   [300, "Instead of", "대신에", "Dae-sin-e", "Pencil instead of pen.", "펜 대신에 연필을 사용하세요."]
 ];
 
-// 음소 분해 로직
 const CHO = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
 const JUNG = ["ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ"];
 const JONG = ["","ㄱ","ㄲ","ㄳ","ㄴ","ㄵ","ㄶ","ㄷ","ㄹ","ㄺ","ㄻ","ㄼ","ㄽ","ㄾ","ㄿ","ㅀ","ㅁ","ㅂ","ㅄ","ㅅ","ㅆ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
@@ -508,8 +509,8 @@ function decomposeHangul(str) {
 }
 
 const container = document.getElementById("workbook-container");
-const wordsPerPage = 5; // 한 페이지 5단어로 변경
-const totalPages = Math.ceil(rawData.length / wordsPerPage); // 60페이지
+const wordsPerPage = 5;
+const totalPages = Math.ceil(rawData.length / wordsPerPage);
 
 for (let p = 0; p < totalPages; p++) {
   const pageDiv = document.createElement("div");
@@ -545,13 +546,13 @@ for (let p = 0; p < totalPages; p++) {
     for (let c = 0; c < maxCols; c++) {
       if (c < charList.length) {
         thCells += `<th style="width: ${(85/maxCols)}%;">${charList[c]}</th>`;
-        decompCells += `<td style="font-size: 11px; color: #475569;">${decompList[c]}</td>`;
+        decompCells += `<td style="font-size: 10px; color: #475569;">${decompList[c]}</td>`;
         ghostCells += `<td class="cross-grid trace-ghost">${charList[c]}</td>`;
         freeCells += `<td class="cross-grid trace-empty"></td>`;
       } else {
         let repeatChar = charList[c % charList.length] || '';
         thCells += `<th style="width: ${(85/maxCols)}%; color: #94a3b8;">복습</th>`;
-        decompCells += `<td style="font-size: 11px; color: #cbd5e1;">-</td>`;
+        decompCells += `<td style="font-size: 10px; color: #cbd5e1;">-</td>`;
         ghostCells += `<td class="cross-grid trace-ghost">${repeatChar}</td>`;
         freeCells += `<td class="cross-grid trace-empty"></td>`;
       }
@@ -572,15 +573,15 @@ for (let p = 0; p < totalPages; p++) {
             ${thCells}
           </tr>
           <tr>
-            <th style="font-size: 9px;">자모 분해</th>
+            <th style="font-size: 8.5px;">자모 분해</th>
             ${decompCells}
           </tr>
           <tr>
-            <th style="font-size: 9px;">따라 쓰기</th>
+            <th style="font-size: 8.5px;">따라 쓰기</th>
             ${ghostCells}
           </tr>
           <tr>
-            <th style="font-size: 9px;">자율 쓰기</th>
+            <th style="font-size: 8.5px;">자율 쓰기</th>
             ${freeCells}
           </tr>
         </table>
