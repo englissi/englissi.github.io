@@ -2,36 +2,40 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>서울고모 한국어 기초 300단어 트레이싱 워크시트 (전체 30페이지)</title>
+<title>한국어 기초 300단어 워크시트 (페이지당 5단어 / 총 60페이지)</title>
 <style>
   @page {
     size: A4 portrait;
-    margin: 10mm 12mm 10mm 12mm;
+    margin: 12mm 15mm 12mm 15mm;
   }
   * {
     box-sizing: border-box;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  body {
-    font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CKR', sans-serif;
-    color: #222;
+  html, body {
     margin: 0;
     padding: 0;
     background: #fff;
+    font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CKR', sans-serif;
+    color: #1e293b;
   }
   .page {
     width: 100%;
-    height: 100%;
+    /* A4 세로 인쇄 규격 보정 */
+    min-height: 268mm;
+    max-height: 268mm;
     page-break-after: always;
+    break-after: page;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
   }
   .header {
-    border-bottom: 2px solid #1a365d;
-    padding-bottom: 4px;
-    margin-bottom: 8px;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -39,47 +43,52 @@
   .header-title {
     font-size: 14px;
     font-weight: 800;
-    color: #1a365d;
+    color: #0f172a;
     letter-spacing: -0.3px;
   }
   .header-info {
-    font-size: 10.5px;
-    color: #555;
+    font-size: 11px;
+    color: #64748b;
     font-weight: 600;
+  }
+  .unit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
   }
   .word-unit {
     border: 1px solid #cbd5e1;
-    border-radius: 4px;
-    margin-bottom: 6px;
-    padding: 4px 8px;
-    background: #fafafa;
+    border-radius: 6px;
+    padding: 8px 12px;
+    background: #f8fafc;
+    break-inside: avoid;
   }
   .meta-row {
     display: flex;
     align-items: baseline;
-    gap: 8px;
-    margin-bottom: 4px;
+    gap: 10px;
+    margin-bottom: 6px;
   }
   .chap-badge {
-    background: #1a365d;
+    background: #1e3a8a;
     color: #fff;
-    font-size: 9.5px;
-    font-weight: bold;
-    padding: 1px 5px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
     border-radius: 3px;
   }
   .word-target {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 800;
     color: #0f172a;
   }
   .word-eng {
-    font-size: 11.5px;
+    font-size: 13px;
     font-weight: 600;
-    color: #475569;
+    color: #334155;
   }
   .word-pron {
-    font-size: 10.5px;
+    font-size: 11.5px;
     color: #64748b;
     font-style: italic;
   }
@@ -87,23 +96,24 @@
     width: 100%;
     border-collapse: collapse;
     background: #fff;
+    margin-bottom: 6px;
   }
   .tracing-table th {
-    font-size: 9px;
+    font-size: 10px;
     background: #f1f5f9;
     color: #475569;
     border: 1px solid #cbd5e1;
-    padding: 2px 4px;
+    padding: 4px 6px;
     text-align: center;
     font-weight: 600;
-    width: 58px;
+    width: 65px;
   }
   .tracing-table td {
     border: 1px solid #cbd5e1;
-    height: 31px;
+    height: 38px; /* 5개 기준 시원한 쓰기 높이 확보 */
     text-align: center;
     vertical-align: middle;
-    font-size: 17px;
+    font-size: 21px;
     position: relative;
     padding: 0;
   }
@@ -120,15 +130,14 @@
     color: transparent;
   }
   .sentence-row {
-    margin-top: 3px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 9.5px;
+    gap: 8px;
+    font-size: 10.5px;
   }
   .sent-label {
     font-weight: bold;
-    color: #334155;
+    color: #1e293b;
     white-space: nowrap;
   }
   .sent-eng {
@@ -136,34 +145,32 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 240px;
+    max-width: 250px;
   }
   .sent-ghost {
     flex: 1;
     border: 1px solid #e2e8f0;
     background: #fff;
-    padding: 1px 6px;
-    border-radius: 3px;
+    padding: 3px 8px;
+    border-radius: 4px;
     color: #94a3b8;
-    font-size: 11px;
-    letter-spacing: 0.3px;
+    font-size: 12px;
     white-space: nowrap;
   }
   .sent-blank {
     flex: 1;
-    height: 18px;
+    height: 24px;
     border: 1px dashed #cbd5e1;
     background: #fff;
-    border-radius: 3px;
+    border-radius: 4px;
   }
   .footer {
     display: flex;
     justify-content: space-between;
-    font-size: 9px;
+    font-size: 9.5px;
     color: #94a3b8;
-    border-top: 1px solid #e2e8f0;
-    padding-top: 3px;
-    margin-top: 2px;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 4px;
   }
 </style>
 </head>
@@ -172,7 +179,7 @@
 <div id="workbook-container"></div>
 
 <script>
-// 300단어 전체 데이터베이스 (스프레드시트 원본 기반)
+// 300단어 전체 데이터
 const rawData = [
   [1, "Hello / Goodbye", "안녕하세요", "An-nyeong-ha-se-yo", "Hello! Nice to meet you.", "안녕하세요! 만나서 반가워요."],
   [2, "Thank you", "감사합니다", "Gam-sa-ham-ni-da", "Thank you for the gift.", "선물 감사합니다."],
@@ -302,7 +309,7 @@ const rawData = [
   [126, "Right", "오른쪽", "O-reun-jjok", "The restroom is on the right.", "화장실은 오른쪽에 있습니다."],
   [127, "Side / Next to", "옆", "Yeop", "My desk is next to the window.", "내 책상은 창문 옆에 있어요."],
   [128, "Head / Hair", "머리", "Meo-ri", "My head hurts a little bit today.", "오늘은 머리가 조금 아파요."],
-  [129, "Eye", "눈", "Nun", "Your eyes are very beautiful.", "눈이 정말 아름다워요."],
+  [129, "Eye", "눈", "Nun", "Your eyes are beautiful.", "눈이 정말 아름다워요."],
   [130, "Hand", "손", "Son", "Please wash your hands before eating.", "밥을 먹기 전에 손을 씻으세요."],
   [131, "Foot / Leg", "발 / 다리", "Bal / Da-ri", "My legs hurt because I walked a lot.", "많이 걸어서 다리가 아파요."],
   [132, "Body", "몸", "Mom", "Exercise is good for your body.", "운동은 몸에 아주 좋습니다."],
@@ -318,10 +325,10 @@ const rawData = [
   [142, "To change / exchange", "바꾸다", "Ba-kku-da", "I want to exchange this product.", "이 물건을 바꾸고 싶어요."],
   [143, "To pay", "계산하다", "Gye-san-ha-da", "Where can I pay for this?", "여기서 어디서 계산하나요?"],
   [144, "To prepare", "준비하다", "Jun-bi-ha-da", "I prepare for the Korean exam.", "나는 한국어 시험을 준비해요."],
-  [145, "To cleaning", "청소하다", "Cheong-so-ha-da", "I clean my room every weekend.", "나는 주말마다 방을 청소해요."],
+  [145, "To clean", "청소하다", "Cheong-so-ha-da", "I clean my room every weekend.", "나는 주말마다 방을 청소해요."],
   [146, "To exercise / workout", "운동하다", "Un-dong-ha-da", "I exercise for health.", "나는 건강을 위해 운동해요."],
   [147, "To sing", "노래하다", "No-rae-ha-da", "I sing a Korean song.", "나는 한국어 노래를 해요."],
-  [148, "To cooked", "요리하다", "Yo-ri-ha-da", "My mother cooks delicious food.", "어머니가 맛있는 음식을 요리해요."],
+  [148, "To cook", "요리하다", "Yo-ri-ha-da", "My mother cooks delicious food.", "어머니가 맛있는 음식을 요리해요."],
   [149, "To take a picture", "사진을 찍다", "Sa-jin-eul jjik-da", "I take a picture with my friend.", "친구와 함께 사진을 찍어요."],
   [150, "To travel", "여행하다", "Yeo-haeng-ha-da", "I want to travel to Korea.", "나는 한국으로 여행하고 싶어요."],
   [151, "Airplane", "비행기", "Bi-haeng-gi", "I will take an airplane to Korea.", "나는 비행기를 타고 한국에 가요."],
@@ -331,158 +338,158 @@ const rawData = [
   [155, "Ticket", "표 / 티켓", "Pyo / Ti-ket", "I bought a concert ticket.", "나는 콘서트 표를 샀어요."],
   [156, "Traveler / Tourist", "여행객 / 관광객", "Yeo-haeng-gaek / Gwan-gwang-gaek", "Many tourists visit Myeongdong.", "많은 관광객들이 명동을 방문해요."],
   [157, "Student", "학생", "Hak-saeng", "I am a university student.", "나는 대학교 학생이에요."],
-  [158, "Teacher", "선생님", "Seon-saeng-nim", "Our Korean teacher is very kind.", "우리 한국어 선생님은 정말 친절해요."],
+  [158, "Teacher", "선생님", "Seon-saeng-nim", "Our Korean teacher is kind.", "우리 한국어 선생님은 정말 친절해요."],
   [159, "Doctor", "의사", "Ui-sa", "The doctor checked my health.", "의사가 제 건강을 확인했어요."],
   [160, "Worker / Employee", "직원", "Jik-won", "The company employees work hard.", "회사 직원들이 열심히 일해요."],
   [161, "Hobby", "취미", "Chwi-mi", "What is your hobby?", "당신의 취미는 무엇인가요?"],
-  [162, "Movie", "영화", "Yeong-hwa", "I watch a Korean movie at the theater.", "나는 영화관에서 한국 영화를 봐요."],
+  [162, "Movie", "영화", "Yeong-hwa", "I watch a Korean movie.", "나는 영화관에서 한국 영화를 봐요."],
   [163, "Music", "음악", "Eum-ak", "Listening to music makes me feel good.", "음악을 들으면 기분이 좋아요."],
   [164, "Drama", "드라마", "Deu-ra-ma", "This K-drama is very popular.", "이 한국 드라마는 정말 인기가 많아요."],
-  [165, "Game", "게임", "Ge-im", "I play computer games with my friend.", "나는 친구와 컴퓨터 게임을 해요."],
+  [165, "Game", "게임", "Ge-im", "I play games with my friend.", "나는 친구와 컴퓨터 게임을 해요."],
   [166, "Television", "티브이 / 텔레비전", "Ti-beu-i / Tel-le-bi-jeon", "I turn on the television.", "나는 텔레비전을 켜요."],
   [167, "Refrigerator", "냉장고", "Naeng-jang-go", "There is ice cream in the refrigerator.", "냉장고 안에 아이스크림이 있어요."],
   [168, "Air conditioner", "에어컨", "E-eo-keon", "Please turn on the air conditioner.", "에어컨을 켜 주세요."],
-  [169, "Computer", "컴퓨터", "Keom-pyu-ter", "I study Korean using my computer.", "나는 컴퓨터로 한국어를 공부해요."],
-  [170, "Bed", "침대", "Chim-da", "My bed is very soft and comfortable.", "내 침대는 정말 부드럽고 편해요."],
+  [169, "Computer", "컴퓨터", "Keom-pyu-ter", "I study Korean using computer.", "나는 컴퓨터로 한국어를 공부해요."],
+  [170, "Bed", "침대", "Chim-da", "My bed is comfortable.", "내 침대는 정말 부드럽고 편해요."],
   [171, "To drive", "운전하다", "Un-jeon-ha-da", "My father drives safely.", "우리 아버지는 안전하게 운전해요."],
-  [172, "To ride / take (transport)", "타다", "Ta-da", "I take the subway every morning.", "나는 매일 아침 지하철을 타요."],
+  [172, "To ride / take", "타다", "Ta-da", "I take the subway every morning.", "나는 매일 아침 지하철을 타요."],
   [173, "To get off", "내리다", "Nae-ri-da", "I get off at the next stop.", "나는 다음 정거장에서 내려요."],
-  [174, "To transfer (transit)", "환승하다 / 갈아타다", "Hwan-seung-ha-da / Gal-a-ta-da", "I transfer from the bus to the subway.", "나는 버스에서 지하철로 환승해요."],
+  [174, "To transfer", "환승하다 / 갈아타다", "Hwan-seung-ha-da / Gal-a-ta-da", "I transfer to the subway.", "나는 버스에서 지하철로 환승해요."],
   [175, "To check / confirm", "확인하다", "Hwag-in-ha-da", "Please check the schedule.", "일정을 확인해 주세요."],
   [176, "To worry", "걱정하다", "Geok-jeong-ha-da", "Don't worry too much.", "너무 걱정하지 마세요."],
-  [177, "To promise / make an appointment", "약속하다", "Yak-sok-ha-da", "I made a promise to meet my friend.", "친구와 만날 약속을 했어요."],
+  [177, "To promise", "약속하다", "Yak-sok-ha-da", "I promised to meet my friend.", "친구와 만날 약속을 했어요."],
   [178, "To send", "보내다", "Bo-nae-da", "I send an email to my friend.", "나는 친구에게 이메일을 보내요."],
-  [179, "To lose (an item)", "잃어버리다", "Il-eo-beo-ri-da", "I lost my wallet today.", "나는 오늘 지갑을 잃어버렸어요."],
+  [179, "To lose (item)", "잃어버리다", "Il-eo-beo-ri-da", "I lost my wallet today.", "나는 오늘 지갑을 잃어버렸어요."],
   [180, "To find", "찾다", "Chat-da", "I found my keys in my bag.", "가방에서 열쇠를 찾았어요."],
   [181, "Sweet", "달다", "Dal-da", "This chocolate is very sweet.", "이 초콜릿은 정말 달아요."],
   [182, "Salty", "짜다", "Jja-da", "The soup is a little salty.", "국이 조금 짜요."],
-  [183, "Spicy", "매우다 / 맵다", "Mae-u-da / Maep-da", "Korean tteokbokki is very spicy.", "한국 떡볶이는 정말 매워요."],
+  [183, "Spicy", "매우다 / 맵다", "Mae-u-da / Maep-da", "Korean tteokbokki is spicy.", "한국 떡볶이는 정말 매워요."],
   [184, "Sour", "시다", "Si-da", "This lemon is very sour.", "이 레몬은 정말 시어요."],
   [185, "Bitter", "쓰다", "Sseu-da", "The medicine tastes bitter.", "약이 맛이 써요."],
   [186, "Birthday", "생일", "Saeng-il", "Tomorrow is my birthday.", "내일은 제 생일이에요."],
   [187, "Gift / Present", "선물", "Seon-mul", "I prepared a gift for you.", "당신을 위해 선물을 준비했어요."],
   [188, "Party", "파티", "Pa-ti", "We are having a party tonight.", "우리는 오늘 밤에 파티를 해요."],
-  [189, "Festival", "축제", "Chuk-je", "I want to go to a Korean festival.", "한국 축제에 가고 싶어요."],
+  [189, "Festival", "축제", "Chuk-je", "I want to go to a festival.", "한국 축제에 가고 싶어요."],
   [190, "Vacation / Holiday", "방학 / 휴가", "Bang-hak / Hyu-ga", "I travel during winter vacation.", "나는 겨울 방학에 여행을 가요."],
   [191, "Discount / Sale", "할인 / 세일", "Hal-in / Se-il", "This store has a big sale today.", "이 가게는 오늘 큰 할인을 해요."],
   [192, "Size", "사이즈", "Sa-i-ze", "What size do you wear?", "어떤 사이즈를 입으세요?"],
   [193, "Color", "색 / 색상", "Saek / Saek-sang", "I like this blue color.", "나는 이 파란 색상이 좋아요."],
-  [194, "Design", "디자인", "Di-ja-in", "The design of this clothes is pretty.", "이 옷은 디자인이 예뻐요."],
-  [195, "Card payment", "카드 결제", "Ka-de gyeol-je", "Can I pay by card payment?", "카드 결제 가능한가요?"],
+  [194, "Design", "디자인", "Di-ja-in", "The design of this is pretty.", "이 옷은 디자인이 예뻐요."],
+  [195, "Card payment", "카드 결제", "Ka-de gyeol-je", "Can I pay by card?", "카드 결제 가능한가요?"],
   [196, "Cash", "현금", "Hyeon-geum", "I pay in cash at the market.", "시장에서 현금으로 계산해요."],
-  [197, "To be convenient", "편리하다 / 편하다", "Pyeon-ri-ha-da / Pyeon-ha-da", "Online shopping is very convenient.", "인터넷 쇼핑은 정말 편리해요."],
-  [198, "To be uncomfortable", "불편하다", "Bul-pyeon-ha-da", "The chair is a bit uncomfortable.", "의자가 조금 불편해요."],
-  [199, "To be important", "중요하다", "Jung-yo-ha-da", "Health is the most important thing.", "건강이 가장 중요해요."],
-  [200, "To be famous", "유명하다", "Yu-myeong-ha-da", "This restaurant is famous for kimchi stew.", "이 식당은 김치찌개로 유명해요."],
-  [201, "To be dangerous", "위험하다", "Wi-heom-ha-da", "It is dangerous to cross the road here.", "여기서 길을 건너는 것은 위험해요."],
-  [202, "To be safe", "안전하다", "An-jeon-ha-da", "Korea is a safe country to travel.", "한국은 여행하기에 안전한 나라예요."],
-  [203, "To decide", "결정하다", "Gyeol-jeong-ha-da", "I must decide my future plan.", "내 미래 계획을 결정해야 해요."],
-  [204, "To choose", "선택하다", "Seon-taek-ha-da", "Please choose one of these options.", "이것들 중 하나를 선택하세요."],
-  [205, "To explain", "설명하다", "Seol-myeong-ha-da", "The teacher explains grammar kindly.", "선생님이 문법을 친절하게 설명해요."],
-  [206, "To understand", "이해하다", "I-hae-ha-da", "I understand the lesson well.", "나는 수업을 잘 이해해요."],
-  [207, "To recommend", "추천하다", "Chu-cheon-ha-da", "Can you recommend a good movie?", "좋은 영화 하나 추천해 주세요."],
-  [208, "To guide / inform", "안내하다", "An-nae-ha-da", "The staff guided us to our seats.", "직원이 우리를 자리로 안내했어요."],
-  [209, "To solve (a problem)", "문제를 풀다", "Mun-je-reul pul-da", "I solved the difficult problem.", "나는 어려운 문제를 풀었어요."],
+  [197, "To be convenient", "편리하다 / 편하다", "Pyeon-ri-ha-da / Pyeon-ha-da", "Online shopping is convenient.", "인터넷 쇼핑은 정말 편리해요."],
+  [198, "To be uncomfortable", "불편하다", "Bul-pyeon-ha-da", "The chair is uncomfortable.", "의자가 조금 불편해요."],
+  [199, "To be important", "중요하다", "Jung-yo-ha-da", "Health is the most important.", "건강이 가장 중요해요."],
+  [200, "To be famous", "유명하다", "Yu-myeong-ha-da", "Famous for kimchi stew.", "이 식당은 김치찌개로 유명해요."],
+  [201, "To be dangerous", "위험하다", "Wi-heom-ha-da", "It is dangerous to cross here.", "여기서 길을 건너는 것은 위험해요."],
+  [202, "To be safe", "안전하다", "An-jeon-ha-da", "Korea is a safe country.", "한국은 여행하기에 안전한 나라예요."],
+  [203, "To decide", "결정하다", "Gyeol-jeong-ha-da", "I must decide my future.", "내 미래 계획을 결정해야 해요."],
+  [204, "To choose", "선택하다", "Seon-taek-ha-da", "Please choose one option.", "이것들 중 하나를 선택하세요."],
+  [205, "To explain", "설명하다", "Seol-myeong-ha-da", "Explains grammar kindly.", "선생님이 문법을 친절하게 설명해요."],
+  [206, "To understand", "이해하다", "I-hae-ha-da", "I understand the lesson.", "나는 수업을 잘 이해해요."],
+  [207, "To recommend", "추천하다", "Chu-cheon-ha-da", "Recommend a good movie.", "좋은 영화 하나 추천해 주세요."],
+  [208, "To guide / inform", "안내하다", "An-nae-ha-da", "Guided us to our seats.", "직원이 우리를 자리로 안내했어요."],
+  [209, "To solve problem", "문제를 풀다", "Mun-je-reul pul-da", "I solved the difficult problem.", "나는 어려운 문제를 풀었어요."],
   [210, "To answer", "대답하다", "Dae-dap-ha-da", "Please answer my question.", "제 질문에 대답해 주세요."],
-  [211, "Kind / Friendly", "친절하다", "Chin-jeol-ha-da", "The staff at the hotel is very kind.", "호텔 직원이 정말 친절해요."],
-  [212, "Smart / Clever", "똑똑하다", "Ttok-ttok-ha-da", "My friend is very smart.", "내 친구는 정말 똑똑해요."],
-  [213, "Diligent", "부지런하다", "Bu-ji-reon-ha-da", "He is a very diligent student.", "그는 정말 부지런한 학생이에요."],
+  [211, "Kind / Friendly", "친절하다", "Chin-jeol-ha-da", "The staff is kind.", "호텔 직원이 정말 친절해요."],
+  [212, "Smart / Clever", "똑똑하다", "Ttok-ttok-ha-da", "My friend is smart.", "내 친구는 정말 똑똑해요."],
+  [213, "Diligent", "부지런하다", "Bu-ji-reon-ha-da", "A diligent student.", "그는 정말 부지런한 학생이에요."],
   [214, "Lazy", "게으르다", "Ge-eu-reu-da", "I am lazy on weekends.", "나는 주말에 게으르다."],
-  [215, "Quiet", "조용하다", "Jo-yong-ha-da", "The library is very quiet.", "도서관은 아주 조용해요."],
-  [216, "Noisy / Loud", "시끄럽다", "Si-kkeu-reop-da", "The street is noisy today.", "오늘은 거리가 시끄럽습니다."],
-  [217, "Always", "항상 / 언제나", "Hang-sang / Eon-je-na", "I always study Korean before bed.", "나는 잘 기 전에 항상 한국어를 공부해요."],
-  [218, "Often", "자주", "Ja-ju", "I often meet my friends here.", "나는 자주 여기서 친구들을 만나요."],
-  [219, "Sometimes", "가끔", "Ga-kkeum", "I sometimes drink coffee at night.", "나는 가끔 밤에 커피를 마셔요."],
-  [220, "Seldom / Rarely", "거의", "Geo-ui", "I rarely watch television these days.", "나는 요즘 티브이를 거의 안 봐요."],
-  [221, "Never", "절대", "Jeol-dae", "I will never forget this day.", "나는 이 날을 절대 잊지 않을 거예요."],
-  [222, "Together", "함께 / 같이", "Ham-kke / Gat-i", "Let's study Korean together.", "우리 같이 한국어 공부해요."],
+  [215, "Quiet", "조용하다", "Jo-yong-ha-da", "The library is quiet.", "도서관은 아주 조용해요."],
+  [216, "Noisy / Loud", "시끄럽다", "Si-kkeu-reop-da", "The street is noisy.", "오늘은 거리가 시끄럽습니다."],
+  [217, "Always", "항상 / 언제나", "Hang-sang / Eon-je-na", "Always study Korean before bed.", "나는 자기 전에 항상 한국어를 공부해요."],
+  [218, "Often", "자주", "Ja-ju", "I often meet friends here.", "나는 자주 여기서 친구들을 만나요."],
+  [219, "Sometimes", "가끔", "Ga-kkeum", "I sometimes drink coffee.", "나는 가끔 밤에 커피를 마셔요."],
+  [220, "Seldom / Rarely", "거의", "Geo-ui", "I rarely watch TV.", "나는 요즘 티브이를 거의 안 봐요."],
+  [221, "Never", "절대", "Jeol-dae", "Never forget this day.", "나는 이 날을 절대 잊지 않을 거예요."],
+  [222, "Together", "함께 / 같이", "Ham-kke / Gat-i", "Study Korean together.", "우리 같이 한국어 공부해요."],
   [223, "Alone", "혼자", "Hon-ja", "I traveled to Seoul alone.", "나는 혼자 서울을 여행했어요."],
-  [224, "Reason", "이유", "I-yu", "There is a reason for everything.", "모든 일에는 이유가 있어요."],
-  [225, "Method / Way", "방법", "Bang-beop", "What is the best way to study?", "가장 좋은 공부 방법이 뭐예요?"],
-  [226, "Example", "예 / 예시", "Ye / Ye-si", "Can you give me an example?", "예시를 하나 들어 줄 수 있어요?"],
-  [227, "To change", "변하다 / 바뀌다", "Byeon-ha-da / Ba-kkwi-da", "The weather changes very quickly.", "날씨가 정말 빠르게 바뀌다."],
-  [228, "To increase", "늘다 / 증가하다", "Neul-da / Jeung-ga-ha-da", "The number of tourists increases.", "관광객 수가 증가하다."],
-  [229, "To decrease", "줄다 / 감소하다", "Jul-da / Gam-so-ha-da", "The price of clothes decreases.", "옷 가격이 줄다."],
-  [230, "To compare", "비교하다", "Bi-gyo-ha-da", "Please compare these two items.", "이 두 물건을 비교해 보세요."],
-  [231, "To be different", "다르다", "Da-reu-da", "My opinion is different from yours.", "내 생각은 당신과 달라요."],
+  [224, "Reason", "이유", "I-yu", "There is a reason.", "모든 일에는 이유가 있어요."],
+  [225, "Method / Way", "방법", "Bang-beop", "What is the best way?", "가장 좋은 공부 방법이 뭐예요?"],
+  [226, "Example", "예 / 예시", "Ye / Ye-si", "Give me an example.", "예시를 하나 들어 줄 수 있어요?"],
+  [227, "To change", "변하다 / 바뀌다", "Byeon-ha-da / Ba-kkwi-da", "Weather changes quickly.", "날씨가 정말 빠르게 바뀌어요."],
+  [228, "To increase", "늘다 / 증가하다", "Neul-da / Jeung-ga-ha-da", "Tourists increase.", "관광객 수가 증가해요."],
+  [229, "To decrease", "줄다 / 감소하다", "Jul-da / Gam-so-ha-da", "Price decreases.", "옷 가격이 줄어들어요."],
+  [230, "To compare", "비교하다", "Bi-gyo-ha-da", "Compare these two.", "이 두 물건을 비교해 보세요."],
+  [231, "To be different", "다르다", "Da-reu-da", "Different from yours.", "내 생각은 당신과 달라요."],
   [232, "To be same", "같다", "Gat-da", "We have the same hobby.", "우리는 취미가 같아요."],
-  [233, "To be similar", "비슷하다", "Bi-seut-ha-da", "Our bags look very similar.", "우리 가방이 서로 비슷해요."],
+  [233, "To be similar", "비슷하다", "Bi-seut-ha-da", "Bags look similar.", "우리 가방이 서로 비슷해요."],
   [234, "To match / fit", "맞다", "Mat-da", "This answer is right.", "이 대답이 맞아요."],
-  [235, "To be wrong", "틀리다", "Teul-ri-da", "Your calculation is wrong.", "계산이 틀렸어요."],
-  [236, "To order (food)", "주문하다", "Ju-mun-ha-da", "I want to order food now.", "지금 음식을 주문하고 싶어요."],
-  [237, "To delivery (food/item)", "배달하다 / 택배", "Bae-dal-ha-da / Taek-bae", "They deliver chicken very fast.", "치킨 배달이 정말 빨라요."],
-  [238, "To lose (weight)", "살을 빼다", "Sal-eul ppae-da", "I exercise to lose weight.", "나는 살을 빼려고 운동해요."],
-  [239, "To gain (weight)", "살이 찌다", "Sal-i jji-da", "I gained weight during vacation.", "방학 동안 살이 쪘어요."],
-  [240, "To take a rest", "쉬다", "Swi-da", "You should take a rest now.", "이제 좀 쉬어야 해요."],
-  [241, "Table / Desk", "책상 / 탁자", "Chaek-sang / Tak-ja", "My laptop is on the desk.", "노트북이 책상 위에 있어요."],
-  [242, "Chair", "의자", "Ui-ja", "Please sit on the chair.", "의자에 앉으세요."],
-  [243, "Door", "문", "Mun", "Please open the door.", "문을 열어 주세요."],
-  [244, "Window", "창문", "Chang-mun", "I can see the sky through the window.", "창문으로 하늘이 보여요."],
-  [245, "Mirror", "거울", "Geo-ul", "I look at myself in the mirror.", "거울로 제 얼굴을 봐요."],
-  [246, "Clock / Watch", "시계", "Si-gye", "The clock on the wall is slow.", "벽시계가 조금 느려요."],
-  [247, "Luggage / Baggage", "짐", "Jim", "I have a lot of luggage today.", "오늘은 제 짐이 아주 많아요."],
-  [248, "Box", "상자 / 박스", "Sang-ja / Bak-seu", "Put the books into the box.", "책을 상자에 넣으세요."],
-  [249, "Document / Paper", "서류 / 종이", "Seo-ryu / Jong-i", "I submitted the required document.", "필요한 서류를 제출했어요."],
-  [250, "News", "뉴스", "Nyu-seu", "I watch the morning news.", "나는 아침 뉴스를 봐요."],
-  [251, "Information", "정보", "Jeong-bo", "This website has good information.", "이 사이트에 좋은 정보가 많아요."],
-  [252, "Culture", "문화", "Mun-hwa", "I want to learn about Korean culture.", "한국 문화를 배우고 싶어요."],
-  [253, "Experience", "경험", "Gyeong-heom", "Working holiday is a great experience.", "워킹홀리데이는 좋은 경험이에요."],
-  [254, "To experience", "경험하다", "Gyeong-heom-ha-da", "I want to experience traditional clothing.", "한복을 경험하다."],
-  [255, "To participate / attend", "참여하다 / 참석하다", "Cham-yeo-ha-da / Cham-seok-ha-da", "Many people participate in the event.", "많은 사람들이 행사에 참여해요."],
-  [256, "To prepare / ready", "준비하다", "Jun-bi-ha-da", "I prepare for the travel.", "나는 여행을 준비해요."],
-  [257, "To search / browse", "검색하다", "Geom-saek-ha-da", "I search for a good restaurant.", "맛있는 식당을 검색해요."],
-  [258, "To register / sign up", "등록하다 / 신청하다", "Deung-rok-ha-da / Sin-cheong-ha-da", "Where can I sign up for classes?", "수업 신청을 어디서 하나요?"],
-  [259, "To cancel", "취소하다", "Chwi-so-ha-da", "I want to cancel my reservation.", "예약을 취소하고 싶어요."],
-  [260, "To be interested in", "관심이 있다", "Gwan-sim-i it-da", "I am interested in K-pop.", "나는 케이팝에 관심이 있어요."],
-  [261, "To be interesting / fun", "흥미롭다", "Heung-mi-rop-da", "This documentary is very interesting.", "이 다큐멘터리는 아주 흥미롭다."],
-  [262, "To be surprised", "놀라다", "Nol-ra-da", "I was surprised by the sudden sound.", "갑자기 큰 소리가 나서 놀랐어요."],
-  [263, "To be disappointed", "실망하다", "Sil-mang-ha-da", "I am disappointed with the result.", "결과에 조금 실망했어요."],
-  [264, "To be nervous / tense", "긴장하다", "Gin-jang-ha-da", "I am nervous before the exam.", "시험 보기 전에 너무 긴장돼요."],
-  [265, "Very / Really", "매우 / 아주", "Mae-u / A-ju", "The weather is very hot today.", "오늘 날씨가 아주 더워요."],
-  [266, "A lot / Much", "많이", "Man-i", "Thank you for helping me a lot.", "많이 도와주셔서 감사합니다."],
-  [267, "A little / Slightly", "조금", "Jo-geum", "Please give me a little water.", "물 조금만 주세요."],
-  [268, "Specially / Particularly", "특히", "Teuk-hi", "This dish is specially delicious.", "이 요리는 특히 맛있어요."],
-  [269, "Suddenly", "갑자기", "Gap-ja-gi", "It started to rain suddenly.", "갑자기 비가 내리기 시작했어요."],
-  [270, "Finally / At last", "드디어 / 마침내", "Deu-di-eo / Ma-chim-nae", "Finally, the vacation has started!", "드디어 방학이 시작되었어요!"],
-  [271, "Meeting / Conference", "회의", "Hoe-ui", "The company meeting starts at 2 PM.", "회사 회의는 오후 2시에 시작해요."],
-  [272, "Report", "보고서", "Bo-go-seo", "I am writing a business report now.", "지금 업무 보고서를 쓰고 있어요."],
-  [273, "Success", "성공", "Seong-gong", "Hard work leads to success.", "열심히 노력하면 성공해요."],
-  [274, "Failure", "실패", "Sil-pae", "Do not be afraid of failure.", "실패를 두려워하지 마세요."],
-  [275, "Plan / Schedule", "계획 / 일정", "Gye-hoek / Il-jeong", "I made a plan for my vacation.", "휴가 계획을 세웠어요."],
-  [276, "Environment", "환경", "Hwan-gyeong", "We need to protect our environment.", "우리 환경을 보호해야 해요."],
-  [277, "Nature", "자연", "Ja-yeon", "I love beautiful nature.", "나는 아름다운 자연을 좋아해요."],
-  [278, "Earth", "지구", "Ji-gu", "We must save our Earth.", "우리는 지구를 살려야 해요."],
-  [279, "Trash / Waste", "쓰레기", "Sseu-re-gi", "Please throw away trash here.", "쓰레기는 여기에 버려세요."],
-  [280, "Recycling", "재활용", "Jae-hwal-yong", "Recycling helps the environment.", "재활용은 환경에 도움이 돼요."],
-  [281, "Tool", "도구", "Do-gu", "This tool is very useful.", "이 도구는 아주 유용해요."],
-  [282, "Machine", "기계", "Gi-gye", "The factory machine is working.", "공장 기계가 작동하고 있어요."],
-  [283, "Electricity", "전기", "Jeon-gi", "Please turn off the electricity.", "전기를 꺼 주세요."],
-  [284, "Gas", "가스", "Ga-seu", "Do you use a gas stove?", "가스레인지를 사용하시나요?"],
-  [285, "To success", "성공하다", "Seong-gong-ha-da", "I want to success in my career.", "제 직업에서 성공하고 싶어요."],
-  [286, "To fail", "실패하다", "Sil-pae-ha-da", "It is okay to fail sometimes.", "가끔은 실패하다도 괜찮아요."],
-  [287, "To agree", "동의하다", "Dong-ui-ha-da", "I agree with your opinion.", "당신의 의견에 동의해요."],
-  [288, "To oppose / disagree", "반대하다", "Ban-dae-ha-da", "Many people oppose this idea.", "많은 사람들이 이 생각에 반대해요."],
-  [289, "To support / cheer", "응원하다 / 지지하다", "Eung-won-ha-da / Ji-ji-ha-da", "I support your dream.", "당신의 꿈을 응원해요."],
-  [290, "To protect", "보호하다", "Bo-ho-ha-da", "We must protect the forest.", "우리는 숲을 보호해야 해요."],
-  [291, "To save (energy/money)", "아끼다 / 절약하다", "A-kki-da / Jeol-yak-ha-da", "I save money to buy a house.", "집을 사려고 돈을 아끼다."],
-  [292, "To waste", "낭비하다", "Nang-bi-ha-da", "Do not waste your time.", "시간을 낭비하지 마세요."],
-  [293, "To develop / progress", "발전하다", "Bal-jeon-ha-da", "The city is developing rapidly.", "도시가 빠르게 발전해요."],
-  [294, "To research", "연구하다", "Yeon-gu-ha-da", "Scientists research new technology.", "과학자들이 새 기술을 연구해요."],
-  [295, "To inspect / check", "점검하다 / 검사하다", "Jeom-geom-ha-da / Geom-sa-ha-da", "We inspect the machine regularly.", "우리는 기계를 정기적으로 점검해요."],
-  [296, "To collect", "모으다 / 수집하다", "Mo-eu-da / Su-jip-ha-da", "I collect old stamps as a hobby.", "취미로 옛날 우표를 모으다."],
-  [297, "To throw away", "버리다", "Beo-ri-da", "Do not throw away plastic cups.", "플라스틱 컵을 버리지 마세요."],
-  [298, "Because of / Due to", "때문에", "Ttae-mun-e", "I was late because of the traffic.", "교통 체증 때문에 늦었어요."],
-  [299, "Therefore / So", "그러므로 / 따라서", "Geu-reo-muro / Tta-ra-seo", "Therefore, we should start now.", "그러므로 우리는 지금 시작해야 해요."],
-  [300, "Instead of", "대신에", "Dae-sin-e", "Please use a pencil instead of a pen.", "펜 대신에 연필을 사용하세요."]
+  [235, "To be wrong", "틀리다", "Teul-ri-da", "Calculation is wrong.", "계산이 틀렸어요."],
+  [236, "To order food", "주문하다", "Ju-mun-ha-da", "Order food now.", "지금 음식을 주문하고 싶어요."],
+  [237, "To deliver", "배달하다 / 택배", "Bae-dal-ha-da / Taek-bae", "Deliver chicken fast.", "치킨 배달이 정말 빨라요."],
+  [238, "To lose weight", "살을 빼다", "Sal-eul ppae-da", "Exercise to lose weight.", "나는 살을 빼려고 운동해요."],
+  [239, "To gain weight", "살이 찌다", "Sal-i jji-da", "Gained weight on vacation.", "방학 동안 살이 쪘어요."],
+  [240, "To rest", "쉬다", "Swi-da", "Take a rest now.", "이제 좀 쉬어야 해요."],
+  [241, "Table / Desk", "책상 / 탁자", "Chaek-sang / Tak-ja", "Laptop is on desk.", "노트북이 책상 위에 있어요."],
+  [242, "Chair", "의자", "Ui-ja", "Sit on the chair.", "의자에 앉으세요."],
+  [243, "Door", "문", "Mun", "Open the door.", "문을 열어 주세요."],
+  [244, "Window", "창문", "Chang-mun", "See sky through window.", "창문으로 하늘이 보여요."],
+  [245, "Mirror", "거울", "Geo-ul", "Look at mirror.", "거울로 제 얼굴을 봐요."],
+  [246, "Clock / Watch", "시계", "Si-gye", "Clock is slow.", "벽시계가 조금 느려요."],
+  [247, "Luggage", "짐", "Jim", "A lot of luggage.", "오늘은 제 짐이 아주 많아요."],
+  [248, "Box", "상자 / 박스", "Sang-ja / Bak-seu", "Put books in box.", "책을 상자에 넣으세요."],
+  [249, "Document", "서류 / 종이", "Seo-ryu / Jong-i", "Submitted document.", "필요한 서류를 제출했어요."],
+  [250, "News", "뉴스", "Nyu-seu", "Watch morning news.", "나는 아침 뉴스를 봐요."],
+  [251, "Information", "정보", "Jeong-bo", "Good info on site.", "이 사이트에 좋은 정보가 많아요."],
+  [252, "Culture", "문화", "Mun-hwa", "Learn Korean culture.", "한국 문화를 배우고 싶어요."],
+  [253, "Experience", "경험", "Gyeong-heom", "Great experience.", "워킹홀리데이는 좋은 경험이에요."],
+  [254, "To experience", "경험하다", "Gyeong-heom-ha-da", "Experience hanbok.", "한복을 경험해 봐요."],
+  [255, "To participate", "참여하다 / 참석하다", "Cham-yeo-ha-da / Cham-seok-ha-da", "Participate in event.", "많은 사람들이 행사에 참여해요."],
+  [256, "To prepare", "준비하다", "Jun-bi-ha-da", "Prepare travel.", "나는 여행을 준비해요."],
+  [257, "To search", "검색하다", "Geom-saek-ha-da", "Search restaurant.", "맛있는 식당을 검색해요."],
+  [258, "To register", "등록하다 / 신청하다", "Deung-rok-ha-da / Sin-cheong-ha-da", "Sign up for class.", "수업 신청을 어디서 하나요?"],
+  [259, "To cancel", "취소하다", "Chwi-so-ha-da", "Cancel reservation.", "예약을 취소하고 싶어요."],
+  [260, "Interested in", "관심이 있다", "Gwan-sim-i it-da", "Interested in K-pop.", "나는 케이팝에 관심이 있어요."],
+  [261, "Interesting", "흥미롭다", "Heung-mi-rop-da", "Very interesting.", "이 다큐멘터리는 아주 흥미로워요."],
+  [262, "Surprised", "놀라다", "Nol-ra-da", "Surprised by sound.", "갑자기 큰 소리가 나서 놀랐어요."],
+  [263, "Disappointed", "실망하다", "Sil-mang-ha-da", "Disappointed with result.", "결과에 조금 실망했어요."],
+  [264, "Nervous", "긴장하다", "Gin-jang-ha-da", "Nervous before exam.", "시험 보기 전에 너무 긴장돼요."],
+  [265, "Very / Really", "매우 / 아주", "Mae-u / A-ju", "Very hot today.", "오늘 날씨가 아주 더워요."],
+  [266, "A lot / Much", "많이", "Man-i", "Thanks a lot.", "많이 도와주셔서 감사합니다."],
+  [267, "A little", "조금", "Jo-geum", "Give a little water.", "물 조금만 주세요."],
+  [268, "Specially", "특히", "Teuk-hi", "Especially delicious.", "이 요리는 특히 맛있어요."],
+  [269, "Suddenly", "갑자기", "Gap-ja-gi", "Started raining suddenly.", "갑자기 비가 내리기 시작했어요."],
+  [270, "Finally", "드디어 / 마침내", "Deu-di-eo / Ma-chim-nae", "Vacation started!", "드디어 방학이 시작되었어요!"],
+  [271, "Meeting", "회의", "Hoe-ui", "Starts at 2 PM.", "회사 회의는 오후 2시에 시작해요."],
+  [272, "Report", "보고서", "Bo-go-seo", "Writing report now.", "지금 업무 보고서를 쓰고 있어요."],
+  [273, "Success", "성공", "Seong-gong", "Leads to success.", "열심히 노력하면 성공해요."],
+  [274, "Failure", "실패", "Sil-pae", "Do not fear failure.", "실패를 두려워하지 마세요."],
+  [275, "Plan / Schedule", "계획 / 일정", "Gye-hoek / Il-jeong", "Plan for vacation.", "휴가 계획을 세웠어요."],
+  [276, "Environment", "환경", "Hwan-gyeong", "Protect environment.", "우리 환경을 보호해야 해요."],
+  [277, "Nature", "자연", "Ja-yeon", "Love beautiful nature.", "나는 아름다운 자연을 좋아해요."],
+  [278, "Earth", "지구", "Ji-gu", "Save our Earth.", "우리는 지구를 살려야 해요."],
+  [279, "Trash / Waste", "쓰레기", "Sseu-re-gi", "Throw trash here.", "쓰레기는 여기에 버려주세요."],
+  [280, "Recycling", "재활용", "Jae-hwal-yong", "Helps environment.", "재활용은 환경에 도움이 돼요."],
+  [281, "Tool", "도구", "Do-gu", "Tool is useful.", "이 도구는 아주 유용해요."],
+  [282, "Machine", "기계", "Gi-gye", "Machine is working.", "공장 기계가 작동하고 있어요."],
+  [283, "Electricity", "전기", "Jeon-gi", "Turn off electricity.", "전기를 꺼 주세요."],
+  [284, "Gas", "가스", "Ga-seu", "Gas stove.", "가스레인지를 사용하시나요?"],
+  [285, "To succeed", "성공하다", "Seong-gong-ha-da", "Succeed in career.", "제 직업에서 성공하고 싶어요."],
+  [286, "To fail", "실패하다", "Sil-pae-ha-da", "Okay to fail.", "가끔은 실패해도 괜찮아요."],
+  [287, "To agree", "동의하다", "Dong-ui-ha-da", "Agree with opinion.", "당신의 의견에 동의해요."],
+  [288, "To oppose", "반대하다", "Ban-dae-ha-da", "Oppose this idea.", "많은 사람들이 이 생각에 반대해요."],
+  [289, "To cheer / support", "응원하다 / 지지하다", "Eung-won-ha-da / Ji-ji-ha-da", "Support your dream.", "당신의 꿈을 응원해요."],
+  [290, "To protect", "보호하다", "Bo-ho-ha-da", "Protect the forest.", "우리는 숲을 보호해야 해요."],
+  [291, "To save money", "아끼다 / 절약하다", "A-kki-da / Jeol-yak-ha-da", "Save to buy house.", "집을 사려고 돈을 아껴요."],
+  [292, "To waste", "낭비하다", "Nang-bi-ha-da", "Don't waste time.", "시간을 낭비하지 마세요."],
+  [293, "To develop", "발전하다", "Bal-jeon-ha-da", "City is developing.", "도시가 빠르게 발전해요."],
+  [294, "To research", "연구하다", "Yeon-gu-ha-da", "Research tech.", "과학자들이 새 기술을 연구해요."],
+  [295, "To inspect", "점검하다 / 검사하다", "Jeom-geom-ha-da / Geom-sa-ha-da", "Inspect regularly.", "우리는 기계를 정기적으로 점검해요."],
+  [296, "To collect", "모으다 / 수집하다", "Mo-eu-da / Su-jip-ha-da", "Collect old stamps.", "취미로 옛날 우표를 모아요."],
+  [297, "To throw away", "버리다", "Beo-ri-da", "Don't throw cup.", "플라스틱 컵을 버리지 마세요."],
+  [298, "Because of", "때문에", "Ttae-mun-e", "Late because of traffic.", "교통 체증 때문에 늦었어요."],
+  [299, "Therefore", "그러므로 / 따라서", "Geu-reo-muro / Tta-ra-seo", "Start now.", "그러므로 우리는 지금 시작해야 해요."],
+  [300, "Instead of", "대신에", "Dae-sin-e", "Pencil instead of pen.", "펜 대신에 연필을 사용하세요."]
 ];
 
-// 한글 음소 분해 함수 (초성, 중성, 종성)
+// 음소 분해 로직
 const CHO = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
 const JUNG = ["ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ"];
 const JONG = ["","ㄱ","ㄲ","ㄳ","ㄴ","ㄵ","ㄶ","ㄷ","ㄹ","ㄺ","ㄻ","ㄼ","ㄽ","ㄾ","ㄿ","ㅀ","ㅁ","ㅂ","ㅄ","ㅅ","ㅆ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
 
 function decomposeHangul(str) {
-  let result = [];
+  let res = [];
   for (let ch of str) {
     let code = ch.charCodeAt(0);
     if (code >= 0xAC00 && code <= 0xD7A3) {
@@ -492,18 +499,17 @@ function decomposeHangul(str) {
       let jong = uni % 28;
       let s = CHO[c] + "+" + JUNG[j];
       if (jong > 0) s += "+" + JONG[jong];
-      result.push(s);
+      res.push(s);
     } else if (ch !== " ") {
-      result.push(ch);
+      res.push(ch);
     }
   }
-  return result;
+  return res;
 }
 
-// 1페이지당 10개씩 분할하여 30페이지 렌더링
 const container = document.getElementById("workbook-container");
-const wordsPerPage = 10;
-const totalPages = Math.ceil(rawData.length / wordsPerPage); // 30페이지
+const wordsPerPage = 5; // 한 페이지 5단어로 변경
+const totalPages = Math.ceil(rawData.length / wordsPerPage); // 60페이지
 
 for (let p = 0; p < totalPages; p++) {
   const pageDiv = document.createElement("div");
@@ -513,46 +519,39 @@ for (let p = 0; p < totalPages; p++) {
   const endIdx = startIdx + wordsPerPage;
   const pageWords = rawData.slice(startIdx, endIdx);
 
-  // 헤더
-  const startChap = String(startIdx + 1).padStart(2, '0');
-  const endChap = String(Math.min(endIdx, rawData.length)).padStart(2, '0');
-  
+  const startChap = String(startIdx + 1).padStart(3, '0');
+  const endChap = String(Math.min(endIdx, rawData.length)).padStart(3, '0');
+
   let pageHtml = `
     <div>
       <div class="header">
         <div class="header-title">외국인을 위한 한국어 기초 300 어휘 트레이싱 워크북</div>
-        <div class="header-info">단원: Chapter ${startChap} ~ ${endChap} | 페이지 ${p + 1} / ${totalPages}</div>
+        <div class="header-info">Chapter ${startChap} ~ ${endChap} | Page ${p + 1} / ${totalPages}</div>
       </div>
+      <div class="unit-container">
   `;
 
-  // 10개 어휘 카드 렌더링
   pageWords.forEach(item => {
     const [num, eng, kor, pron, exEng, exKor] = item;
     const chapNum = "CH " + String(num).padStart(3, '0');
 
-    // 대표 한글 단어 추출 (슬래시가 있는 경우 첫 단어 기준 분해)
     const primeKor = kor.split('/')[0].trim().replace(/ /g, '');
-    const charList = primeKor.slice(0, 5).split(''); // 최대 5음절까지 열 표시
+    const charList = primeKor.slice(0, 5).split('');
     const decompList = decomposeHangul(primeKor).slice(0, 5);
 
-    // 트레이싱 테이블 헤더 및 셀 생성 (최대 5칸 + 반복 쓰기 칸)
-    let thCells = '';
-    let decompCells = '';
-    let ghostCells = '';
-    let freeCells = '';
-
+    let thCells = '', decompCells = '', ghostCells = '', freeCells = '';
     const maxCols = 5;
+
     for (let c = 0; c < maxCols; c++) {
       if (c < charList.length) {
         thCells += `<th style="width: ${(85/maxCols)}%;">${charList[c]}</th>`;
-        decompCells += `<td style="font-size: 10px; color: #475569; font-weight: 500;">${decompList[c]}</td>`;
+        decompCells += `<td style="font-size: 11px; color: #475569;">${decompList[c]}</td>`;
         ghostCells += `<td class="cross-grid trace-ghost">${charList[c]}</td>`;
         freeCells += `<td class="cross-grid trace-empty"></td>`;
       } else {
-        // 단어 길이가 짧은 경우 복습 트레이싱 칸 배치
         let repeatChar = charList[c % charList.length] || '';
         thCells += `<th style="width: ${(85/maxCols)}%; color: #94a3b8;">복습</th>`;
-        decompCells += `<td style="font-size: 10px; color: #cbd5e1;">-</td>`;
+        decompCells += `<td style="font-size: 11px; color: #cbd5e1;">-</td>`;
         ghostCells += `<td class="cross-grid trace-ghost">${repeatChar}</td>`;
         freeCells += `<td class="cross-grid trace-empty"></td>`;
       }
@@ -573,15 +572,15 @@ for (let p = 0; p < totalPages; p++) {
             ${thCells}
           </tr>
           <tr>
-            <th style="font-size: 8.5px;">자모 분해</th>
+            <th style="font-size: 9px;">자모 분해</th>
             ${decompCells}
           </tr>
           <tr>
-            <th style="font-size: 8.5px;">따라 쓰기</th>
+            <th style="font-size: 9px;">따라 쓰기</th>
             ${ghostCells}
           </tr>
           <tr>
-            <th style="font-size: 8.5px;">자율 쓰기</th>
+            <th style="font-size: 9px;">자율 쓰기</th>
             ${freeCells}
           </tr>
         </table>
@@ -597,9 +596,10 @@ for (let p = 0; p < totalPages; p++) {
   });
 
   pageHtml += `
+      </div>
     </div>
     <div class="footer">
-      <span>Seoul National University Korean Language Study Material</span>
+      <span>외국인을 위한 한국어 기초 어휘 트레이싱 워크북</span>
       <span>${p + 1} / ${totalPages}</span>
     </div>
   `;
