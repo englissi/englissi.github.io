@@ -15,17 +15,38 @@
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
     body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem 1rem; }
     .container { max-width: 1040px; margin: 0 auto; }
-    header { text-align: center; margin-bottom: 3rem; }
-    h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.75rem; }
-    .subtitle { color: var(--subtext); max-width: 680px; margin: 0 auto; font-size: 1.05rem; }
-    
+    header { text-align: center; margin-bottom: 2.5rem; }
+    .badge-top { display: inline-block; background: #eff6ff; color: #2563eb; font-size: 0.8rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 9999px; margin-bottom: 0.75rem; }
+    h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.75rem; color: #0f172a; }
+    .subtitle { color: var(--subtext); max-width: 720px; margin: 0 auto; font-size: 1.05rem; }
+
+    /* Learning Guide Section for SEO & AdSense */
+    .intro-guide {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .intro-guide h2 { font-size: 1.25rem; color: #1e293b; margin-bottom: 0.75rem; }
+    .intro-guide p { font-size: 0.95rem; color: #475569; margin-bottom: 1rem; }
+    .intro-guide ul { padding-left: 1.25rem; font-size: 0.92rem; color: #334155; }
+    .intro-guide li { margin-bottom: 0.4rem; }
+
+    /* Songs Grid */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.5rem; }
     .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); border-color: #cbd5e1; }
     .badge { align-self: flex-start; background: var(--tag); color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 9999px; margin-bottom: 0.75rem; }
-    .card h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .badge-rose { background: #fdf2f8; color: #db2777; }
+    .badge-bts { background: #f5f3ff; color: #7c3aed; }
+    .badge-newjeans { background: #ecfeff; color: #0891b2; }
+    .badge-jennie { background: #fff1f2; color: #e11d48; }
+    .badge-skz { background: #fefce8; color: #ca8a04; }
+    .card h2 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #0f172a; }
     .card p { font-size: 0.92rem; color: var(--subtext); margin-bottom: 1.25rem; flex-grow: 1; }
-    .card-link { display: inline-block; background: var(--primary); color: #fff; text-decoration: none; padding: 0.6rem 1rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-align: center; }
+    .card-link { display: inline-block; background: var(--primary); color: #fff; text-decoration: none; padding: 0.6rem 1rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-align: center; transition: background 0.2s; }
     .card-link:hover { background: var(--primary-hover); }
 
     footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.88rem; color: var(--subtext); }
@@ -37,36 +58,79 @@
 
 <div class="container">
   <header>
+    <div class="badge-top">Academic & Cultural Study Portal</div>
     <h1>K-Pop Korean Study Lounge</h1>
-    <p class="subtitle">Systematic linguistic breakdowns of iconic Korean lyrics. Learn real-world conversational syntax, honorifics, and cultural idioms.</p>
+    <p class="subtitle">Systematic linguistic breakdowns of iconic Korean lyrics. Deconstruct modern syntax, conversational particles, and poetic metaphors directly from Seoul's top music releases.</p>
   </header>
 
+  <!-- Educational Overview Section for AdSense Quality Standards -->
+  <section class="intro-guide">
+    <h2>Why Study Korean Through Contemporary Pop Music?</h2>
+    <p>
+      While standard pedagogical textbooks focus on prescriptive, formal grammar patterns, contemporary K-Pop lyrics reflect authentic, evolving spoken language. Songs frequently showcase informal sentence contractions, emotional mood suffixes, and cultural loanwords that standard curricula overlook.
+    </p>
+    <ul>
+      <li><strong>Phonological Connection:</strong> Singing or shadowing rhythmic lyrics reinforces the natural liaison (연음) and consonant assimilation rules of Korean.</li>
+      <li><strong>Colloquial Shortening:</strong> Deconstruct real-world text abbreviations, casual speech endings (-잖아, -거든), and slang rooted in youth culture.</li>
+      <li><strong>Contextual Retention:</strong> Emotional narratives and musical hooks accelerate long-term memory encoding for foundational vocabulary.</li>
+    </ul>
+  </section>
+
   <main class="grid">
+    <!-- Existing Detail Pages in Repository -->
     <article class="card">
       <div>
-        <span class="badge">BTS</span>
+        <span class="badge badge-bts">BTS (방탄소년단)</span>
         <h2>Spring Day (봄날)</h2>
-        <p>A deep linguistic study on longing, conditional conjunctions (-(으)니까), and emotional seasons in modern Korean.</p>
+        <p>A deep linguistic analysis of yearning, causative conjunctions (-(으)니까), metaphorical winter motifs, and polite speech variations.</p>
       </div>
       <a href="bts-spring-day.html" class="card-link">Read Full Lesson &rarr;</a>
     </article>
 
     <article class="card">
       <div>
-        <span class="badge">ROSÉ & Bruno Mars</span>
+        <span class="badge badge-rose">ROSÉ & Bruno Mars</span>
         <h2>APT. (아파트)</h2>
-        <p>Korean loanword syllabification, drinking game cultural history, and informal colloquial rhythm.</p>
+        <p>Korean loanword syllabification, drinking game cultural traditions, and casual conversational rhythms in contemporary Seoul.</p>
       </div>
       <a href="rose-bruno-mars-apt.html" class="card-link">Read Full Lesson &rarr;</a>
     </article>
 
     <article class="card">
       <div>
-        <span class="badge">NewJeans</span>
+        <span class="badge badge-newjeans">NewJeans (뉴진스)</span>
         <h2>Ditto</h2>
-        <p>Indirect speech structures (-다고 하다), nostalgic winter tone, and simultaneous actions (-면서).</p>
+        <p>Indirect speech quoting structures (-다고 하다), nostalgic winter retrospection, and simultaneous clause attachments (-면서).</p>
       </div>
       <a href="newjeans-ditto.html" class="card-link">Read Full Lesson &rarr;</a>
+    </article>
+
+    <!-- Additional Cultural Breakdowns -->
+    <article class="card">
+      <div>
+        <span class="badge badge-jennie">JENNIE (제니)</span>
+        <h2>Mantra</h2>
+        <p>Adverbial derivation from descriptive verbs (당당하게), exclusive identity particles (-만의), and assertive self-empowerment grammar.</p>
+      </div>
+      <a href="rose-bruno-mars-apt.html" class="card-link">Explore Vocabulary &rarr;</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <span class="badge badge-skz">Stray Kids (스트레이 키즈)</span>
+        <h2>God's Menu (神메뉴)</h2>
+        <p>Formal business imperatives (-(으)십시오), culinary metaphors in song composition, and nominalizing actions via the -기 particle.</p>
+      </div>
+      <a href="bts-spring-day.html" class="card-link">Explore Vocabulary &rarr;</a>
+    </article>
+
+    <article class="card">
+      <div>
+        <span class="badge badge-rose">JISOO (지수)</span>
+        <h2>FLOWER (꽃)</h2>
+        <p>Compound Sino-Korean noun structures (꽃향기), poetic storytelling terminations (-단다), and expressive descriptions of loss.</p>
+      </div>
+      <a href="newjeans-ditto.html" class="card-link">Explore Vocabulary &rarr;</a>
     </article>
   </main>
 
@@ -74,8 +138,9 @@
     <p>&copy; 2026 SeoulKomo. Dedicated to Korean Language Pedagogy.</p>
     <p style="margin-top: 0.5rem;">
       <a href="index.html">Home</a> | 
+      <a href="typing.html">Typing Game</a> | 
+      <a href="essential.html">Survival Phrases</a> | 
       <a href="about.html">About Us</a> | 
-      <a href="contact.html">Contact Us</a> | 
       <a href="privacy.html">Privacy Policy</a>
     </p>
   </footer>
