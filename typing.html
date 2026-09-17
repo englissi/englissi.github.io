@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SeoulKomo - 한글 타자 연습 (Korean Typing Practice)</title>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #f8f9fa; color: #2d3748; margin: 0; padding: 10px; display: flex; justify-content: center; min-height: 100vh; min-height: 100dvh; }
+    .game-wrapper { width: 100%; max-width: 800px; background: #fff; padding: 15px; border-radius: 16px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+
+    .game-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; margin-bottom: 10px; }
+    .game-header h1 { font-size: 1.15rem; color: #1a365d; margin: 0; }
+    .nav-back { text-decoration: none; color: #3182ce; font-weight: bold; font-size: 0.85rem; }
+
+    .dashboard { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px; }
+    .stat-box { background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 6px; padding: 6px 4px; text-align: center; }
+    .stat-title { font-size: 0.65rem; color: #2b6cb0; font-weight: 700; text-transform: uppercase; }
+    .stat-value { font-size: 1.1rem; font-weight: 800; color: #1a365d; margin-top: 2px; }
+    .stat-box.life { background: #fff5f5; border-color: #fed7d7; }
+    .stat-box.life .stat-title { color: #c53030; }
+    .stat-box.life .stat-value { color: #e53e3e; font-size: 0.95rem; }
+
+    /* 게임 캔버스 (모바일 높이 가변 대응) */
+    .game-screen {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      background: #f7fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .ground-line {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 6px;
+      background: #fc8181;
+    }
+
+    .falling-word {
+      position: absolute;
+      background: #ffffff;
+      border: 1.5px solid #3182ce;
+      color: #1a365d;
+      padding: 4px 8px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      white-space: nowrap;
+      transition: top 0.1s linear;
+      cursor: pointer;
+    }
+    .falling-word .meaning {
+      display: block;
+      font-size: 0.65rem;
+      color: #718096;
+      font-weight: normal;
+      text-align: center;
+    }
+
+    .input-zone { display: flex; gap: 8px; }
+    .input-field {
+      flex: 1;
+      padding: 10px 12px;
+      font-size: 1rem;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      outline: none;
+      font-weight: 600;
+    }
+    .input-field:focus { border-color: #3182ce; }
+    .btn-action {
+      background: #3182ce;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-action:hover { background: #2b6cb0; }
+
+    .settings-bar { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; font-size: 0.78rem; color: #4a5568; flex-wrap: wrap; gap: 4px; }
+    .mistake-log-container {
+      margin-top: 10px;
+      border-top: 1px solid #edf2f7;
+      padding-top: 10px;
+    }
+    .mistake-title { font-size: 0.85rem; font-weight: 700; color: #c53030; margin-bottom: 6px; }
+    .mistake-list { display: flex; flex-wrap: wrap; gap: 6px; max-height: 100px; overflow-y: auto; }
+    .mistake-item {
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      color: #9b2c2c;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(26, 32, 44, 0.85);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      text-align: center;
+      padding: 10px;
+    }
+    .overlay h2 { font-size: 1.5rem; margin: 0 0 8px 0; }
+    .overlay p { font-size: 0.9rem; margin: 0 0 15px 0; color: #cbd5e1; }
+
+    @media (max-width: 480px) {
+      .game-screen { height: 260px; }
+      .dashboard { grid-template-columns: repeat(4, 1fr); gap: 4px; }
+      .stat-value { font-size: 0.95rem; }
+      .stat-box.life .stat-value { font-size: 0.75rem; letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="game-wrapper">
+  <div class="game-header">
+    <h1>한글 타자 연습 (300 Words)</h1>
+    <a href="./index.html" class="nav-back">← 메인</a>
+  </div>
+
+  <div class="dashboard">
+    <div class="stat-box">
+      <div class="stat-title">Score</div>
+      <div class="stat-value" id="score">0</div>
+    </div>
+    <div class="stat-box life">
+      <div class="stat-title">Life</div>
+      <div class="stat-value" id="lives">♥♥♥♥♥</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-title">Combo</div>
+      <div class="stat-value" id="combo">0</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-title">Accuracy</div>
+      <div class="stat-value" id="accuracy">100%</div>
+    </div>
+  </div>
+
+  <div class="game-screen" id="screen">
+    <div class="ground-line"></div>
+    <div class="overlay" id="startOverlay">
+      <h2>한글 타자 연습</h2>
+      <p>모바일에서는 완성 즉시 자동 격추됩니다.</p>
+      <button class="btn-action" onclick="startGame()">게임 시작</button>
+    </div>
+  </div>
+
+  <div class="input-zone">
+    <input type="text" id="typeInput" class="input-field" placeholder="터치하여 한글 입력" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" disabled>
+    <button id="btnToggle" class="btn-action" onclick="toggleGame()">시작</button>
+  </div>
+
+  <div class="settings-bar">
+    <label>
+      <input type="checkbox" id="ttsToggle" checked> 발음 읽기 (TTS)
+    </label>
+    <span>* 모바일: 자동 인식 (Enter 생략 가능)</span>
+  </div>
+
+  <div class="mistake-log-container">
+    <div class="mistake-title">📌 놓친 단어 기록 (오답 노트)</div>
+    <div class="mistake-list" id="mistakeList">
+      <span style="color: #a0aec0; font-size: 0.75rem;">놓친 단어가 여기에 기록됩니다.</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 300단어 데이터베이스
+  const WORD_POOL = [
+    { kor: "안녕하세요", eng: "Hello / Goodbye" },
+    { kor: "감사합니다", eng: "Thank you" },
+    { kor: "친구", eng: "Friend" },
+    { kor: "가족", eng: "Family" },
+    { kor: "오늘", eng: "Today" },
+    { kor: "내일", eng: "Tomorrow" },
+    { kor: "시간", eng: "Time" },
+    { kor: "음식", eng: "Food" },
+    { kor: "물", eng: "Water" },
+    { kor: "집", eng: "House / Home" },
+    { kor: "학교", eng: "School" },
+    { kor: "회사", eng: "Company / Office" },
+    { kor: "먹다", eng: "To eat" },
+    { kor: "마시다", eng: "To drink" },
+    { kor: "가다", eng: "To go" },
+    { kor: "오다", eng: "To come" },
+    { kor: "하다", eng: "To do" },
+    { kor: "보다", eng: "To see / watch" },
+    { kor: "사다", eng: "To buy" },
+    { kor: "자다", eng: "To sleep" },
+    { kor: "공부하다", eng: "To study" },
+    { kor: "사랑하다", eng: "To love" },
+    { kor: "좋다", eng: "To be good / nice" },
+    { kor: "많다", eng: "To be many / much" },
+    { kor: "크다", eng: "Big" },
+    { kor: "작다", eng: "Small" },
+    { kor: "재미있다", eng: "Fun / Interesting" },
+    { kor: "맛있어요", eng: "Delicious" },
+    { kor: "어렵다", eng: "Hard / Difficult" },
+    { kor: "쉽다", eng: "Easy" },
+    { kor: "매일", eng: "Every day" },
+    { kor: "지금", eng: "Now" },
+    { kor: "어제", eng: "Yesterday" },
+    { kor: "내년", eng: "Next year" },
+    { kor: "주", eng: "Week" },
+    { kor: "달", eng: "Month" },
+    { kor: "올해", eng: "Year" },
+    { kor: "아침", eng: "Morning" },
+    { kor: "저녁", eng: "Evening" },
+    { kor: "밤", eng: "Night" },
+    { kor: "시장", eng: "Market" },
+    { kor: "마트", eng: "Mart / Store" },
+    { kor: "병원", eng: "Hospital" },
+    { kor: "역", eng: "Station" },
+    { kor: "지하철", eng: "Subway" },
+    { kor: "버스", eng: "Bus" },
+    { kor: "기다리다", eng: "To wait" },
+    { kor: "만나다", eng: "To meet" },
+    { kor: "말하다", eng: "To speak / talk" },
+    { kor: "듣다", eng: "To listen / hear" },
+    { kor: "읽다", eng: "To read" },
+    { kor: "쓰다", eng: "To write" },
+    { kor: "팔다", eng: "To sell" },
+    { kor: "배우다", eng: "To learn" },
+    { kor: "가르치다", eng: "To teach" },
+    { kor: "바쁘다", eng: "To be busy" },
+    { kor: "피곤하다", eng: "To be tired" },
+    { kor: "아프다", eng: "To be sick / hurt" },
+    { kor: "깨끗하다", eng: "To be clean" },
+    { kor: "공항", eng: "Airport" },
+    { kor: "은행", eng: "Bank" },
+    { kor: "약국", eng: "Pharmacy" },
+    { kor: "화장실", eng: "Restroom" },
+    { kor: "식당", eng: "Restaurant" },
+    { kor: "카페", eng: "Cafe" },
+    { kor: "호텔", eng: "Hotel" },
+    { kor: "공원", eng: "Park" },
+    { kor: "가격", eng: "Price / Cost" },
+    { kor: "돈", eng: "Money" },
+    { kor: "카드", eng: "Card" },
+    { kor: "영수증", eng: "Receipt" },
+    { kor: "주다", eng: "To give" },
+    { kor: "받다", eng: "To take / receive" },
+    { kor: "찾다", eng: "To search / find" },
+    { kor: "돕다", eng: "To help" },
+    { kor: "시작하다", eng: "To start" },
+    { kor: "끝나다", eng: "To finish" },
+    { kor: "살다", eng: "To live" },
+    { kor: "생각하다", eng: "To think" },
+    { kor: "알다", eng: "To know" },
+    { kor: "모르다", eng: "To not know" },
+    { kor: "싸다", eng: "To be cheap" },
+    { kor: "비싸다", eng: "To be expensive" },
+    { kor: "덥다", eng: "To be hot" },
+    { kor: "춥다", eng: "To be cold" },
+    { kor: "따뜻하다", eng: "To be warm" },
+    { kor: "시원하다", eng: "To be cool" },
+    { kor: "무겁다", eng: "To be heavy" },
+    { kor: "가볍다", eng: "To be light" },
+    { kor: "봄", eng: "Spring" },
+    { kor: "여름", eng: "Summer" },
+    { kor: "가을", eng: "Autumn / Fall" },
+    { kor: "겨울", eng: "Winter" },
+    { kor: "비", eng: "Rain" },
+    { kor: "눈", eng: "Snow" },
+    { kor: "바람", eng: "Wind" },
+    { kor: "하늘", eng: "Sky" },
+    { kor: "구름", eng: "Cloud" },
+    { kor: "태양", eng: "Sun" },
+    { kor: "좋아하다", eng: "To like" },
+    { kor: "싫어하다", eng: "To hate / dislike" },
+    { kor: "행복하다", eng: "To be happy" },
+    { kor: "슬프다", eng: "To be sad" },
+    { kor: "기쁘다", eng: "To be glad" },
+    { kor: "화나다", eng: "To be angry" },
+    { kor: "가깝다", eng: "To be close" },
+    { kor: "멀다", eng: "To be far" },
+    { kor: "빠르다", eng: "To be fast" },
+    { kor: "느리다", eng: "To be slow" },
+    { kor: "앉다", eng: "To sit" },
+    { kor: "서다", eng: "To stand" },
+    { kor: "걷다", eng: "To walk" },
+    { kor: "달리다", eng: "To run" },
+    { kor: "씻다", eng: "To wash" },
+    { kor: "입다", eng: "To wear (clothes)" },
+    { kor: "신다", eng: "To wear (shoes)" },
+    { kor: "열다", eng: "To open" },
+    { kor: "닫다", eng: "To close" },
+    { kor: "빌리다", eng: "To borrow" },
+    { kor: "앞", eng: "Front" },
+    { kor: "뒤", eng: "Back" },
+    { kor: "안", eng: "Inside" },
+    { kor: "밖", eng: "Outside" },
+    { kor: "왼쪽", eng: "Left" },
+    { kor: "오른쪽", eng: "Right" },
+    { kor: "옆", eng: "Side" },
+    { kor: "머리", eng: "Head" },
+    { kor: "눈", eng: "Eye" },
+    { kor: "손", eng: "Hand" },
+    { kor: "다리", eng: "Leg" },
+    { kor: "몸", eng: "Body" },
+    { kor: "옷", eng: "Clothes" },
+    { kor: "신발", eng: "Shoes" },
+    { kor: "가방", eng: "Bag" },
+    { kor: "모자", eng: "Hat" },
+    { kor: "안경", eng: "Glasses" },
+    { kor: "우산", eng: "Umbrella" },
+    { kor: "전화", eng: "Phone" },
+    { kor: "책", eng: "Book" },
+    { kor: "고르다", eng: "To choose" },
+    { kor: "바꾸다", eng: "To exchange" },
+    { kor: "계산하다", eng: "To pay" },
+    { kor: "준비하다", eng: "To prepare" },
+    { kor: "청소하다", eng: "To clean" },
+    { kor: "운동하다", eng: "To exercise" },
+    { kor: "노래하다", eng: "To sing" },
+    { kor: "요리하다", eng: "To cook" },
+    { kor: "여행하다", eng: "To travel" },
+    { kor: "비행기", eng: "Airplane" },
+    { kor: "택시", eng: "Taxi" },
+    { kor: "기차", eng: "Train" },
+    { kor: "자전거", eng: "Bicycle" },
+    { kor: "표", eng: "Ticket" },
+    { kor: "학생", eng: "Student" },
+    { kor: "선생님", eng: "Teacher" },
+    { kor: "의사", eng: "Doctor" },
+    { kor: "직원", eng: "Employee" },
+    { kor: "취미", eng: "Hobby" },
+    { kor: "영화", eng: "Movie" },
+    { kor: "음악", eng: "Music" },
+    { kor: "게임", eng: "Game" },
+    { kor: "컴퓨터", eng: "Computer" },
+    { kor: "침대", eng: "Bed" },
+    { kor: "운전하다", eng: "To drive" },
+    { kor: "타다", eng: "To ride" },
+    { kor: "내리다", eng: "To get off" },
+    { kor: "확인하다", eng: "To check" },
+    { kor: "걱정하다", eng: "To worry" },
+    { kor: "약속하다", eng: "To promise" },
+    { kor: "보내다", eng: "To send" },
+    { kor: "잃어버리다", eng: "To lose" },
+    { kor: "달다", eng: "Sweet" },
+    { kor: "짜다", eng: "Salty" },
+    { kor: "맵다", eng: "Spicy" },
+    { kor: "시다", eng: "Sour" },
+    { kor: "쓰다", eng: "Bitter" },
+    { kor: "생일", eng: "Birthday" },
+    { kor: "선물", eng: "Gift" },
+    { kor: "파티", eng: "Party" },
+    { kor: "축제", eng: "Festival" },
+    { kor: "휴가", eng: "Vacation" },
+    { kor: "할인", eng: "Discount" },
+    { kor: "디자인", eng: "Design" },
+    { kor: "현금", eng: "Cash" },
+    { kor: "편리하다", eng: "Convenient" },
+    { kor: "중요하다", eng: "Important" },
+    { kor: "유명하다", eng: "Famous" },
+    { kor: "안전하다", eng: "Safe" },
+    { kor: "결정하다", eng: "To decide" },
+    { kor: "친절하다", eng: "Kind" },
+    { kor: "똑똑하다", eng: "Smart" },
+    { kor: "조용하다", eng: "Quiet" },
+    { kor: "시끄럽다", eng: "Noisy" },
+    { kor: "항상", eng: "Always" },
+    { kor: "자주", eng: "Often" },
+    { kor: "가끔", eng: "Sometimes" },
+    { kor: "절대", eng: "Never" },
+    { kor: "함께", eng: "Together" },
+    { kor: "혼자", eng: "Alone" },
+    { kor: "이유", eng: "Reason" },
+    { kor: "방법", eng: "Method" },
+    { kor: "주문하다", eng: "To order" },
+    { kor: "배달하다", eng: "To deliver" },
+    { kor: "쉬다", eng: "To rest" },
+    { kor: "책상", eng: "Desk" },
+    { kor: "의자", eng: "Chair" },
+    { kor: "문", eng: "Door" },
+    { kor: "창문", eng: "Window" },
+    { kor: "시계", eng: "Clock" },
+    { kor: "짐", eng: "Luggage" },
+    { kor: "뉴스", eng: "News" },
+    { kor: "정보", eng: "Info" },
+    { kor: "문화", eng: "Culture" },
+    { kor: "경험", eng: "Experience" },
+    { kor: "검색하다", eng: "To search" },
+    { kor: "취소하다", eng: "To cancel" },
+    { kor: "놀라다", eng: "Surprised" },
+    { kor: "아주", eng: "Very" },
+    { kor: "많이", eng: "A lot" },
+    { kor: "조금", eng: "A little" },
+    { kor: "갑자기", eng: "Suddenly" },
+    { kor: "드디어", eng: "Finally" },
+    { kor: "성공", eng: "Success" },
+    { kor: "실패", eng: "Failure" },
+    { kor: "계획", eng: "Plan" },
+    { kor: "자연", eng: "Nature" },
+    { kor: "지구", eng: "Earth" },
+    { kor: "쓰레기", eng: "Trash" },
+    { kor: "재활용", eng: "Recycling" },
+    { kor: "절약하다", eng: "To save" },
+    { kor: "버리다", eng: "To throw away" },
+    { kor: "때문에", eng: "Because of" },
+    { kor: "그러므로", eng: "Therefore" },
+    { kor: "대신에", eng: "Instead of" }
+  ];
+
+  let score = 0;
+  let lives = 5;
+  let combo = 0;
+  let totalTyped = 0;
+  let successfulTyped = 0;
+  let activeWords = [];
+  let gameInterval = null;
+  let spawnInterval = null;
+  let isRunning = false;
+  let mistakeSet = new Set();
+
+  const screen = document.getElementById('screen');
+  const input = document.getElementById('typeInput');
+  const scoreDisplay = document.getElementById('score');
+  const livesDisplay = document.getElementById('lives');
+  const comboDisplay = document.getElementById('combo');
+  const accuracyDisplay = document.getElementById('accuracy');
+  const mistakeList = document.getElementById('mistakeList');
+  const startOverlay = document.getElementById('startOverlay');
+  const btnToggle = document.getElementById('btnToggle');
+  const ttsToggle = document.getElementById('ttsToggle');
+
+  // Web Audio 사운드 시스템
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  let audioCtx = null;
+
+  function initAudio() {
+    if (!audioCtx) audioCtx = new AudioContext();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+  }
+
+  function playCorrectSound() {
+    initAudio();
+    const notes = [523.25, 659.25, 783.99];
+    notes.forEach((freq, idx) => {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.08);
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime + idx * 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.08 + 0.16);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(audioCtx.currentTime + idx * 0.08);
+      osc.stop(audioCtx.currentTime + idx * 0.08 + 0.16);
+    });
+  }
+
+  function playWrongSound() {
+    initAudio();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(audioCtx.currentTime);
+    osc.stop(audioCtx.currentTime + 0.2);
+  }
+
+  function speakKorean(text) {
+    if (!ttsToggle.checked) return;
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ko-KR';
+      utter.rate = 0.85;
+      window.speechSynthesis.speak(utter);
+    }
+  }
+
+  function startGame() {
+    initAudio();
+    startOverlay.style.display = 'none';
+    resetGame();
+    isRunning = true;
+    input.disabled = false;
+    input.focus();
+    btnToggle.innerText = "일시정지";
+
+    // 모바일 배려: 낙하 속도를 완만하게 설정
+    gameInterval = setInterval(updatePhysics, 60);
+    spawnInterval = setInterval(spawnWord, 3600);
+    spawnWord();
+  }
+
+  function resetGame() {
+    score = 0;
+    lives = 5;
+    combo = 0;
+    totalTyped = 0;
+    successfulTyped = 0;
+    activeWords.forEach(w => w.element.remove());
+    activeWords = [];
+    mistakeSet.clear();
+    mistakeList.innerHTML = '';
+    updateStats();
+  }
+
+  function toggleGame() {
+    if (!isRunning) startGame();
+    else pauseGame();
+  }
+
+  function pauseGame() {
+    isRunning = false;
+    clearInterval(gameInterval);
+    clearInterval(spawnInterval);
+    input.disabled = true;
+    btnToggle.innerText = "계속";
+  }
+
+  function spawnWord() {
+    if (!isRunning) return;
+
+    const randomWord = WORD_POOL[Math.floor(Math.random() * WORD_POOL.length)];
+    const el = document.createElement('div');
+    el.className = 'falling-word';
+    el.innerHTML = `${randomWord.kor}<span class="meaning">${randomWord.eng}</span>`;
+
+    // 모바일 가로폭 기준 안전 여백 설정
+    const maxX = Math.max(80, screen.clientWidth - 110);
+    const posX = Math.floor(Math.random() * (maxX - 15)) + 15;
+
+    el.style.left = posX + 'px';
+    el.style.top = '0px';
+
+    // 단어 터치 시 입력창으로 자동 복사 (모바일 힌트 기능)
+    el.addEventListener('click', () => {
+      input.value = randomWord.kor;
+      input.focus();
+      checkWordMatch(randomWord.kor);
+    });
+
+    screen.appendChild(el);
+
+    activeWords.push({
+      text: randomWord.kor,
+      eng: randomWord.eng,
+      y: 0,
+      element: el
+    });
+  }
+
+  function updatePhysics() {
+    const bottomLimit = screen.clientHeight - 35;
+
+    for (let i = activeWords.length - 1; i >= 0; i--) {
+      const item = activeWords[i];
+      item.y += 1.0; // 모바일 타자 대응 느린 낙하
+      item.element.style.top = item.y + 'px';
+
+      if (item.y >= bottomLimit) {
+        playWrongSound();
+        recordMistake(item.text, item.eng);
+        item.element.remove();
+        activeWords.splice(i, 1);
+        
+        lives--;
+        combo = 0;
+        updateStats();
+
+        if (lives <= 0) {
+          gameOver();
+          return;
+        }
+      }
+    }
+  }
+
+  function recordMistake(kor, eng) {
+    if (!mistakeSet.has(kor)) {
+      mistakeSet.add(kor);
+      if (mistakeSet.size === 1) mistakeList.innerHTML = '';
+      
+      const badge = document.createElement('span');
+      badge.className = 'mistake-item';
+      badge.innerText = `${kor} (${eng})`;
+      mistakeList.appendChild(badge);
+    }
+  }
+
+  // 모바일/PC 공통 매칭 함수
+  function checkWordMatch(targetVal) {
+    let foundIndex = activeWords.findIndex(w => w.text === targetVal);
+
+    if (foundIndex !== -1) {
+      playCorrectSound();
+      const matched = activeWords[foundIndex];
+      speakKorean(matched.text);
+
+      matched.element.remove();
+      activeWords.splice(foundIndex, 1);
+
+      totalTyped++;
+      successfulTyped++;
+      combo++;
+      score += 10 + (combo * 2);
+      input.value = '';
+      updateStats();
+      return true;
+    }
+    return false;
+  }
+
+  // [모바일 핵심] 타이핑 도중 단어가 완성되면 Enter 없이 즉시 매칭
+  input.addEventListener('input', (e) => {
+    const val = input.value.trim();
+    if (!val) return;
+    checkWordMatch(val);
+  });
+
+  // PC Enter 키 대응
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = input.value.trim();
+      if (!val) return;
+
+      if (!checkWordMatch(val)) {
+        playWrongSound();
+        totalTyped++;
+        combo = 0;
+        recordMistake(val, "오타");
+      }
+      input.value = '';
+      updateStats();
+    }
+  });
+
+  function updateStats() {
+    scoreDisplay.innerText = score;
+    livesDisplay.innerText = '♥'.repeat(Math.max(0, lives));
+    comboDisplay.innerText = combo;
+
+    const acc = totalTyped > 0 ? Math.round((successfulTyped / totalTyped) * 100) : 100;
+    accuracyDisplay.innerText = acc + '%';
+  }
+
+  function gameOver() {
+    pauseGame();
+    startOverlay.innerHTML = `
+      <h2>게임 종료 (Game Over)</h2>
+      <p>점수: <strong>${score}점</strong> | 정확도: <strong>${accuracyDisplay.innerText}</strong></p>
+      <button class="btn-action" onclick="startGame()">다시 시작</button>
+    `;
+    startOverlay.style.display = 'flex';
+  }
+</script>
+
+</body>
+</html>
