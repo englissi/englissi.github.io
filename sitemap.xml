@@ -9,6 +9,22 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- TOPIK 시험 종합 가이드 & 시간 배분 전략 -->
+  <url>
+    <loc>https://englissi.github.io/topik-guide.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- TOPIK 필수 문법 패턴 마스터 -->
+  <url>
+    <loc>https://englissi.github.io/topik-essential-grammar.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- 한글 타자 연습 게임 -->
   <url>
     <loc>https://englissi.github.io/typing.html</loc>
@@ -33,7 +49,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- K-Pop 학습 메인 라운지 (신규) -->
+  <!-- K-Pop 학습 메인 라운지 -->
   <url>
     <loc>https://englissi.github.io/kpop.html</loc>
     <lastmod>2026-09-17</lastmod>
@@ -121,7 +137,7 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- 개인정보처리방침 (Privacy Policy - AdSense 필수) -->
+  <!-- 개인정보처리방침 (Privacy Policy) -->
   <url>
     <loc>https://englissi.github.io/privacy.html</loc>
     <lastmod>2026-09-17</lastmod>
