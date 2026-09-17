@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta name="google-adsense-account" content="ca-pub-4043350704003158">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4043350704003158"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4043350704003158" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Essential Websites for Expats in South Korea</title>
+  <title>Essential Korean Resources & Survival Phrases Guide</title>
   <style>
     :root {
       --bg: #f8fafc;
       --card-bg: #ffffff;
       --primary: #2563eb;
+      --primary-hover: #1d4ed8;
       --text: #1e293b;
       --subtext: #64748b;
       --border: #e2e8f0;
@@ -28,206 +28,763 @@
     .container {
       max-width: 900px;
       margin: 0 auto;
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
     header {
       text-align: center;
       margin-bottom: 2.5rem;
     }
     h1 {
+      font-size: 1.85rem;
       margin-bottom: 0.5rem;
       color: #0f172a;
     }
+    .intro-text {
+      color: var(--subtext);
+      font-size: 1rem;
+      max-width: 760px;
+      margin: 0 auto 1.5rem auto;
+    }
+    .guide-box {
+      background: var(--tag-bg);
+      border: 1px solid #bfdbfe;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: #1e40af;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
     .section-title {
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 700;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
       border-bottom: 2px solid var(--border);
       padding-bottom: 0.5rem;
+      color: #0f172a;
     }
-    .grid {
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--subtext);
+      margin-bottom: 1.25rem;
+    }
+    /* Essential Link Cards */
+    .link-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
+      margin-bottom: 2rem;
     }
-    .card {
-      background: var(--card-bg);
+    .link-card {
+      background: #f8fafc;
       border: 1px solid var(--border);
-      border-radius: 8px;
       padding: 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s ease, border-color 0.15s ease;
     }
-    .card:hover {
+    .link-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-color: var(--primary);
     }
-    .card h3 {
-      margin: 0 0 0.5rem 0;
+    .link-title {
+      font-weight: 700;
       font-size: 1.05rem;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
     }
-    .card p {
-      margin: 0 0 1rem 0;
+    .link-desc {
+      font-size: 0.88rem;
+      color: var(--subtext);
+    }
+    /* Phrase List & Audio Cards */
+    .phrase-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .phrase-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .phrase-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+    .phrase-content {
+      flex: 1;
+      padding-right: 1rem;
+    }
+    .korean-line {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .romanized {
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-right: 0.5rem;
+      display: inline-block;
+    }
+    .meaning {
       font-size: 0.9rem;
       color: var(--subtext);
     }
-    .card a {
-      align-self: flex-start;
+    .tts-btn {
+      background-color: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+      transition: background-color 0.2s;
+    }
+    .tts-btn:hover {
+      background-color: var(--primary-hover);
+    }
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--subtext);
+    }
+    footer a {
       color: var(--primary);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
+      margin: 0 0.5rem;
     }
-    .card a:hover {
+    footer a:hover {
       text-decoration: underline;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
-      background-color: var(--tag-bg);
-      color: var(--primary);
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
-      width: fit-content;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <h1>Essential Websites for Living in South Korea</h1>
-      <p>A curated list of official government portals, living utilities, and emergency services.</p>
-    </header>
-
-    <!-- Category 1: Immigration & Government -->
-    <div class="section-title">Immigration & Administration</div>
-    <div class="grid">
-      <div class="card">
-        <div>
-          <span class="badge">Official Admin</span>
-          <h3>Hi Korea (하이코리아)</h3>
-          <p>E-government portal for foreigners: visa extensions, Alien Registration Card (ARC) appointments, and address changes.</p>
-        </div>
-        <a href="https://www.hikorea.go.kr" target="_blank" rel="noopener">hikorea.go.kr &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <span class="badge">Information</span>
-          <h3>Danuri (다누리)</h3>
-          <p>Multicultural family and expat settlement support portal offering integration manuals and legal guidance in 13 languages.</p>
-        </div>
-        <a href="https://www.liveinkorea.kr" target="_blank" rel="noopener">liveinkorea.kr &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <span class="badge">Labor & Rights</span>
-          <h3>Foreigner Labor Support (외국인력상담)</h3>
-          <p>Consulting and dispute mediation services for employment permits, labor rights, and workplace safety.</p>
-        </div>
-        <a href="https://www.eps.go.kr" target="_blank" rel="noopener">eps.go.kr &rarr;</a>
-      </div>
+<div class="container">
+  <header>
+    <h1>Essential Korean Resources & Survival Phrases</h1>
+    <p class="intro-text">
+      The complete toolkit for international visitors, students, and travelers in South Korea: verified official mobile resources alongside 52 essential spoken survival expressions with native pronunciation audio.
+    </p>
+    <div class="guide-box">
+      💡 <strong>Quick Audio Guide:</strong> Click any <strong>🔊 Listen</strong> button to hear clear Korean speech synthesis delivered at 0.85x speed. In Korean society, ending sentences with <em>"-yo"</em> or <em>"-juseyo"</em> guarantees polite, respectful communication.
     </div>
+  </header>
 
-    <!-- Category 2: Healthcare & Social Security -->
-    <div class="section-title">Healthcare & Social Security</div>
-    <div class="grid">
-      <div class="card">
-        <div>
-          <span class="badge">Insurance</span>
-          <h3>National Health Insurance (NHIS)</h3>
-          <p>Mandatory health insurance verification, monthly contribution payment details, and clinic eligibility info.</p>
-        </div>
-        <a href="https://www.nhis.or.kr" target="_blank" rel="noopener">nhis.or.kr &rarr;</a>
+  <!-- Part 0: Verified Online Resources & Services -->
+  <div class="section-title">📌 Essential Travel & Living Tools (유용한 공식 사이트)</div>
+  <div class="section-desc">Reliable navigation apps, high-speed rail booking portals, AI translation tools, and official 24/7 multilingual tourism support lines.</div>
+  
+  <div class="link-grid">
+    <a href="https://map.naver.com" target="_blank" rel="noopener noreferrer" class="link-card">
+      <div>
+        <div class="link-title">Naver Map (네이버지도) ↗</div>
+        <div class="link-desc">The #1 navigation and transit app in Korea with detailed English bus schedules and walking routes.</div>
       </div>
-
-      <div class="card">
-        <div>
-          <span class="badge">Medical Search</span>
-          <h3>Emergency Medical Portal (E-Gen)</h3>
-          <p>Real-time directory for nearby open hospitals, night-duty pharmacies, and emergency medical services.</p>
-        </div>
-        <a href="https://www.e-gen.or.kr" target="_blank" rel="noopener">e-gen.or.kr &rarr;</a>
+    </a>
+    <a href="https://papago.naver.com" target="_blank" rel="noopener noreferrer" class="link-card">
+      <div>
+        <div class="link-title">Naver Papago (파파고) ↗</div>
+        <div class="link-desc">Highly accurate Korean contextual translation with real-time photo/menu OCR recognition.</div>
       </div>
-
-      <div class="card">
-        <div>
-          <span class="badge">National Pension</span>
-          <h3>National Pension Service (NPS)</h3>
-          <p>Check contribution history, bilateral social security treaties, and lump-sum refund eligibility upon departing Korea.</p>
-        </div>
-        <a href="https://www.nps.or.kr" target="_blank" rel="noopener">nps.or.kr &rarr;</a>
+    </a>
+    <a href="https://www.letskorail.com" target="_blank" rel="noopener noreferrer" class="link-card">
+      <div>
+        <div class="link-title">Korail Official Booking (코레일) ↗</div>
+        <div class="link-desc">Official English reservation portal for KTX high-speed trains between Seoul, Busan, and Gangneung.</div>
       </div>
-    </div>
-
-    <!-- Category 3: Daily Life & Tourism -->
-    <div class="section-title">Daily Life & Transit</div>
-    <div class="grid">
-      <div class="card">
-        <div>
-          <span class="badge">City Info</span>
-          <h3>Seoul Global Center</h3>
-          <p>Comprehensive assistance for Seoul residents: free legal counseling, daily life problem resolution, and Korean classes.</p>
-        </div>
-        <a href="https://global.seoul.go.kr" target="_blank" rel="noopener">global.seoul.go.kr &rarr;</a>
+    </a>
+    <a href="https://english.visitkorea.or.kr" target="_blank" rel="noopener noreferrer" class="link-card">
+      <div>
+        <div class="link-title">VisitKorea & 1330 Helpline ↗</div>
+        <div class="link-desc">Official 24/7 free multilingual travel helpline, tourist police contact, and festival updates.</div>
       </div>
-
-      <div class="card">
-        <div>
-          <span class="badge">Transit</span>
-          <h3>Korail (Let's Korail)</h3>
-          <p>Official nationwide rail booking system (KTX, ITX, Mugunghwa) with dedicated multi-language booking workflows.</p>
-        </div>
-        <a href="https://www.letskorail.com" target="_blank" rel="noopener">letskorail.com &rarr;</a>
+    </a>
+    <a href="https://www.airport.kr" target="_blank" rel="noopener noreferrer" class="link-card">
+      <div>
+        <div class="link-title">Incheon Airport Guide (인천공항) ↗</div>
+        <div class="link-desc">Terminal 1 & 2 maps, flight arrival trackers, AREX express train passes, and SIM/eSIM pickup points.</div>
       </div>
-
-      <div class="card">
-        <div>
-          <span class="badge">Tourism & Culture</span>
-          <h3>Visit Korea (KTO)</h3>
-          <p>Official Korea Tourism Organization portal featuring travel spots, festival dates, regional guides, and discount passes.</p>
-        </div>
-        <a href="https://english.visitkorea.or.kr" target="_blank" rel="noopener">visitkorea.or.kr &rarr;</a>
+    </a>
+    <a href="https://www.baemin.com" target="_blank" rel="noopener noreferrer" class="link-card">
+      <div>
+        <div class="link-title">Baedal Minjok (배달의민족) ↗</div>
+        <div class="link-desc">South Korea's leading food delivery and grocery platform for local cuisine exploration.</div>
       </div>
-    </div>
-
-    <!-- Category 4: Emergency Contacts -->
-    <div class="section-title">Key Hotlines & Helplines</div>
-    <div class="grid">
-      <div class="card">
-        <div>
-          <span class="badge">Hotline</span>
-          <h3>Immigration Contact Center (1345)</h3>
-          <p>Multilingual telephone counseling for visas, residency status, and daily civil administrative procedures.</p>
-        </div>
-        <a href="tel:1345">Call 1345 &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <span class="badge">Hotline</span>
-          <h3>1330 Korea Travel & Translation</h3>
-          <p>24/7 emergency interpretation, travel assistance, and taxi/transit support managed by KTO.</p>
-        </div>
-        <a href="tel:1330">Call 1330 &rarr;</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <span class="badge">Emergency</span>
-          <h3>Police (112) & Fire/Ambulance (119)</h3>
-          <p>Core emergency lines with automated connection to third-party multi-language translation desks.</p>
-        </div>
-        <a href="tel:112">Call 112 / 119 &rarr;</a>
-      </div>
-    </div>
-
+    </a>
   </div>
+
+  <!-- 1. Kiosk & Restaurant -->
+  <div class="section-title">1. Automated Kiosks, Cafes & Dining (키오스크 & 식당)</div>
+  <div class="section-desc">Touchscreen kiosks across Korea require clear operational vocabulary for dine-in choices, spice level adjustments, item subtractions, and payment steps.</div>
+  <div class="phrase-list">
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">먹고 갈게요.</span>
+        <span class="romanized">(meok-go gal-ge-yo)</span>
+        <span class="meaning">For here / Dining in.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('먹고 갈게요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">포장해 주세요.</span>
+        <span class="romanized">(po-jang-hae ju-se-yo)</span>
+        <span class="meaning">To go / Takeout, please.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('포장해 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">덜 맵게 해주실 수 있나요?</span>
+        <span class="romanized">(deol maep-ge hae-ju-sil su in-na-yo?)</span>
+        <span class="meaning">Could you please make it less spicy?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('덜 맵게 해주실 수 있나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">안 맵게 해주세요.</span>
+        <span class="romanized">(an maep-ge hae-ju-se-yo)</span>
+        <span class="meaning">Please make it non-spicy.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('안 맵게 해주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">물은 셀프인가요?</span>
+        <span class="romanized">(mul-eun sel-peu-in-ga-yo?)</span>
+        <span class="meaning">Is water self-service?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('물은 셀프인가요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">앞치마 하나만 주세요.</span>
+        <span class="romanized">(ap-chi-ma ha-na-man ju-se-yo)</span>
+        <span class="meaning">Could I please get an apron?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('앞치마 하나만 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">반찬 좀 더 주실 수 있나요?</span>
+        <span class="romanized">(ban-chan jom deor ju-sil su in-na-yo?)</span>
+        <span class="meaning">Could we get some more side dishes?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('반찬 좀 더 주실 수 있나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">따뜻한 아메리카노 한 잔 주세요.</span>
+        <span class="romanized">(tta-tteut-han a-me-ri-ka-no han jan ju-se-yo)</span>
+        <span class="meaning">One hot Americano, please.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('따뜻한 아메리카노 한 잔 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">아이스로 변경해 주세요.</span>
+        <span class="romanized">(a-i-seu-ro byeon-gyeong-hae ju-se-yo)</span>
+        <span class="meaning">Please change it to iced.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('아이스로 변경해 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">디카페인으로 가능한가요?</span>
+        <span class="romanized">(di-ka-pe-in-eu-ro ga-neung-han-ga-yo?)</span>
+        <span class="meaning">Is decaf option available?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('디카페인으로 가능한가요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">텀블러 할인 되나요?</span>
+        <span class="romanized">(teom-bleo hal-in doe-na-yo?)</span>
+        <span class="meaning">Do you offer a tumbler personal cup discount?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('텀블러 할인 되나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">영수증은 안 주셔도 돼요.</span>
+        <span class="romanized">(yeong-su-jeung-eun an ju-syeo-do dwae-yo)</span>
+        <span class="meaning">I don't need a receipt, thank you.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('영수증은 안 주셔도 돼요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">따로 결제할 수 있을까요?</span>
+        <span class="romanized">(tta-ro gyeol-je-hal su iss-eul-kka-yo?)</span>
+        <span class="meaning">Can we split the bill / pay separately?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('따로 결제할 수 있을까요?')">🔊 Listen</button>
+    </div>
+  </div>
+
+  <!-- 2. Transportation & Transit -->
+  <div class="section-title">2. Taxis, Subways & Directions (교통 & 길 찾기)</div>
+  <div class="section-desc">Short, direct imperatives and address signposts for taxi drivers, bus operators, and asking directions around train stations.</div>
+  <div class="phrase-list">
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">서울역으로 가주세요.</span>
+        <span class="romanized">(seo-ul-yeog-eu-ro ga-ju-se-yo)</span>
+        <span class="meaning">Please take me to Seoul Station.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('서울역으로 가주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">인천공항 제1터미널로 가주세요.</span>
+        <span class="romanized">(in-cheon-gong-hang je-il-teo-mi-neol-lo ga-ju-se-yo)</span>
+        <span class="meaning">Please take me to Incheon Airport Terminal 1.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('인천공항 제1터미널로 가주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">여기서 내려주세요.</span>
+        <span class="romanized">(yeo-gi-seo nae-ryeo-ju-se-yo)</span>
+        <span class="meaning">Please pull over and let me off here.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('여기서 내려주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">신호등 지나서 세워주세요.</span>
+        <span class="romanized">(sin-ho-deung ji-na-seo se-wo-ju-se-yo)</span>
+        <span class="meaning">Please stop right past the traffic light.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('신호등 지나서 세워주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">트렁크 좀 열어주실 수 있나요?</span>
+        <span class="romanized">(teu-reong-keu jom yeol-eo-ju-sil su in-na-yo?)</span>
+        <span class="meaning">Could you please open the trunk?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('트렁크 좀 열어주실 수 있나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">티머니 카드로 결제할게요.</span>
+        <span class="romanized">(T-money ka-deu-ro gyeol-je-hal-ge-yo)</span>
+        <span class="meaning">I will pay with my T-money transit card.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('티머니 카드로 결제할게요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">이 버스 명동 가나요?</span>
+        <span class="romanized">(i beo-seu myeong-dong ga-na-yo?)</span>
+        <span class="meaning">Does this bus go to Myeongdong?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('이 버스 명동 가나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">2호선 어디서 타나요?</span>
+        <span class="romanized">(i-ho-seon eo-di-seo ta-na-yo?)</span>
+        <span class="meaning">Where can I board Subway Line 2?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('2호선 어디서 타나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">몇 번 출구로 나가야 해요?</span>
+        <span class="romanized">(myeot beon chul-gu-ro na-ga-ya hae-yo?)</span>
+        <span class="meaning">Which exit number should I head toward?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('몇 번 출구로 나가야 해요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">교통카드 충전은 어디서 하나요?</span>
+        <span class="romanized">(gyo-tong-ka-deu chung-jeon-eun eo-di-seo ha-na-yo?)</span>
+        <span class="meaning">Where can I reload my transportation card?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('교통카드 충전은 어디서 하나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">화장실이 어디에 있나요?</span>
+        <span class="romanized">(hwa-jang-sil-i eo-di-e in-na-yo?)</span>
+        <span class="meaning">Where is the restroom located?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('화장실이 어디에 있나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">걸어서 얼마나 걸리나요?</span>
+        <span class="romanized">(geol-eo-seo eol-ma-na geol-li-na-yo?)</span>
+        <span class="meaning">How long does it take on foot?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('걸어서 얼마나 걸리나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">반대 방향으로 잘못 탔어요.</span>
+        <span class="romanized">(ban-dae bang-hyang-eu-ro jal-mot tat-seo-yo)</span>
+        <span class="meaning">I boarded the train going in the wrong opposite direction.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('반대 방향으로 잘못 탔어요.')">🔊 Listen</button>
+    </div>
+  </div>
+
+  <!-- 3. Allergies & Dietary Preferences -->
+  <div class="section-title">3. Allergies & Dietary Restrictions (알레르기 & 식이요구)</div>
+  <div class="section-desc">Clear, unequivocal phrasing to inform cooks, servers, and staff about severe medical food sensitivities or personal dietary requirements.</div>
+  <div class="phrase-list">
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">땅콩 알레르기가 있어요.</span>
+        <span class="romanized">(ttang-kong al-le-reu-gi-ga it-seo-yo)</span>
+        <span class="meaning">I have a severe peanut allergy.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('땅콩 알레르기가 있어요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">갑각류 알레르기가 심해요.</span>
+        <span class="romanized">(gap-gak-ryu al-le-reu-gi-ga sim-hae-yo)</span>
+        <span class="meaning">I have a severe shellfish / crustacean allergy.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('갑각류 알레르기가 심해요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">유제품을 전혀 못 먹어요.</span>
+        <span class="romanized">(yu-je-pum-eul jeon-hyeo mot meog-eo-yo)</span>
+        <span class="meaning">I cannot consume dairy products at all.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('유제품을 전혀 못 먹어요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">오이 빼고 요리해 주세요.</span>
+        <span class="romanized">(o-i bbae-go yo-ri-hae ju-se-yo)</span>
+        <span class="meaning">Please cook this without cucumber.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('오이 빼고 요리해 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">돼지고기 빼주실 수 있나요?</span>
+        <span class="romanized">(dwae-ji-go-gi bbae-ju-sil su in-na-yo?)</span>
+        <span class="meaning">Can you please exclude pork?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('돼지고기 빼주실 수 있나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">저는 채식주의자(비건)예요.</span>
+        <span class="romanized">(jeo-neun chae-sik-ju-ui-ja bi-geon-ye-yo)</span>
+        <span class="meaning">I am a vegetarian (vegan).</span>
+      </div>
+      <button class="tts-btn" onclick="speak('저는 채식주의자예요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">육수가 고기 육수인가요?</span>
+        <span class="romanized">(yuk-su-ga go-gi yuk-su-in-ga-yo?)</span>
+        <span class="meaning">Is the broth made from meat broth?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('육수가 고기 육수인가요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">글루텐 프리 메뉴가 있나요?</span>
+        <span class="romanized">(geul-lu-ten peu-ri me-nyu-ga in-na-yo?)</span>
+        <span class="meaning">Do you offer any gluten-free menu items?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('글루텐 프리 메뉴가 있나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">계란이 들어가나요?</span>
+        <span class="romanized">(gye-ran-i deul-eo-ga-na-yo?)</span>
+        <span class="meaning">Does this recipe contain egg?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('계란이 들어가나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">견과류는 다 빼주세요.</span>
+        <span class="romanized">(gyeon-gwa-ryu-neun da bbae-ju-se-yo)</span>
+        <span class="meaning">Please exclude all types of tree nuts.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('견과류는 다 빼주세요.')">🔊 Listen</button>
+    </div>
+  </div>
+
+  <!-- 4. Pharmacy & Healthcare -->
+  <div class="section-title">4. Pharmacy, Clinics & Medical Symptoms (약국 & 병원)</div>
+  <div class="section-desc">Over-the-counter medicine requests and accurate symptom descriptions when visiting Korean community pharmacies (약국).</div>
+  <div class="phrase-list">
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">두통약 있나요?</span>
+        <span class="romanized">(du-tong-yak in-na-yo?)</span>
+        <span class="meaning">Do you have headache pain relief?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('두통약 있나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">종합 감기약 하나 주세요.</span>
+        <span class="romanized">(jong-hap gam-gi-yak ha-na ju-se-yo)</span>
+        <span class="meaning">One pack of multi-symptom cold medicine, please.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('종합 감기약 하나 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">속이 쓰리고 소화가 안 돼요.</span>
+        <span class="romanized">(sog-i sseu-ri-go so-hwa-ga an dwae-yo)</span>
+        <span class="meaning">I have heartburn and indigestion.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('속이 쓰리고 소화가 안 돼요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">열이 나고 목이 아파요.</span>
+        <span class="romanized">(yeol-i na-go mog-i a-pa-yo)</span>
+        <span class="meaning">I have a fever and a sore throat.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('열이 나고 목이 아파요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">배탈이 나서 설사를 해요.</span>
+        <span class="romanized">(bae-tal-i na-seo seol-sa-reul hae-yo)</span>
+        <span class="meaning">I have an upset stomach and diarrhea.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('배탈이 나서 설사를 해요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">하루에 몇 번 먹어야 하나요?</span>
+        <span class="romanized">(ha-ru-e myeot beon meog-eo-ya ha-na-yo?)</span>
+        <span class="meaning">How many times a day should I take this?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('하루에 몇 번 먹어야 하나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">식사 후에 먹나요?</span>
+        <span class="romanized">(sik-sa hu-e meog-na-yo?)</span>
+        <span class="meaning">Should I take this after meals?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('식사 후에 먹나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">졸리지 않는 약으로 주세요.</span>
+        <span class="romanized">(jol-li-ji an-neun yag-eu-ro ju-se-yo)</span>
+        <span class="meaning">Please give me non-drowsy medicine.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('졸리지 않는 약으로 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">방수 밴드와 소독약 주세요.</span>
+        <span class="romanized">(bang-su baen-deu-wa so-dok-yak ju-se-yo)</span>
+        <span class="meaning">Please give me waterproof bandages and antiseptic.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('방수 밴드와 소독약 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">파스 한 통 주세요.</span>
+        <span class="romanized">(pa-seu han tong ju-se-yo)</span>
+        <span class="meaning">One pack of pain relief patches (pas), please.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('파스 한 통 주세요.')">🔊 Listen</button>
+    </div>
+  </div>
+
+  <!-- 5. Shopping, Mart & Convenience Stores -->
+  <div class="section-title">5. Convenience Stores, Marts & Shopping (편의점 & 마트)</div>
+  <div class="section-desc">Quick daily phrases for requesting shopping bags, using points, checking sizes, and returning retail goods.</div>
+  <div class="phrase-list">
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">종량제 봉투 한 장 주세요.</span>
+        <span class="romanized">(jong-ryang-je bong-tu han jang ju-se-yo)</span>
+        <span class="meaning">Please give me one standard municipal trash/waste bag.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('종량제 봉투 한 장 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">쇼핑백 필요 없어요.</span>
+        <span class="romanized">(syo-ping-baek pil-yo eop-seo-yo)</span>
+        <span class="meaning">I do not need a shopping bag.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('쇼핑백 필요 없어요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">이거 다른 색상 있나요?</span>
+        <span class="romanized">(i-geo da-reun saek-sang in-na-yo?)</span>
+        <span class="meaning">Do you have this in a different color?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('이거 다른 색상 있나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">입어봐도 되나요?</span>
+        <span class="romanized">(ib-eo-bwa-do dwae-na-yo?)</span>
+        <span class="meaning">May I try this on in the fitting room?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('입어봐도 되나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">택스 프리(Tax Free) 가능한가요?</span>
+        <span class="romanized">(taek-seu peu-ri ga-neung-han-ga-yo?)</span>
+        <span class="meaning">Can I receive immediate tax refund (Tax Free)?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('택스 프리 가능한가요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">교환이나 환불 되나요?</span>
+        <span class="romanized">(gyo-hwan-i-na hwan-bul doe-na-yo?)</span>
+        <span class="meaning">Can I exchange or get a refund for this?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('교환이나 환불 되나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">해외 카드 결제 가능한가요?</span>
+        <span class="romanized">(hae-oe ka-deu gyeol-je ga-neung-han-ga-yo?)</span>
+        <span class="meaning">Do you accept international credit cards?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('해외 카드 결제 가능한가요?')">🔊 Listen</button>
+    </div>
+  </div>
+
+  <!-- 6. Emergency & Urgent Help -->
+  <div class="section-title">6. Urgent Help & Emergency Hotlines (긴급 상황 & 도움 요청)</div>
+  <div class="section-desc">Critical expressions for sudden emergencies, asking bystanders for assistance, or requesting English-speaking personnel.</div>
+  <div class="phrase-list">
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">도와주세요!</span>
+        <span class="romanized">(do-wa-ju-se-yo!)</span>
+        <span class="meaning">Please help me!</span>
+      </div>
+      <button class="tts-btn" onclick="speak('도와주세요!')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">경찰을 불러주세요.</span>
+        <span class="romanized">(gyeong-chal-eul bul-leo-ju-se-yo)</span>
+        <span class="meaning">Please call the police (Dial 112).</span>
+      </div>
+      <button class="tts-btn" onclick="speak('경찰을 불러주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">구급차를 불러주세요.</span>
+        <span class="romanized">(gu-geup-cha-reul bul-leo-ju-se-yo)</span>
+        <span class="meaning">Please call an ambulance (Dial 119).</span>
+      </div>
+      <button class="tts-btn" onclick="speak('구급차를 불러주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">지갑을 잃어버렸어요.</span>
+        <span class="romanized">(ji-gab-eul il-eo-beo-ryeot-seo-yo)</span>
+        <span class="meaning">I lost my wallet.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('지갑을 잃어버렸어요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">영어로 말씀해 주실 수 있나요?</span>
+        <span class="romanized">(yeong-eo-ro mal-ssmeum-hae ju-sil su in-na-yo?)</span>
+        <span class="meaning">Could you please speak in English?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('영어로 말씀해 주실 수 있나요?')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">한국어를 조금밖에 못해요.</span>
+        <span class="romanized">(han-guk-eo-reul jo-geum-bak-e mot-hae-yo)</span>
+        <span class="meaning">I can only speak a little bit of Korean.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('한국어를 조금밖에 못해요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">천천히 다시 말씀해 주세요.</span>
+        <span class="romanized">(cheon-cheon-hi da-si mal-ssmeum-hae ju-se-yo)</span>
+        <span class="meaning">Could you please say that again slowly?</span>
+      </div>
+      <button class="tts-btn" onclick="speak('천천히 다시 말씀해 주세요.')">🔊 Listen</button>
+    </div>
+    <div class="phrase-card">
+      <div class="phrase-content">
+        <span class="korean-line">잠시만 기다려 주세요.</span>
+        <span class="romanized">(jam-si-man gi-da-ryeo ju-se-yo)</span>
+        <span class="meaning">Please wait just a moment.</span>
+      </div>
+      <button class="tts-btn" onclick="speak('잠시만 기다려 주세요.')">🔊 Listen</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Korean Survival Guide. All rights reserved.</p>
+    <p>
+      <a href="index.html">Home</a> | 
+      <a href="about.html">About</a> | 
+      <a href="privacy.html">Privacy Policy</a>
+    </p>
+  </footer>
+</div>
+
+<script>
+  function speak(text) {
+    if (!('speechSynthesis' in window)) {
+      alert('Your browser does not support speech synthesis.');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ko-KR';
+    utterance.rate = 0.85;
+    window.speechSynthesis.speak(utterance);
+  }
+</script>
 
 </body>
 </html>
