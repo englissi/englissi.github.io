@@ -32,9 +32,32 @@
     h3 { font-size: 1.15rem; color: #334155; margin: 1.25rem 0 0.5rem; }
     p { margin-bottom: 1.2rem; color: #334155; }
     
-    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
-    th, td { border: 1px solid var(--border); padding: 0.75rem 1rem; text-align: left; }
-    th { background: #f1f5f9; font-weight: 700; }
+    /* 모바일 반응형 가로 스크롤 컨테이너 */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      min-width: 520px;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 0.9rem;
+      text-align: left;
+      word-break: keep-all;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      white-space: nowrap;
+    }
 
     .example-box { background: #f8fafc; border: 1px solid var(--border); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.2rem; }
     .example-item { margin-bottom: 0.75rem; }
@@ -100,37 +123,39 @@
   </ul>
 
   <h2>4. Synonyms, Related Expressions & Collocations</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Korean Expression</th>
-        <th>Literal Meaning</th>
-        <th>Nuance & Practical Usage</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>당당하게</strong></td>
-        <td>Dignifiedly / Confidently</td>
-        <td>Assertive, head held high, untroubled by criticism.</td>
-      </tr>
-      <tr>
-        <td><strong>자신 있게</strong></td>
-        <td>With self-confidence</td>
-        <td>Refers to belief in one's personal skills or performance.</td>
-      </tr>
-      <tr>
-        <td><strong>거침없이</strong></td>
-        <td>Without hesitation</td>
-        <td>Acting straight ahead without stopping or second-guessing.</td>
-      </tr>
-      <tr>
-        <td><strong>소심하게</strong> (Antonym)</td>
-        <td>Timidly / Hesitantly</td>
-        <td>Withdrawn, cautious, overly worried about others' reactions.</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Korean Expression</th>
+          <th>Literal Meaning</th>
+          <th>Nuance & Practical Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>당당하게</strong></td>
+          <td>Dignifiedly / Confidently</td>
+          <td>Assertive, head held high, untroubled by criticism.</td>
+        </tr>
+        <tr>
+          <td><strong>자신 있게</strong></td>
+          <td>With self-confidence</td>
+          <td>Refers to belief in one's personal skills or performance.</td>
+        </tr>
+        <tr>
+          <td><strong>거침없이</strong></td>
+          <td>Without hesitation</td>
+          <td>Acting straight ahead without stopping or second-guessing.</td>
+        </tr>
+        <tr>
+          <td><strong>소심하게</strong> (Antonym)</td>
+          <td>Timidly / Hesitantly</td>
+          <td>Withdrawn, cautious, overly worried about others' reactions.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <h2>5. Practical Conversational Dialogues</h2>
   <div class="example-box">
