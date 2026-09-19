@@ -152,7 +152,121 @@
       </tbody>
     </table>
   </div>
+<!-- 4-1. Interactive Shadowing & Pronunciation Practice Widget -->
+  <h2>4-1. Interactive Pronunciation & Shadowing Studio</h2>
+  <p>
+    Practice your pronunciation right in your browser! Click the microphone button, listen to the target sentence, and repeat it out loud to check your accuracy in real-time.
+  </p>
+  
+  <div class="example-box" style="background: #ffffff; border: 2px solid var(--primary); text-align: center; padding: 1.5rem;">
+    <div id="target-sentence" class="kr-text" style="font-size: 1.4rem; margin-bottom: 0.5rem;">
+      보고 싶다, 이렇게 말하니까 더 보고 싶다
+    </div>
+    <div class="rom-text" style="margin-bottom: 1rem;">
+      (Bo-go sip-da, i-reoh-ge mal-ha-ni-kka deo bo-go sip-da)
+    </div>
 
+    <!-- 컨트롤 버튼 그룹 -->
+    <div style="margin: 1rem 0; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+      <button onclick="playTTS()" style="background: var(--primary); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
+        🔊 Listen (TTS)
+      </button>
+      <button id="mic-btn" onclick="toggleSpeechRecognition()" style="background: #10b981; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
+        🎤 Start Shadowing
+      </button>
+    </div>
+
+    <!-- 실시간 피드백 영역 -->
+    <div id="feedback-area" style="margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 6px; font-size: 0.95rem; color: var(--subtext);">
+      Status: Click "Start Shadowing" and speak the Korean sentence clearly into your microphone.
+    </div>
+  </div>
+
+  <script>
+    // 1. 브라우저 내장 TTS (음성 합성) 기능
+    function playTTS() {
+      if (!('speechSynthesis' in window)) {
+        alert('Text-to-speech is not supported in this browser.');
+        return;
+      }
+      const text = "보고 싶다, 이렇게 말하니까 더 보고 싶다";
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ko-KR';
+      utterance.rate = 0.9; // 학습자를 위해 약간 천천히 발음
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // 2. Web Speech API를 활용한 실시간 음성 인식 및 유사도 피드백
+    let recognition = null;
+    let isRecording = false;
+
+    function toggleSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      
+      if (!SpeechRecognition) {
+        alert('Speech recognition is not supported in your browser. Please use Google Chrome or Microsoft Edge.');
+        return;
+      }
+
+      const micBtn = document.getElementById('mic-btn');
+      const feedbackArea = document.getElementById('feedback-area');
+
+      if (!isRecording) {
+        recognition = new SpeechRecognition();
+        recognition.lang = 'ko-KR';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.onstart = function() {
+          isRecording = true;
+          micBtn.style.background = '#ef4444';
+          micBtn.textContent = '⏹ Stop Recording';
+          feedbackArea.innerHTML = '🔴 Listening... Speak now!';
+          feedbackArea.style.color = '#1e293b';
+        };
+
+        recognition.onresult = function(event) {
+          const userSaid = event.results[0][0].transcript.trim();
+          const targetText = "보고 싶다 이렇게 말하니까 더 보고 싶다";
+          
+          // 간단한 공백 제거 문자열 비교 정밀도 체크
+          const cleanUser = userSaid.replace(/[\s,\.]/g, '');
+          const cleanTarget = targetText.replace(/[\s,\.]/g, '');
+
+          if (cleanUser === cleanTarget || cleanUser.includes("보고싶다")) {
+            feedbackArea.innerHTML = `✅ <strong>Excellent!</strong> You said: "<em>${userSaid}</em>". Perfect pronunciation!`;
+            feedbackArea.style.color = '#047857';
+          } else {
+            feedbackArea.innerHTML = `⚠️ <strong>Keep trying!</strong> You said: "<em>${userSaid}</em>". Listen to the audio again and match the rhythm.`;
+            feedbackArea.style.color = '#b45309';
+          }
+        };
+
+        recognition.onerror = function(event) {
+          feedbackArea.innerHTML = `❌ Error occurred: ${event.error}. Please check your microphone permissions.`;
+          stopRecState();
+        };
+
+        recognition.onend = function() {
+          stopRecState();
+        };
+
+        recognition.start();
+      } else {
+        if (recognition) {
+          recognition.stop();
+        }
+        stopRecState();
+      }
+    }
+
+    function stopRecState() {
+      isRecording = false;
+      const micBtn = document.getElementById('mic-btn');
+      micBtn.style.background = '#10b981';
+      micBtn.textContent = '🎤 Start Shadowing';
+    }
+  </script>
   <h2>5. Practical Conversational Dialogues</h2>
   <div class="example-box">
     <div class="example-item">
