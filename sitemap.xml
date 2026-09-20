@@ -51,9 +51,17 @@
   <!-- K-Pop 학습 메인 라운지 -->
   <url>
     <loc>https://englissi.github.io/kpop.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- K-Pop 개별 레슨: Mangvo - Why Is My Phone So Quiet (신규 추가) -->
+  <url>
+    <loc>https://englissi.github.io/mangvo-why-my-phone.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- K-Pop 개별 레슨: BTS - Spring Day -->
