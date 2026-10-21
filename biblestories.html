@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울고모가 들려주는 성경 이야기 - SeoulKomo</title>
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --bg-color: #f9fafb;
+            --text-color: #1f2937;
+            --border-color: #e5e7eb;
+        }
+        body {
+            font-family: 'Apple SD Gothic Neo', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        p.subtitle {
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        
+        /* 테이블 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+            color: #374151;
+        }
+        tr {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        /* 성경 동화 본문 표시 영역 */
+        #content-viewer {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            display: none; /* 기본은 숨김 */
+        }
+        .story-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .story-body {
+            white-space: pre-line;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .vocab-box, .quiz-box {
+            background: #ffffff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .back-btn {
+            background: #6b7280;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .back-btn:hover {
+            background: #4b5563;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📖 서울고모가 들려주는 성경 이야기</h1>
+    <p class="subtitle">쉬운 한국어와 따뜻한 스토리로 배우는 바이블 에피소드</p>
+
+    <!-- 게시글 목록 테이블 -->
+    <div id="table-view">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">회차</th>
+                    <th style="width: 65%;">제목 (Title)</th>
+                    <th style="width: 25%;">등록일 (Date)</th>
+                </tr>
+            jsko</thead>
+            <tbody id="post-list-body">
+                <!-- 자바스크립트로 데이터가 동적 삽입됩니다 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 선택된 글 내용 보여주는 뷰어 -->
+    <div id="content-viewer">
+        <div class="story-title" id="viewer-title"></div>
+        <div class="story-body" id="viewer-content"></div>
+        
+        <div class="vocab-box">
+            <strong>💡 고모의 콕콕 어휘 노트:</strong>
+            <p id="viewer-vocab" style="margin: 5px 0 0 0;"></p>
+        </div>
+
+        <div class="quiz-box">
+            <strong>❓ 내용 이해 퀴즈 (Quiz):</strong>
+            <p id="viewer-quiz" style="margin: 5px 0 0 0;"></p>
+        </div>
+
+        <button class="back-btn" onclick="goBackToList()">← 목록으로 돌아가기</button>
+    </div>
+</div>
+
+<script>
+    // 📝 [관리 방법] 새로운 글을 쓸 때 아래 배열에 내용을 추가만 하세요!
+    const posts = [
+        {
+            id: 1,
+            ep: "제 1화",
+            title: "노아의 방주: 빗속에서도 지켜낸 약속",
+            date: "2026-04-21",
+            content: `안녕? 오늘은 세계에서 가장 유명한 이야기 중 하나인 '노아의 방주' 이야기를 들려줄게.\n\n옛날 옛적, 세상에 나쁜 일들이 너무 많아졌을 때 하나님은 노아라는 착한 사람에게 큰 배를 만들라고 하셨어. "노아 야, 곧 큰 비가 내릴 테니 방주를 만들어라."\n\n사람들은 노아를 보고 비웃었지만, 노아는 포기하지 않고 묵묵히 나무를 심고 배를 만들었지. 드디어 비가 쏟아지기 시작했을 때, 방주 안에 탄 노아의 가족과 동물들만 안전하게 살아남을 수 있었어. 우리도 힘들 때 포기하지 않고 차근차근 준비하면 멋진 일이 일어날 거야!`,
+            vocab: "방주 (Ark) / 쏟아지다 (To pour down) / 포기하다 (To give up)",
+            quiz: "Q. 노아가 만든 것은 무엇일까요? (정답: 방주)"
+        },
+        {
+            id: 2,
+            ep: "제 2화",
+            title: "다윗과 골리앗: 작은 용기가 만드는 기적",
+            date: "2026-04-25",
+            content: `오늘은 아주 키가 크고 무서운 거인 골리앗과 싸운 작은 소년 다윗의 이야기야.\n\n블레셋 군대에는 엄청난 거인 골리앗이 있어서 모두가 무서워하며 떨고 있었지. 하지만 어린 소년 다윗은 "저 사람이 우리 하나님을 모욕할 수 없어!"라며 용기를 냈어.\n\n다윗은 갑옷도 입지 않고, 손에는 익숙한 물매와 돌멩이 다섯 개만 들고 골리앗 앞으로 걸어갔단다. 결과는 어떻게 되었을까? 우리의 작은 용기와 믿음이 커다란 벽을 무너뜨릴 수 있다는 걸 다윗이 보여준 거지!`,
+            vocab: "거인 (Giant) / 용기 (Courage) / 돌멩이 (Pebble)",
+            quiz: "Q. 다윗이 골리앗과 싸울 때 손에 든 것은 무엇일까요? (정답: 물매와 돌멩이)"
+        }
+        // 👉 새로운 글을 쓸려면 여기에 { id: 3, ep: "제 3화", title: "...", date: "...", content: "...", vocab: "...", quiz: "..." }, 형태로 추가하세요!
+    ];
+
+    const postListBody = document.getElementById('post-list-body');
+    const tableView = document.getElementById('table-view');
+    const contentViewer = document.getElementById('content-viewer');
+
+    const viewerTitle = document.getElementById('viewer-title');
+    const viewerContent = document.getElementById('viewer-content');
+    const viewerVocab = document.getElementById('viewer-vocab');
+    const viewerQuiz = document.getElementById('viewer-quiz');
+
+    // 테이블 목록 렌더링 함수
+    function renderTable() {
+        postListBody.innerHTML = '';
+        posts.forEach(post => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><strong>${post.ep}</strong></td>
+                <td>${post.title}</td>
+                <td style="color: #6b7280; font-size: 14px;">${post.date}</td>
+            `;
+            tr.onclick = () => showPostDetail(post.id);
+            postListBody.appendChild(tr);
+        });
+    }
+
+    // 상세 내용 보기
+    function showPostDetail(id) {
+        const post = posts.find(p => p.id === id);
+        if (!post) return;
+
+        viewerTitle.innerText = `[${post.ep}] ${post.title}`;
+        viewerContent.innerText = post.content;
+        viewerVocab.innerText = post.vocab;
+        viewerQuiz.innerText = post.quiz;
+
+        tableView.style.display = 'none';
+        contentViewer.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 목록으로 돌아가기
+    function goBackToList() {
+        contentViewer.style.display = 'none';
+        tableView.style.display = 'block';
+    }
+
+    // 페이지 로드 시 테이블 생성
+    renderTable();
+</script>
+
+</body>
+</html>
