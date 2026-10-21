@@ -100,6 +100,26 @@
         .back-btn:hover {
             background: #4b5563;
         }
+        /* 푸터 스타일 */
+.site-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: #6b7280;
+    font-size: 14px;
+}
+.site-footer .footer-links {
+    margin-bottom: 10px;
+}
+.site-footer .footer-links a {
+    color: #4f46e5;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.site-footer .footer-links a:hover {
+    text-decoration: underline;
+}
     </style>
 </head>
 <body>
@@ -215,6 +235,13 @@
     // 페이지 로드 시 테이블 생성
     renderTable();
 </script>
-
+<footer class="site-footer">
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <p>&copy; 2026 SeoulKomo. All rights reserved.</p>
+</footer>
 </body>
 </html>
